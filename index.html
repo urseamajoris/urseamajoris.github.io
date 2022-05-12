@@ -9,6 +9,9 @@
     <title>Urseamajoris</title>
 
 <style>
+    #grad {
+  background-image: repeating-linear-gradient(red, yellow 10%, green 20%);
+}
     .a{
         padding-left: 15%;
         padding-right: 15%;
@@ -25,65 +28,232 @@
 }
 </style>
 </head>
-<body>
+<body style="background-color:darkgray;">
+    <div class="box has-background-blue has-text-centered" style="position: fixed; width: 100%; margin: 0%; z-index: 1;">
+        
+        
+            <div class="content has-text-centered">
+               
+               <nav class="level">
+                   <div class="level-item has-text-centered">
+                    <div>
+                        <h3 class="subtitle">Urseamajoris</h3>
+                    </div>
+                   </div>
+                   <div class="level-item has-text-centered">
+                     <div>
+                       <p class="subtitle"><a href="#AIB_Blog">AI Builders 2022 Blogs</a></p>
+                     </div>
+                   </div>
+                   <div class="level-item has-text-centered">
+                     <div>
+                       <p class="subtitle"><a href="#AboutMe">About me</a></p>
+                     </div>
+                   </div>
+                   <div class="level-item has-text-centered">
+                     <div>
+                       <p class="subtitle"><a href="#Projects">Projects</a></p>
+                     </div>
+                   </div>
+                   <div class="level-item has-text-centered">
+                     <div>
+                       <p class="subtitle"><a href="#Contact">Contacts</a></p>
+                     </div>
+                   </div>
+                 </nav>
+           
+          
+   </div> 
+    </div>
     <div class="a">
         <div class="box has-background-danger has-text-centered">
-            <div class="content has-text-white">
-                <p class="subtitle"><b>Слава Україні</b></p>
-                <div class="box">
-                    <a href="https://www.icrc.org/en/donate/ukraine">Donate to the International Committee of the Red Cross</a>
-                </div>
+            <div class="content has-text-white is-small">
+                <p class="subtitle has-text-white"><b>Слава Україні</b> <a href="https://www.icrc.org/en/donate/ukraine">Donate to the ICRC</a></p>
+                
                 
             </div>
         </div>
         <div class="box has-background-grey-lighter has-text-white">
             <section class="hero-is-primary">
                 
-                    <p class="title">Welcome to Urseamajoris!</p>
-                    <p class="subtitle">The official personal page for me!</p>
+                    <p class="title is-large"><font size="+20"><strong>&nbsp;Welcome to Urseamajoris!</strong></font></p>
+                    <p class="subtitle">&nbsp;&nbsp;&nbsp;&nbsp;My official personal page!</p>
                     
             </section>
             <br>
             
 
-            <div class="box has-background-blue">
-                
-                     <div class="content">
-                        <p>As you can see, this page is still mostly under construction. There's nothing that important here just yet. Also, if you came from my facebook page, congrats! all the info you need is on the page already.</p>
-                        <a href="https://www.facebook.com/pollakrit.sat/">My Facebook</a>
-                    </div>
+              
+            <hr>   
+            <div id="AIB_Blog" class="box has-background-blue">
+                <div class="content">
+                    <h1 style="position: center;">AI Builders 2022 Blogs</h1>
+                    <section class="section">
+                        <h1 class="title">[1]</h1>
+                        <p><strong>12/5/2022</strong></p>
+                        <h1 id="so-what-really-is-ai-">So, what really is AI?</h1>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;This blog will cover the basic terminologies and definitions conerning artificial intelligence. To pave a good foundation towards higher understanding forward, we should have a good understanding of what AI is, and what it isn&#39;t.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;In the public understanding, there are 3 major terms regarding AI: artificial intelligence, machine learning, and deep learning. These three are closely related, yet very distinct and very defind of their own. All the three terms AI, ML and DL are often used interchangeably and at times can be confusing.  In summary, AI is a very broad term used to describe any system that can perform tasks that usually require the intelligence of a human. ML is a subset of AI whilst DL is a subset of ML algorithms.</p>
+<p><center><img src="source1.png" height="300px" width="500px" alt="Subsets" title="subsets"></p></center>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Now that we&#39;ve established a general understanding of the definitions, we can get into what really matters in this course, machine learning! Using neural networks!</p>
+<h2 id="neural-networks">Neural networks</h2>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Neural nets are essentially a product that humans made up to imitate the brain. As our brains have neurons with connections to each other, sending signals through electricity, neural nets do essentially the same. They are literally neurons that can communicate with each other, placed in layers. The neural nets will have at least an input and output layer. When neural networks are constructed, the neurons are literally blank, and requires learning to tune the model to give off useful output.</p>
+<h2 id="how-does-a-machine-learning-model-learn-">How does a machine learning model learn?</h2>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Neural networks go through <em>training</em> to tunr their neurons (a.k.a <em>weights</em>) to give accurate output. The training is conducted in loops, and in each loop a lot of cool things happen.</p>
+<ol>
+<li><strong>Preparing the inputs</strong>: e.g. pictures and a label of what that data is. Put all the input data into a <code>Dataloader</code>, which essentially will give off the data in batches to train</li>
+<li><strong>Feeding the data</strong>: the Dataloader feeds the data into the model, taking in the calculations from the weights of all the neurons. Generating an output, called <em>Predictions</em>.
+3.<strong>Calculate loss</strong>: in each batch, after getting the pridictions, the model will pass the predictions through a <code>loss function</code>. The function calculates how far the predictions are off from the correct labels (less is better).
+4.<strong>Calculate gradients</strong>: When the model gets the loss values of all the batches, it will calculate the <code>Gradients</code>, which is like a map of how much the model has improved. The gradient will then be passed into an Optimizer, which will update the weights.</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Going through steps 1-4, with each batch, is called an <em>iteration</em>. and for the batch that gets passed in every iteration, is called an <em>epoch</em>. 1 training loop is literally 1 epoch.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;After the training is finished, the model will have to evaluate itself with the data it has never seen before, called a <code>Validation set</code>. This is intended to make the model prove that it really fulfills the objective, and not just exploiting certain irrelevant features in the training set.</p>
+<p><center><img src="source2.png" height="300px" width="500px" alt="training loop" title="training loop visualized"></p></center>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;In this blog, we have gone through the definitions of what ML really is, and explored a bit into how it trains. Next time, we&#39;re going to talk about what these seemingly simple models are truly capable of.</p>
+
+                      </section>
+                    <p><a href="blogs.html">More Blogs</a></p>
+
+
+                </div>
+            </div> 
+            <hr>
+            <div id="AboutMe" class="box has-background-blue">
+                <div class="content">
+                    <h1>About me</h1>
+                    <section class="section">
+                        <div class="content has-text-centered">
+                            <img src="004.png" width="300" height="300">
+                        </div>
+                        
+                        <h1 class="title">Urseamajoris</h1>
+
+                        <p><strong>LLK15 - OSK140 - RAMA58 - AIB02</strong></p>
+                        
+                        <p>Hi, my name is Jay, also known online as Urseamajoris or Cygni.</p>
+                        <p>I'm a medical student, an AI student, an Educational Consultant, a Freelance Writer, and an OSK</p>
+                        <p>I'm interested in anything to do with Python, particularly Artificial Intelligence. I have constructed a <a>Brain Tumor detection CNN</a>, and I am currently studying about Natural Language Processing (NLP) models. Furthermore, I have great interest in many fields of medicine. I look forward to working with a lot of partners in my path to becoming a Medical Doctor, and an AI engineer. It is my greatest resolution to bring both of these fields closer together for our public benefit.</p>
+                        <h2>Personal Information</h2>
+                        <ul><strong>Name:</strong> I go by Urseamajoris and Cygni.</ul>
+                        <ul><strong>Birthday:</strong> November 1st, 2004 </ul>
+                        <ul><strong>Pronouns:</strong> All of them </ul>
+                        <ul><strong>Languages:</strong> Thai (native), English (Proficient) </ul>
+                        <h2>Education</h2>
+                        <ul><strong>Primary School:</strong> Leartlah School, Kanchanapisek Road (LLK15) </ul>
+                        <ul><strong>Secondary School:</strong> Suankularb Wittayalai School (OSK140) </ul>
+                        <ul><strong>Undergraduate:</strong> Doctor of Medicine Program (M.D.) of the Faculty of Medicine Ramathibodi Hospital, Mahidol University (RAMA58)</ul>
+                        <ul><strong>Extracurricular:</strong> AI Builders 2 </ul>
+                        <h2>Interests</h2>
+                        <ul><strong>Artificial Intelligence:</strong> Convolutional Neural Networks(CNN) for object detection, and RCNNs for autopilot. Natural Language Processing (NLP) for Sentiment Analysis. Vector Representation (branch of NLP) for Sentence Similarity Comparisons. Transformers, BERTs, GPTs for chatbots. Discrete Variational Auto Encoders (DVAEs) for image generations (beter than GANs). The fiels of AI is still rapidly expanding and I am very excited about everything that happens in this field. </ul>
+                        <ul><strong>Medicine:</strong> Psychology is my current favorite field (because I'm doing research on it!), I want to understand more about how our brains respond when we face physical, mental or emotional damage, both short and long term. Medicine is a field in which I feel like there is a lot to uncover, I am eager to spend the next 6 years satisfying my curiosity and putting my knowledges to beneficial use.   </ul>
+                        <ul><strong>Other things:</strong> French cuisine, mentoring younger students, menswear, etc. </ul>
+
+                      </section>
                     
-            </div>   
-            <hr>     
+
+
+                </div>
+            </div>
+            <hr>   
+            <div id="Projects" class="box has-background-blue">
+                <div class="content">
+                    <h1>Projects</h1>
+                </div>
+                <div class="tile is-ancestor">
+                    
+                    <div class="tile is-parent is-4">
+                      <article class="tile is-child notification has-background-grey has-text-white">
+                        <div class="content">
+                          <img src="007.jpg"  height="100px">
+                          <p class="title">Brain Tumor CNN</p>
+                          <p class="subtitle">The Convolutional Neural Network trained to detect different types of brain tumor (glioma, meningioma, pituitary, and none) with an accuracy of 92.78%</p>
+                          <p><a href="https://github.com/urseamajoris/BrainTumorCNN">Repository</a></p>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="tile is-parent is-4">
+                        <article class="tile is-child notification has-background-grey has-text-white">
+                          <div class="content">
+                            <img src="002.png"  height="100px">
+                            <p class="title">OpenCV Pomodoro timer</p>
+                            <p class="subtitle">Used for timing studies, developed using OpenCV</p>
+                            <p><a href="https://github.com/urseamajoris/CVtimer">Repository</a></p>
+                          </div>
+                        </article>
+                      </div>
+                      <div class="tile is-parent is-4">
+                        <article class="tile is-child notification has-background-grey has-text-white">
+                          <div class="content">
+                            <img src="006.png"  height="100px">
+                            <p class="title">PPG heart failure detector</p>
+                            <p class="subtitle">Proposed to Ramathibodi Pitching Challenge. The project involves a bracelet that detects abnormal heart rhythms from PPG sensors and report anomalies through SMS.</p>
+                            <p><a href="https://drive.google.com/file/d/1nc1w3OC4orbbmRojnFzF72b5CpMNI2mL/view?usp=sharing">Paper</a></p>
+                          </div>
+                        </article>
+                      </div>
+                  </div>
+                  <div class="tile is-ancestor">
+                    
+                    <div class="tile is-parent is-4">
+                      <article class="tile is-child notification has-background-grey has-text-white">
+                        <div class="content">
+                          <img src="009.png"  height="100px">
+                          <p class="title">Agricultural Carer Robot</p>
+                          <p class="subtitle">This robot is capable of detecting humidity and sunlight, and can help efficiently water agricultural plants at a large scale.</p>
+                          <p><a href="https://drive.google.com/file/d/1_axgtU_Gbn_1zeVFl9UgkCLAQvnU3J5S/view?usp=sharing">Paper</a></p>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="tile is-parent is-4">
+                        <article class="tile is-child notification has-background-grey has-text-white">
+                          <div class="content">
+                            <img src="010.png"  height="100px">
+                            <p class="title">EXIF remover</p>
+                            <p class="subtitle">While uploading pictures of ATK test kits to organizations, their platforms may fail to remove your picture's EXIF data, resulting in very real threats to your privacy</p>
+                            <p><a href="https://github.com/urseamajoris/remove_exif">Repository</a></p>
+                          </div>
+                        </article>
+                      </div>
+                      <div class="tile is-parent is-4">
+                        <article class="tile is-child notification has-background-grey has-text-white">
+                          <div class="content">
+                            <img src="011.png"  height="100px">
+                            <p class="title">Easyvocab project</p>
+                            <p class="subtitle">Taught English for free with iRPC's community learning center.</p>
+                            <p><a href="https://www.facebook.com/CommunityCenterIRPC/videos/1225311961277755/">Videos</a></p>
+                          </div>
+                        </article>
+                      </div>
+                  </div>
+                  
+              </div>
+             
+            <hr>
+            <div id="Contact" class="box has-background-blue">
+                <div class="content">
+                        <h1>Contact me</h1>
+                        <ul><strong>Email:</strong> urseamlaccs@gmail.com</ul>
+                        <ul><strong>Facebook:</strong> Pollakrit Satasin</ul>
+                        <ul><strong>Github:</strong> urseamajoris</ul>
+                </div>
+            </div> 
+            <hr> 
             <div class="box has-background-blue">
-        
                 <div class="content">
                    <p>By the way, I have a page on Fiverr, buy my service pls.</p>
                    <a href="https://www.fiverr.com/urseamajoris">My Fiverr</a>
-               
-            </div> 
             </div>
-            
-             
-                      
-                
-            
-                
         </div>
-        </div>
-
-        <div class="footer">
-            <div class="box has-background-blue">
-        
+    </div>
+            <div class="box has-text-centered">
                 <div class="content">
-                   <p>Give me money</p>
                    <a href="MyQR.jpg">Give me money.</a>
-               
+                   <p>Copyright © urseamajoris 2022, all rights reserved.</p>
             </div> 
-
         </div>
-    
-    
-    
+    </div>
 </body>
 </html>

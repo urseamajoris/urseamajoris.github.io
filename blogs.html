@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Urseamajoris</title>
+    
+    <style>
+        #grad {
+      background-image: repeating-linear-gradient(red, yellow 10%, green 20%);
+    }
+        .a{
+            padding-left: 15%;
+            padding-right: 15%;
+            padding-top: 1%;
+        }
+        .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      
+      color: white;
+      text-align: center;
+    }
+    </style>
+    </head>
+<body style="background-color:darkgray;">
+    <div class="a">
+        <div class="box has-background-grey-lighter has-text-white">
+            <div class="content"><h1>AI Builders 2022 Blogs</h1></div>
+            <div id="AIB_Blog" class="box has-background-blue">
+                <div class="content">
+                    <section class="section">
+                        <h1 class="title">[1] So, what really is AI?</h1>
+                        <p><strong>12/5/2022</strong></p>
+                        <h1 id="so-what-really-is-ai-">So, what really is AI?</h1>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;This blog will cover the basic terminologies and definitions conerning artificial intelligence. To pave a good foundation towards higher understanding forward, we should have a good understanding of what AI is, and what it isn&#39;t.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;In the public understanding, there are 3 major terms regarding AI: artificial intelligence, machine learning, and deep learning. These three are closely related, yet very distinct and very defind of their own. All the three terms AI, ML and DL are often used interchangeably and at times can be confusing.  In summary, AI is a very broad term used to describe any system that can perform tasks that usually require the intelligence of a human. ML is a subset of AI whilst DL is a subset of ML algorithms.</p>
+<p><center><img src="source1.png" height="300px" width="500px" alt="Subsets" title="subsets"></p></center>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Now that we&#39;ve established a general understanding of the definitions, we can get into what really matters in this course, machine learning! Using neural networks!</p>
+<h2 id="neural-networks">Neural networks</h2>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Neural nets are essentially a product that humans made up to imitate the brain. As our brains have neurons with connections to each other, sending signals through electricity, neural nets do essentially the same. They are literally neurons that can communicate with each other, placed in layers. The neural nets will have at least an input and output layer. When neural networks are constructed, the neurons are literally blank, and requires learning to tune the model to give off useful output.</p>
+<h2 id="how-does-a-machine-learning-model-learn-">How does a machine learning model learn?</h2>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Neural networks go through <em>training</em> to tunr their neurons (a.k.a <em>weights</em>) to give accurate output. The training is conducted in loops, and in each loop a lot of cool things happen.</p>
+<ol>
+<li><strong>Preparing the inputs</strong>: e.g. pictures and a label of what that data is. Put all the input data into a <code>Dataloader</code>, which essentially will give off the data in batches to train</li>
+<li><strong>Feeding the data</strong>: the Dataloader feeds the data into the model, taking in the calculations from the weights of all the neurons. Generating an output, called <em>Predictions</em>.
+3.<strong>Calculate loss</strong>: in each batch, after getting the pridictions, the model will pass the predictions through a <code>loss function</code>. The function calculates how far the predictions are off from the correct labels (less is better).
+4.<strong>Calculate gradients</strong>: When the model gets the loss values of all the batches, it will calculate the <code>Gradients</code>, which is like a map of how much the model has improved. The gradient will then be passed into an Optimizer, which will update the weights.</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Going through steps 1-4, with each batch, is called an <em>iteration</em>. and for the batch that gets passed in every iteration, is called an <em>epoch</em>. 1 training loop is literally 1 epoch.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;After the training is finished, the model will have to evaluate itself with the data it has never seen before, called a <code>Validation set</code>. This is intended to make the model prove that it really fulfills the objective, and not just exploiting certain irrelevant features in the training set.</p>
+<p><center><img src="source2.png" height="300px" width="500px" alt="training loop" title="training loop visualized"></p></center>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;In this blog, we have gone through the definitions of what ML really is, and explored a bit into how it trains. Next time, we&#39;re going to talk about what these seemingly simple models are truly capable of.</p>
+
+                      </section>
+                      <hr style="color: #000;"
+                </div>
+            </div>
+            </div>
+            <div id="AIB_Blog" class="box has-background-blue">
+                <div class="content">
+                    <section class="section">
+                        <h1 class="title">[2] </h1>
+                        <p><strong><time></strong></p>
+                        <h1 id="so-what-really-is-ai-">Template</h1>
+                            <hr>
+                            <p>Content</p>
+
+                      </section>
+                      <hr style="color: #000;"
+                </div>
+            </div>
+            
+            </div> 
+            <div class="box has-text-centered">
+                <div class="content">
+                   <a href="MyQR.jpg">Give me money.</a>
+                   <p>Copyright © urseamajoris 2022, all rights reserved.</p>
+            </div>          
+        </div>
+    </div>
+</body>
+</html>
