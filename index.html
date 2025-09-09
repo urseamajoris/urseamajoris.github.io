@@ -1,151 +1,214 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RAMSC — Ramathibodi Medical Student's Council</title>
-  <meta name="description" content="RAMSC — Ramathibodi Medical Student's Council. A bright, uplifting, immersive site for students and the community.">
-  <link rel="canonical" href="https://example.com/">
-  <meta property="og:title" content="RAMSC — Ramathibodi Medical Student's Council">
-  <meta property="og:description" content="A bright, uplifting, immersive site for RAMSC.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/img/placeholder-hero.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <meta name="description" content="RAMSC — of the Faculty of Medicine, Ramathibodi Hospital" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
 
+  <!-- Prevent hero media from overlaying later sections -->
+  <style>
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url("assets/img/placeholder-hero.jpg") center/cover no-repeat;
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header / Navigation -->
   <header class="site-header" data-header>
     <div class="container nav-wrap">
-      <a href="index.html" class="logo" aria-label="RAMSC Home">RAMSC</a>
+      <a class="logo" href="index.html" aria-label="RAMSC Home">RAMSC</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
       <nav id="site-nav" class="site-nav" role="navigation">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="members.html">Members</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-<main id="main">
-  <section class="hero" data-parallax>
-    <div class="video-wrap" data-video-scrub>
-      <video id="introVideo" class="hero-video" muted playsinline preload="metadata" poster="assets/img/placeholder-hero.jpg">
-        <source src="assets/video/intro.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div class="hero-overlay">
-        <h1 class="hero-title">RAMSC</h1>
-        <p class="hero-tag">Bright. Connected. Student‑led.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="about.html">About RAMSC</a>
-          <a class="btn btn-secondary" href="members.html">Meet Our Members</a>
+  <main id="main">
+    <!-- HERO (static image background; no video, no overlapping img) -->
+    <section class="hero" aria-label="Hero">
+      <div class="video-wrap" style="position:relative; min-height:70vh; overflow:hidden; border-radius:0 0 var(--radius) var(--radius);">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-overlay">
+          <h1 class="hero-title">Ramathibodi Medical Student's Council</h1>
+          <p class="hero-tag">Faculty of Medicine, Ramathibodi Hospital</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="about.html">About RAMSC</a>
+            <a class="btn btn-secondary" href="#dashboard">See Updates</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="news">
-    <div class="container">
-      <header class="section-header reveal">
-        <h2>News & Events</h2>
-        <p>Highlights from the council — activities, initiatives, and opportunities.</p>
-      </header>
-      <div class="card-grid">
-        <!-- Sample cards -->
-        
-        <article class="card reveal">
-          <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-1.jpg" alt="News 1"></a>
-          <div class="card-body">
-            <div class="chip">News</div>
-            <h3 class="card-title"><a href="#">Sample Headline 1</a></h3>
-            <p class="card-text">Short description for item 1. Replace with real content.</p>
-            <time class="card-date" datetime="2025-08-11">Aug 11, 2025</time>
-          </div>
-        </article>
-        <article class="card reveal">
-          <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-2.jpg" alt="News 2"></a>
-          <div class="card-body">
-            <div class="chip">Event</div>
-            <h3 class="card-title"><a href="#">Sample Headline 2</a></h3>
-            <p class="card-text">Short description for item 2. Replace with real content.</p>
-            <time class="card-date" datetime="2025-08-12">Aug 12, 2025</time>
-          </div>
-        </article>
-        <article class="card reveal">
-          <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-3.jpg" alt="News 3"></a>
-          <div class="card-body">
-            <div class="chip">News</div>
-            <h3 class="card-title"><a href="#">Sample Headline 3</a></h3>
-            <p class="card-text">Short description for item 3. Replace with real content.</p>
-            <time class="card-date" datetime="2025-08-13">Aug 13, 2025</time>
-          </div>
-        </article>
-        <article class="card reveal">
-          <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-4.jpg" alt="News 4"></a>
-          <div class="card-body">
-            <div class="chip">Event</div>
-            <h3 class="card-title"><a href="#">Sample Headline 4</a></h3>
-            <p class="card-text">Short description for item 4. Replace with real content.</p>
-            <time class="card-date" datetime="2025-08-14">Aug 14, 2025</time>
-          </div>
-        </article>
-        <article class="card reveal">
-          <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-5.jpg" alt="News 5"></a>
-          <div class="card-body">
-            <div class="chip">News</div>
-            <h3 class="card-title"><a href="#">Sample Headline 5</a></h3>
-            <p class="card-text">Short description for item 5. Replace with real content.</p>
-            <time class="card-date" datetime="2025-08-15">Aug 15, 2025</time>
-          </div>
-        </article>
-        <article class="card reveal">
-          <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-6.jpg" alt="News 6"></a>
-          <div class="card-body">
-            <div class="chip">Event</div>
-            <h3 class="card-title"><a href="#">Sample Headline 6</a></h3>
-            <p class="card-text">Short description for item 6. Replace with real content.</p>
-            <time class="card-date" datetime="2025-08-16">Aug 16, 2025</time>
-          </div>
+    <!-- DASHBOARD -->
+    <section class="section" id="dashboard" aria-labelledby="dashboard-title">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2 id="dashboard-title">Dashboard - Updates from RAMSC</h2>
+          <p>Fresh updates from the council: events, programs, and opportunities.</p>
+        </header>
+
+        <div class="card-grid">
+          <article class="card reveal">
+            <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-1.jpg" alt="Orientation Roadshow"></a>
+            <div class="card-body">
+              <div class="chip">Event</div>
+              <h3 class="card-title"><a href="#">Orientation Roadshow</a></h3>
+              <p class="card-text">Meet RAMSC, explore services, and discover how to get involved across campuses.</p>
+              <time class="card-date" datetime="2025-09-15">15/09/2025</time>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-2.jpg" alt="Peer & Near-Peer Coaching"></a>
+            <div class="card-body">
+              <div class="chip">Program</div>
+              <h3 class="card-title"><a href="#">Peer & Near-Peer Coaching</a></h3>
+              <p class="card-text">Small-group learning with mentors—pre-clinic and clinic tracks available.</p>
+              <time class="card-date" datetime="2025-09-20">20/09/2025</time>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-3.jpg" alt="Well-Being Workshops"></a>
+            <div class="card-body">
+              <div class="chip">Well-Being</div>
+              <h3 class="card-title"><a href="#">Well-Being Workshops</a></h3>
+              <p class="card-text">Stress management, self-awareness, and mental health support series.</p>
+              <time class="card-date" datetime="2025-09-25">25/09/2025</time>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT CALENDAR -->
+    <section class="section bg-alt" id="calendar" aria-labelledby="calendar-title">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2 id="calendar-title">Content Calendar</h2>
+          <p>What’s scheduled next</p>
+        </header>
+
+        <div class="card-grid">
+          <article class="card reveal">
+            <div class="card-body">
+              <div class="chip">Sep 18</div>
+              <h3 class="card-title">RAMA Broadcast: Council Updates</h3>
+              <p class="card-text">Highlights from each department plus live Q&A.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card-body">
+              <div class="chip">Sep 23</div>
+              <h3 class="card-title">Academic Clinic Kick-Off</h3>
+              <p class="card-text">Mentor pairing and sprint 1 for exam prep.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <div class="card-body">
+              <div class="chip">Sep 30</div>
+              <h3 class="card-title">External Affairs: Club Liaison Meet</h3>
+              <p class="card-text">Connecting clubs, competitions, and collaborations.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISSION & VISION -->
+    <section class="section" id="mission-vision" aria-labelledby="mission-title">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2 id="mission-title">Mission & Vision</h2>
+          <p>Why we exist and where we’re headed.</p>
+        </header>
+
+        <article class="content reveal">
+          <h3>Mission</h3>
+          <p lang="th">สืบเนื่องจากงานประชุมสัมมนานักศึกษาครั้งที่ 4 ทางคณะแพทยศาสตร์โรงพยาบาลรามาธิบดีได้รับทราบและตระหนักถึงปัญหาในเชิงโครงสร้างและการประสานงานที่ไม่ชัดเจนขององค์กรนักศึกษาแพทย์ในปัจจุบัน จึงเป็นที่มาของการริเริ่มจัดตั้ง “สภานักศึกษาแพทย์รามาธิบดี” เพื่อเป็นองค์กรที่จะรวบรวมบทบาทหน้าที่ที่ชัดเจนของทุกภาคส่วน และประสานงานกันแบบองค์รวม</p>
+
+          <h3>Vision</h3>
+          <p>To empower Ramathibodi medical students to become the best version of themselves and to drive meaningful real-world impact.</p>
         </article>
       </div>
-    </div>
-  </section>
-</main>
-  <footer class="site-footer" id="contact">
-    <div class="container footer-grid">
-      <div>
-        <h3>RAMSC</h3>
-        <p>Ramathibodi Medical Student's Council</p>
+    </section>
+
+    <!-- ORGANIZATION STRUCTURE -->
+    <section class="section bg-alt" id="org-structure" aria-labelledby="org-title">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2 id="org-title">Organization Structure</h2>
+          <p>Our core divisions and leadership.</p>
+        </header>
+
+        <div class="org-grid reveal" role="list">
+          <div class="org-chip" role="listitem">Corporate Communication (CC)</div>
+          <div class="org-chip" role="listitem">Organizational Development (OD)</div>
+          <div class="org-chip" role="listitem">External Affairs (EA)</div>
+          <div class="org-chip" role="listitem">Internal Affairs (IA)</div>
+          <div class="org-chip" role="listitem">Academic Affairs (AA)</div>
+          <div class="org-chip" role="listitem">Well-Being Affairs (WB)</div>
+          <div class="org-chip" role="listitem">Steering Committee</div>
+          <div class="org-chip" role="listitem">Executive</div>
+        </div>
       </div>
-      <div>
-        <h4>Contact</h4>
-        <ul class="unstyled">
-          <li>Email: <a href="mailto:contact@ramsc.example">contact@ramsc.example</a></li>
-          <li>Facebook: <a href="#" aria-label="Facebook">/ramsc</a></li>
-          <li>Instagram: <a href="#" aria-label="Instagram">@ramsc</a></li>
-        </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2 id="contact-title">Contact Us</h2>
+          <p>reach out anytime.</p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>General</h3>
+            <p>Email: <a href="mailto:rama.med@gmail.com">rama.med@gmail.com</a></p>
+            <p>Phone: 0 2201 2193 / 0 2201 1542 / 0 2201 2990</p>
+            <p>Address: Chakri Naruebodindra Medical Institute, 111–14 Suwannabhumi Canal Rd, Bang Phli, Samut Prakan 10540</p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Social Media</h3>
+            <ul class="unstyled">
+              <li>Instagram: <a href="https://instagram.com/ramsc.official" target="_blank" rel="noopener">@ramsc.official</a></li>
+              <li>Facebook: <a href="#" target="_blank" rel="noopener">RAMSC on Facebook</a></li>
+              <li>RAMA Broadcast: <a href="#" target="_blank" rel="noopener">Watch updates</a></li>
+            </ul>
+          </div>
+
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Demo form — wire to EmailJS/Netlify to enable.');">
+            <label>Name <input required /></label>
+            <label>Email <input type="email" required /></label>
+            <label>Message <textarea required></textarea></label>
+            <button class="btn btn-primary">Send</button>
+          </form>
+        </div>
       </div>
-      <div>
-        <h4>Site</h4>
-        <ul class="unstyled">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="members.html">Members</a></li>
-        </ul>
-      </div>
-    </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <div class="container smallprint">© <span data-year></span> RAMSC, Ramathibodi Medical Student’s Council.</div>
   </footer>
-
 </body>
 </html>
