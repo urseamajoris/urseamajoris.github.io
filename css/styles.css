@@ -112,11 +112,21 @@ video.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cov
 .smallprint{border-top:1px solid #e5e7eb;padding-top:1rem;margin-top:1rem;color:var(--muted);font-size:.9rem}
 
 /* Reveal on scroll — progressive enhancement */
-.reveal{opacity:1;transform:none;transition:opacity .4s ease, transform .4s ease}
-.reveal.in-view{opacity:1;transform:none}
+.reveal{
+  opacity:1;
+  transform:none;
+  will-change:opacity,transform;
+  transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+}
 /* Animate only when JS is confirmed */
-html.js .reveal{opacity:0;transform:translateY(10px)}
-html.js .reveal.in-view{opacity:1;transform:none}
+html.js .reveal{
+  opacity:0;
+  transform:translateY(24px);
+}
+html.js .reveal.in-view{
+  opacity:1;
+  transform:translateY(0);
+}
 
 /* A11y & type */
 :focus-visible{outline:2px solid var(--brand-1);outline-offset:2px}
