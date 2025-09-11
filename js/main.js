@@ -29,6 +29,8 @@
     });
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
 
+  }, { threshold: .15 });
+
   document.querySelectorAll('.reveal').forEach((el, idx) => {
     const delay = parseFloat(el.dataset.revealDelay) || Math.min(idx * 0.1, 0.4);
     el.style.transitionDelay = `${delay}s`;
