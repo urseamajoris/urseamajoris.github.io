@@ -27,6 +27,8 @@
         io.unobserve(entry.target);
       }
     });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
+
   }, { threshold: .15 });
 
   document.querySelectorAll('.reveal').forEach((el, idx) => {

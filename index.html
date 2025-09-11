@@ -10,14 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
-
-  <!-- Prevent hero media from overlaying later sections -->
-  <style>
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: url("assets/img/placeholder-hero.jpg") center/cover no-repeat;
-    }
-  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -41,14 +33,16 @@
   </header>
 
   <main id="main">
-    <!-- HERO (static image background; no video, no overlapping img) -->
+    <!-- HERO with scroll-driven video -->
     <section class="hero" aria-label="Hero">
-      <div class="video-wrap" style="position:relative; min-height:70vh; overflow:hidden; border-radius:0 0 var(--radius) var(--radius);">
-        <div class="hero-bg" aria-hidden="true"></div>
+      <div class="video-wrap" data-video-scrub>
+        <video id="introVideo" class="hero-video" muted playsinline preload="auto" poster="assets/img/placeholder-hero.jpg" aria-hidden="true">
+          <source src="video/video.mp4" type="video/mp4" />
+        </video>
         <div class="hero-overlay">
-          <h1 class="hero-title">Ramathibodi Medical Student's Council</h1>
-          <p class="hero-tag">Faculty of Medicine, Ramathibodi Hospital</p>
-          <div class="hero-cta">
+          <h1 class="hero-title reveal">Ramathibodi Medical Student's Council</h1>
+          <p class="hero-tag reveal" data-reveal-delay="0.1">Faculty of Medicine, Ramathibodi Hospital</p>
+          <div class="hero-cta reveal" data-reveal-delay="0.2">
             <a class="btn btn-primary" href="about.html">About RAMSC</a>
             <a class="btn btn-secondary" href="#dashboard">See Updates</a>
           </div>
@@ -180,14 +174,14 @@
         </header>
 
         <div class="contact-grid">
-          <div class="contact-card">
+          <div class="contact-card reveal">
             <h3>General</h3>
             <p>Email: <a href="mailto:rama.med@gmail.com">rama.med@gmail.com</a></p>
             <p>Phone: 0 2201 2193 / 0 2201 1542 / 0 2201 2990</p>
             <p>Address: Chakri Naruebodindra Medical Institute, 111–14 Suwannabhumi Canal Rd, Bang Phli, Samut Prakan 10540</p>
           </div>
 
-          <div class="contact-card">
+          <div class="contact-card reveal">
             <h3>Social Media</h3>
             <ul class="unstyled">
               <li>Instagram: <a href="https://instagram.com/ramsc.official" target="_blank" rel="noopener">@ramsc.official</a></li>
@@ -196,7 +190,7 @@
             </ul>
           </div>
 
-          <form class="contact-form" onsubmit="event.preventDefault(); alert('Demo form — wire to EmailJS/Netlify to enable.');">
+          <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Demo form — wire to EmailJS/Netlify to enable.');">
             <label>Name <input required /></label>
             <label>Email <input type="email" required /></label>
             <label>Message <textarea required></textarea></label>

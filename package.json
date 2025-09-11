@@ -1,0 +1,8 @@
+{
+  "name": "ramsc-site",
+  "version": "1.0.0",
+  "description": "RAMSC static site",
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  }
+}
