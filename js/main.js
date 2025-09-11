@@ -1,4 +1,5 @@
 (function(){
+  document.documentElement.classList.add('js');
   const header = document.querySelector('[data-header]');
   const nav = document.getElementById('site-nav');
   const toggle = document.querySelector('.nav-toggle');
@@ -20,9 +21,19 @@
   }
 
   const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target);} });
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
   }, { threshold: .15 });
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  document.querySelectorAll('.reveal').forEach((el, idx) => {
+    const delay = parseFloat(el.dataset.revealDelay) || Math.min(idx * 0.1, 0.4);
+    el.style.transitionDelay = `${delay}s`;
+    io.observe(el);
+  });
 
   const lightbox = document.querySelector('.lightbox');
   if (lightbox){
