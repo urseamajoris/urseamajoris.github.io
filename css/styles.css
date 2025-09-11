@@ -18,13 +18,19 @@ a{color:inherit;text-decoration:none}
 .skip-link:focus{top:0}
 
 /* Header */
-.site-header{
-  position:sticky;top:0;z-index:999;
-  background:color-mix(in oklab, var(--bg) 90%, transparent);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent)
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background:#1c005c; 
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #e5e7eb;
 }
-.site-header.scrolled{box-shadow:var(--shadow)} 
+
+.site-header.scrolled {
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); 
+}
 .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
 .logo{font-weight:700;letter-spacing:.04em} 
 .site-nav ul{display:flex;gap:1.2rem;list-style:none;padding:0;margin:0}
@@ -62,10 +68,11 @@ video.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cov
 /* Chips & Cards */
 .chip{display:inline-block;font-size:.75rem;padding:.15rem .5rem;border-radius:999px;background:color-mix(in oklab, var(--accent) 16%, #fff);color:color-mix(in oklab, var(--accent) 70%, #000)}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(1rem,3vw,1.5rem)}
-.card{background:var(--bg);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .2s ease}
+.card{background:rgb(224, 224, 224);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .2s ease}
 .card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(2,6,23,.12)} 
 .card-body{padding:1rem} 
-.card-text{color:var(--muted)}
+.card-text{font-size: 20px;font-weight: 450;color: #003;text-align: center;}
+.card-titles{font-size: 25px;font-weight: 600;color: #1c005c;text-align: center;}
 
 /* Org */
 .org-grid{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
@@ -106,21 +113,44 @@ video.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cov
 .contact-form input,.contact-form textarea{width:100%;padding:.6rem .8rem;border:1px solid #e5e7eb;border-radius:.6rem;font:inherit}
 
 /* Footer */
-.site-footer{background:var(--surface);padding:2rem 0;margin-top:2rem;border-top:1px solid #e5e7eb}
+.site-footer{background:#1c005c;padding:2rem ;margin-top:0rem;}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
-.unstyled{list-style:none;padding:0;margin:0}
-.smallprint{border-top:1px solid #e5e7eb;padding-top:1rem;margin-top:1rem;color:var(--muted);font-size:.9rem}
-
-/* Reveal on scroll — progressive enhancement */
-.reveal{
-  opacity:1;
-  transform:none;
-  will-change:opacity,transform;
-  transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
-
-  transition:opacity .6s ease, transform .6s ease;
+.unstyled{list-style:none;padding:0;margin:0} 
+.smallprint{border-top:1px solid #7b7b7b;padding-top:1rem;margin-top:1rem;color:#e5e7eb;font-size:.9rem;text-align: center;}
+.footers{margin-top:  150px; width: 100%; padding :50px;background: rgb(250, 255, 198);color:#1c005c;display: flex;gap:2rem;}
+.footers div{text-align: left;}
+.col-3, .col-2 , .col-4 {
+  flex-grow: 1;       
+  flex-basis: 0;      
 }
-/* Animate only when JS is confirmed */
+.col-1{ flex-grow: 2;flex-basis: 0;}
+.col-1 a{display:flex;text-decoration: none;color: #1c005c;margin-bottom: 10px;}
+.social-icons {
+  display: flex;       
+  gap: 10px;           
+  margin-top: 10px;    
+}
+
+.footimg {
+  width: 40px;
+  height: 40px;
+}
+.col-2 a{display: block;text-decoration: none;color: #1c005c;margin-bottom: 8px;}
+.col-3 a{display: block;text-decoration: none;color: #1c005c;margin-bottom: 8px;}
+.btnfoot{font-weight:400;}
+.btnfoot:hover{font-weight:600;color: #400abe;}
+/* Reveal on scroll — progressive enhancement 
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+ Animate only when JS is confirmed 
 html.js .reveal{
   opacity:0;
   transform:translateY(24px);
@@ -130,8 +160,8 @@ html.js .reveal{
 html.js .reveal.in-view{
   opacity:1;
   transform:translateY(0);
-}
-
+}*/
+.reveal{}
 /* A11y & type */
 :focus-visible{outline:2px solid var(--brand-1);outline-offset:2px}
 h1{font-size:clamp(1.8rem,2vw + 1.2rem,2.6rem)} 
@@ -143,3 +173,8 @@ h3{font-size:clamp(1.1rem,1vw + .8rem,1.4rem)}
   .reveal{transition:none;transform:none;opacity:1}
   video.hero-video{animation:none}
 }
+.btnsite{font-weight: 450; color:#ffffff}
+.btnsite:hover{font-weight: 600; color:#4169c9}
+
+.Htext{font-weight: 500;}
+.imglogo{width: 40px;height: 40px;}

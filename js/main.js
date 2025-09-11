@@ -20,16 +20,16 @@
     document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeNav(); });
   }
 
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('in-view');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
+  /*const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      requestAnimationFrame(() => entry.target.classList.add('in-view'));
+      io.unobserve(entry.target);
+    }
+  });
+}, { rootMargin: '0px 0px -18% 0px', threshold: 0.05 });*/
 
-  }, { threshold: .15 });
+  
 
   document.querySelectorAll('.reveal').forEach((el, idx) => {
     const delay = parseFloat(el.dataset.revealDelay) || Math.min(idx * 0.1, 0.4);
