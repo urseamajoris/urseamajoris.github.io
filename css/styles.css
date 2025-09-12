@@ -71,9 +71,11 @@ video.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cov
 .card{background:rgb(224, 224, 224);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .2s ease}
 .card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(2,6,23,.12)}
 .card-link{display:block;color:inherit;text-decoration:none;height:100%}
+.card-link img{display:block;width:100%;height:auto}
 .card-body{padding:1rem}
 .card-text{font-size: 20px;font-weight: 450;color: #003;text-align: center;}
 .card-titles{font-size: 25px;font-weight: 600;color: #1c005c;text-align: center;}
+.card-date{font-size: 14px;color: #555;text-align: center;margin-top: .25rem;}
 
 /* Org */
 .org-grid{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
