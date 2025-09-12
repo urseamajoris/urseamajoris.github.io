@@ -45,14 +45,14 @@ a{color:inherit;text-decoration:none}
 }
 
 /* Hero */
-.hero{position:relative;min-height:70vh} 
-.video-wrap{position:relative;min-height:70vh;overflow:hidden;border-radius:0 0 var(--radius) var(--radius)}
+.hero{position:relative;min-height:100vh}
+.video-wrap{position:relative;min-height:100vh;overflow:hidden;border-radius:0 0 var(--radius) var(--radius)}
 /* Important: only video fills cover */
-video.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+video.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;aspect-ratio:16/9}
 /* Static image version stays in flow */
 .hero img.hero-video{position:static;width:100%;height:auto;display:block}
 .hero-overlay{
-  position:relative;z-index:2;display:grid;place-items:center;min-height:70vh;
+  position:relative;z-index:2;display:grid;place-items:center;min-height:100vh;
   padding:clamp(2rem,6vw,8rem) 1rem;
   background:linear-gradient(to bottom, rgba(0,0,0,.30), rgba(0,0,0,.15), transparent 60%);
   color:#fff;text-align:center
@@ -68,11 +68,12 @@ video.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cov
 /* Chips & Cards */
 .chip{display:inline-block;font-size:.75rem;padding:.15rem .5rem;border-radius:999px;background:color-mix(in oklab, var(--accent) 16%, #fff);color:color-mix(in oklab, var(--accent) 70%, #000)}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(1rem,3vw,1.5rem)}
-.card{background:rgb(224, 224, 224);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .2s ease;}
+.card{background:rgb(224, 224, 224);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .2s ease}
 .card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(2,6,23,.12)} 
 .card-body{padding:1rem} 
 .card-text{font-size: 20px;font-weight: 450;color: #003;text-align: center;}
 .card-titles{font-size: 25px;font-weight: 600;color: #1c005c;text-align: center;}
+.card-date{font-size: 14px;color: #555;text-align: center;margin-top: .25rem;}
 
 /* Depts */
 .dept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:1rem}
