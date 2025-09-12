@@ -73,7 +73,19 @@
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   };
-  on(toggle, 'click', () => nav?.classList.contains('open') ? closeNav() : openNav());
+
+  const handleToggle = (e) => {
+    if (e) e.preventDefault();
+    if (!nav) return;
+    if (nav.classList.contains('open')) {
+      closeNav();
+    } else {
+      openNav();
+    }
+  };
+
+  on(toggle, 'click', handleToggle);
+  on(toggle, 'touchstart', handleToggle);
   on(document, 'keydown', (e) => { if (e.key === 'Escape') closeNav(); });
   // Close on any nav link click (good for mobile)
   on(nav, 'click', (e) => { if (e.target.closest('a')) closeNav(); });
@@ -164,7 +176,8 @@
     $$('#main [data-lightbox] .gallery-item').forEach((a) => {
       on(a, 'click', (e) => {
         e.preventDefault();
-        const href = a.getAttribute('href') || a.querySelector('img')?.src;
+        const imgEl = a.querySelector('img');
+        const href = a.getAttribute('href') || (imgEl ? imgEl.src : '');
         if (!href || !lbImg) return;
         lbImg.src = href;
         lightbox.classList.add('open');
