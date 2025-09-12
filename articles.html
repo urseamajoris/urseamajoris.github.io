@@ -43,6 +43,13 @@
           <h2 id="articles-title">Articles</h2>
           <p>Updates and stories from RAMSC.</p>
         </header>
+        <div id="article-controls" class="reveal" style="margin-bottom:1rem;">
+          <input type="search" id="filter-name" placeholder="Filter by name" />
+          <div id="tag-filters" style="margin:0.5rem 0;"></div>
+          <button id="sort-name" class="btn btn-secondary">Sort by Name</button>
+          <button id="sort-date" class="btn btn-secondary">Sort by Date</button>
+          <button id="sort-tag" class="btn btn-secondary">Sort by Tag</button>
+        </div>
         <div id="article-list" class="card-grid"></div>
         <noscript>
           <div class="card-grid">
@@ -120,57 +127,20 @@
     </div>
   </footer>
 
-  <script>
-    const ARTICLES = [
-      {
-        id: "orientation-roadshow",
-        title: "Orientation Roadshow",
-        date: "2025-09-15",
-        author: "RAMSC",
-        tags: ["Event"],
-        hero: "assets/img/placeholder-thumb-1.jpg",
-        summary: "Meet RAMSC, explore services, and discover how to get involved across campuses.",
-        paragraphs: [
-          "The Orientation Roadshow brings the council to new students across campuses, offering a first-hand look at services and initiatives.",
-          "Participants can connect with leaders, explore volunteer opportunities, and learn how RAMSC supports student life."
-          "🎉 Welcome to the Official RAMSC Website! Dear fellow students and visitors, We are excited to officially launch the Ramathibodi Medical Student Council (RAMSC) website — a new platform designed to bring our community closer together. Here, you’ll find: 📅 Event updates & activities – Stay informed about what’s happening in our faculty. 📝 Announcements & resources – Access important information with ease. 🤝 Student initiatives & opportunities – Discover ways to connect, contribute, and grow. Our goal is to make this website not just a source of information, but a space that reflects the spirit, creativity, and dedication of Ramathibodi medical students. Thank you for being part of this journey with us. We look forward to building this platform together — and we can’t wait to hear your feedback as we continue to grow. Welcome aboard, and happy exploring! 🌟"
-        ]
-      },
-      {
-        id: "peer-coaching",
-        title: "Peer & Near-Peer Coaching",
-        date: "2025-09-20",
-        author: "RAMSC",
-        tags: ["Program"],
-        hero: "assets/img/placeholder-thumb-2.jpg",
-        summary: "Small-group learning with mentors—pre-clinic and clinic tracks available.",
-        paragraphs: [
-          "Our coaching program pairs juniors with experienced mentors for targeted study support.",
-          "Sessions are tailored for both pre-clinic and clinic stages, building knowledge and community."
-        ]
-      },
-      {
-        id: "wellbeing-workshops",
-        title: "Well-Being Workshops",
-        date: "2025-09-25",
-        author: "RAMSC",
-        tags: ["Well-Being"],
-        hero: "assets/img/placeholder-thumb-3.jpg",
-        summary: "Stress management, self-awareness, and mental health support series.",
-        paragraphs: [
-          "These workshops help students cultivate resilience through practical tools and peer discussion.",
-          "Topics range from mindfulness to time management, fostering a supportive environment."
-        ]
-      }
-    ];
+    <script>
+    let ARTICLES = [];
+    let filterName = '';
+    let filterTag = '';
+    let sortBy = 'date';
 
     function qs(key){
       return new URLSearchParams(window.location.search).get(key);
     }
 
-    function renderList(){
+    function renderList(data){
       const list = document.getElementById('article-list');
-      ARTICLES.forEach(a => {
+      list.innerHTML = '';
+      data.forEach(a => {
         const card = document.createElement('article');
         card.className = 'card reveal';
         const imgSrc = a.hero || 'assets/img/card.png';
@@ -185,6 +155,18 @@
         `;
         list.appendChild(card);
       });
+    }
+
+    function applyFilters(){
+      let data = ARTICLES.slice();
+      if(filterName) data = data.filter(a => a.title.toLowerCase().includes(filterName));
+      if(filterTag) data = data.filter(a => a.tags.includes(filterTag));
+      data.sort((a,b) => {
+        if(sortBy === 'name') return a.title.localeCompare(b.title);
+        if(sortBy === 'tag') return (a.tags[0] || '').localeCompare(b.tags[0] || '');
+        return new Date(b.date) - new Date(a.date);
+      });
+      renderList(data);
     }
 
     function renderArticle(id){
@@ -202,6 +184,31 @@
         <p><a href="articles.html">&larr; Back to all articles</a></p>
       `;
       container.hidden = false;
+    }
+
+    function initControls(){
+      const nameInput = document.getElementById('filter-name');
+      const tagWrap = document.getElementById('tag-filters');
+      const sortNameBtn = document.getElementById('sort-name');
+      const sortDateBtn = document.getElementById('sort-date');
+      const sortTagBtn = document.getElementById('sort-tag');
+      if(nameInput){
+        nameInput.addEventListener('input', e => { filterName = e.target.value.toLowerCase(); applyFilters(); });
+      }
+      if(tagWrap){
+        const tags = Array.from(new Set(ARTICLES.flatMap(a => a.tags)));
+        tagWrap.innerHTML = '<button class="btn btn-secondary" data-tag="">All</button>' + tags.map(t => `<button class="btn btn-secondary" data-tag="${t}">${t}</button>`).join('');
+        tagWrap.addEventListener('click', e => {
+          const tag = e.target.dataset.tag;
+          if(tag !== undefined){
+            filterTag = tag;
+            applyFilters();
+          }
+        });
+      }
+      if(sortNameBtn) sortNameBtn.addEventListener('click', () => { sortBy = 'name'; applyFilters(); });
+      if(sortDateBtn) sortDateBtn.addEventListener('click', () => { sortBy = 'date'; applyFilters(); });
+      if(sortTagBtn) sortTagBtn.addEventListener('click', () => { sortBy = 'tag'; applyFilters(); });
     }
 
     function initDebug(){
@@ -254,15 +261,19 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    async function init(){
+      ARTICLES = await fetch('articles.json').then(r => r.json());
+      initControls();
       const id = qs('id');
       if(id){
         renderArticle(id);
       } else {
-        renderList();
+        applyFilters();
       }
       initDebug();
-    });
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>
