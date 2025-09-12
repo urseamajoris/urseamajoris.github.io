@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
-  <script defer src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -23,10 +23,10 @@
       </button>
       <nav id="site-nav" class="site-nav" role="navigation">
         <ul>
-          <li><a href="index.html" class="btnsite">Home</a></li>
-          <li><a href="about.html" class="btnsite">About Us</a></li>
-          <li><a href="faqs.html" aria-current="page" class="btnsite">FAQs</a></li>
-          <li><a href="index.html#contact" class="btnsite">Contact</a></li>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="faqs.html">Department</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -36,11 +36,12 @@
     <!-- HERO with scroll-driven video -->
     <section class="hero" aria-label="Hero">
       <div class="video-wrap" data-video-scrub>
-        <video id="introVideo" class="hero-video" muted playsinline preload="auto" poster="assets\img\Home1.JPG" aria-hidden="true">
+        <video id="introVideo" class="hero-video" muted playsinline preload="auto" poster="assets/img/index_mainBG.jpg" aria-hidden="true">
           <source src="video/video.mp4" type="video/mp4" />
         </video>
         <div class="hero-overlay">
-          <h1 class="hero-title reveal">Ramathibodi Medical Student's Council</h1>
+          <img class="hero-title reveal", data-reveal-delay="0" src="assets/img/index_ramsc_graphic_text.png" alt="RAMSC Logo" />
+          <p class="" data-reveal-delay="0.1" style="font-size: 1.5rem; font-weight: 500;">Ramathibodi Medical Student Council (RAMSC)</p>
           <div class="hero-cta reveal" data-reveal-delay="0.2">
             <a class="btn btn-primary" href="about.html">About RAMSC</a>
             <a class="btn btn-secondary" href="#dashboard">See Updates</a>
@@ -49,155 +50,211 @@
       </div>
     </section>
 
-    <!-- DASHBOARD -->
-    <section class="section" id="dashboard" aria-labelledby="dashboard-title">
-      <div class="container">
-        <header class="section-header reveal">
-          <h2 id="dashboard-title">Dashboard - Updates from RAMSC</h2>
-          <p>Fresh updates from the council: events, programs, and opportunities.</p>
-        </header>
-
-        <div class="card-grid">
-          <article class="card reveal">
-            <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-1.jpg" alt="Orientation Roadshow"></a>
-            <div class="card-body">
-              <div class="chip">Event</div>
-              <h3 class="card-title"><a href="#">Orientation Roadshow</a></h3>
-              <p class="card-text">Meet RAMSC, explore services, and discover how to get involved across campuses.</p>
-              <time class="card-date" datetime="2025-09-15">15/09/2025</time>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-2.jpg" alt="Peer & Near-Peer Coaching"></a>
-            <div class="card-body">
-              <div class="chip">Program</div>
-              <h3 class="card-title"><a href="#">Peer & Near-Peer Coaching</a></h3>
-              <p class="card-text">Small-group learning with mentors—pre-clinic and clinic tracks available.</p>
-              <time class="card-date" datetime="2025-09-20">20/09/2025</time>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <a href="#" class="card-img-link"><img src="assets/img/placeholder-thumb-3.jpg" alt="Well-Being Workshops"></a>
-            <div class="card-body">
-              <div class="chip">Well-Being</div>
-              <h3 class="card-title"><a href="#">Well-Being Workshops</a></h3>
-              <p class="card-text">Stress management, self-awareness, and mental health support series.</p>
-              <time class="card-date" datetime="2025-09-25">25/09/2025</time>
-            </div>
-          </article>
+    <!-- DASH BOARD -->
+    <section class = "section" id = "dashboard" aria-labelledby="dashboard-title">
+      <div class = "row_dashboard">
+        <div class = "column_dashboard">
+          <img src="assets/img/index_dashboard.JPG" alt="Dashboard Image" class="image_dashboard">
         </div>
-      </div>
-    </section>
 
-    <!-- CONTENT CALENDAR -->
-    <section class="section bg-alt" id="calendar" aria-labelledby="calendar-title">
-      <div class="container">
-        <header class="section-header reveal">
-          <h2 id="calendar-title">Content Calendar</h2>
-          <p>What’s scheduled next</p>
-        </header>
+        <div class = "column_dashboard "> 
+          <h2 style="color: #000; font-size: 3rem">DASHBOARD</h2>
+          <div class="dashboard-divider"></div>
+          <div class = 'news_dashboard'> <!-- news 1 -->
+            <h3 class = 'news_title'> RAMSC 2025 is about to have the website </h3>
+            <p class = 'news_desc'> Coordinate Coorperation (CC) </p>
+          </div>
 
-        <div class="card-grid">
-          <article class="card reveal">
-            <div class="card-body">
-              <div class="chip">Sep 18</div>
-              <h3 class="card-title">RAMA Broadcast: Council Updates</h3>
-              <p class="card-text">Highlights from each department plus live Q&A.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-body">
-              <div class="chip">Sep 23</div>
-              <h3 class="card-title">Academic Clinic Kick-Off</h3>
-              <p class="card-text">Mentor pairing and sprint 1 for exam prep.</p>
-            </div>
-          </article>
-          <article class="card reveal">
-            <div class="card-body">
-              <div class="chip">Sep 30</div>
-              <h3 class="card-title">External Affairs: Club Liaison Meet</h3>
-              <p class="card-text">Connecting clubs, competitions, and collaborations.</p>
-            </div>
-          </article>
+          <div class = 'news_dashboard'> <!-- news 2 -->
+            <h3 class = 'news_title'> Midterm Exam is coming at the end of this September </h3>
+            <p class = 'news_desc'> Academic Affair (AA) </p>
+          </div>
+
+          <div class = 'news_dashboard'> <!-- news 3 -->
+            <h3 class = 'news_title'> Syringe Game will be held at the first of January. Stay tuned! </h3>
+            <p class = 'news_desc'> External Affair (EA) </p>
+          </div>
         </div>
+
+        
+
       </div>
     </section>
 
     <!-- MISSION & VISION -->
-    <section class="section" id="mission-vision" aria-labelledby="mission-title">
+    <section class="section" id="mission-vision" aria-labelledby="mission-title" style="background-image: url('assets/img/index_RAMSC_bg.png'); background-size: cover; background-position: center;">
       <div class="container">
-        <header class="section-header reveal">
-          <h2 id="mission-title">Mission & Vision</h2>
-          <p>Why we exist and where we’re headed.</p>
-        </header>
-
-        <article class="content reveal">
-          <h3>Mission</h3>
-          <p lang="th">สืบเนื่องจากงานประชุมสัมมนานักศึกษาครั้งที่ 4 ทางคณะแพทยศาสตร์โรงพยาบาลรามาธิบดีได้รับทราบและตระหนักถึงปัญหาในเชิงโครงสร้างและการประสานงานที่ไม่ชัดเจนขององค์กรนักศึกษาแพทย์ในปัจจุบัน จึงเป็นที่มาของการริเริ่มจัดตั้ง “สภานักศึกษาแพทย์รามาธิบดี” เพื่อเป็นองค์กรที่จะรวบรวมบทบาทหน้าที่ที่ชัดเจนของทุกภาคส่วน และประสานงานกันแบบองค์รวม</p>
-
-          <h3>Vision</h3>
-          <p>To empower Ramathibodi medical students to become the best version of themselves and to drive meaningful real-world impact.</p>
+        <article class="content reveal" style="padding: 2.0rem; border-radius: 0.5rem; color: black; font-size: 1.5rem; font-weight: 450; max-width:100%; margin: 0 auto;">
+          <p lang="en">Ramathibodi Medical Student Council (RAMSC) serves as the voice of all medical students at Ramathibodi across all academic years. It also helps support opportunities and skill development for students, aiming to cultivate well-rounded and knowledgeable individuals.</p>
         </article>
       </div>
     </section>
 
-    <!-- ORGANIZATION STRUCTURE -->
-    <section class="section bg-alt" id="org-structure" aria-labelledby="org-title">
+    <!-- VISION LISTS-->
+    <section class="section" id="vision-list" aria-labelledby="vision-title" style="background-image: url('assets/img/index_vision.png'); background-size: contain; background-repeat: no-repeat; background-position: center; min-height: 650px;">
       <div class="container">
-        <header class="section-header reveal">
-          <h2 id="org-title">Organization Structure</h2>
-          <p>Our core divisions and leadership.</p>
-        </header>
-
-        <div class="org-grid reveal" role="list">
-          <div class="org-chip" role="listitem">Corporate Communication (CC)</div>
-          <div class="org-chip" role="listitem">Organizational Development (OD)</div>
-          <div class="org-chip" role="listitem">External Affairs (EA)</div>
-          <div class="org-chip" role="listitem">Internal Affairs (IA)</div>
-          <div class="org-chip" role="listitem">Academic Affairs (AA)</div>
-          <div class="org-chip" role="listitem">Well-Being Affairs (WB)</div>
-          <div class="org-chip" role="listitem">Steering Committee</div>
-          <div class="org-chip" role="listitem">Executive</div>
-        </div>
+        <article class="content reveal">
+        </article>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="section" id="contact" aria-labelledby="contact-title">
-      <div class="container">
+    <!-- structure beginning intro -->
+     <section class="section" id="structure-intro" aria-labelledby="structure-title" style="background-image: url('assets/img/index_house_bg.png'); background-size: cover; background-position: center; padding: 4rem 0; background-color: #f7fafc;">
+      <div class="container2">
+        <!-- First Column -->
+        <div class="flex-top p-8">
+            <!-- Green rectangle with vertical text -->
+            <div class="organization-box flex-center">
+                <span class="vertical-text"> STRUCTURE ORGANIZATION</span>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+    <!-- Organization structure -->
+    <section class="section bg-alt" id="calendar" aria-labelledby="calendar-title" style="background-image: url('assets/img/index_blue_bg.png'); background-size: cover; background-position: center; padding: 4rem 0; background-color: #f7fafc;">
+        <div class="container">
         <header class="section-header reveal">
-          <h2 id="contact-title">Contact Us</h2>
-          <p>reach out anytime.</p>
         </header>
 
-        <div class="contact-grid">
-          <div class="contact-card reveal">
-            <h3>General</h3>
-            <p>Email: <a href="mailto:rama.med@gmail.com">rama.med@gmail.com</a></p>
-            <p>Phone: 0 2201 2193 / 0 2201 1542 / 0 2201 2990</p>
-            <p>Address: Chakri Naruebodindra Medical Institute, 111–14 Suwannabhumi Canal Rd, Bang Phli, Samut Prakan 10540</p>
-          </div>
+            <!-- The original department cards are placed below the new elements -->
+            <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                <article class="card reveal" style="background-color: #fff; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden;">
+                    <div class="card-body" style="padding: 1.5rem;">
+                        <div class="chip" style="display: inline-block; background-color: #ec6565; color: #fff; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">Department</div>
+                        <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">INTERNAL AFFAIRS</h3>
+                        <p class="card-text" style="color: #718096; line-height: 1.5; white-space: pre-wrap;">ฝ่ายที่ทำงานทั้งหน้าบ้านเเละหลังบ้าน มีบทบาทในการเป็นสะพานเชื่อมนักศึกษาเเพทย์รามาธิบดีที่มีความหลากหลายเเละอยู่กันต่างสถานที่ให้รวมเป็นหนึ่งเดียวกันผ่านกิจกรรมที่เข้มเเข็ง </p>
+                          
+                        <p class="card-text" style="color: #718096; line-height: 1.5; white-space: pre-wrap;"> "ภายในรามาธิบดี 6 ปี 3 Campus เราจะเป็นสะพานเชื่อมให้เอง” </p>
+                    </div>
+                </article>
+                <article class="card reveal" style="background-color: #fff; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden;">
+                    <div class="card-body" style="padding: 1.5rem;">
+                        <div class="chip" style="display: inline-block; background-color: #fc8eba; color: #fff; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">Department</div>
+                        <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">WELL-BEING AFFAIRS</h3>
+                        <p class="card-text" style="color: #718096; line-height: 1.5; white-space: pre-wrap;">ฝ่ายที่มีหน้าที่สนับสนุน พัฒนาคุณภาพชีวิตของนักศึกษาเเพทย์รามาธิบดีทุกคน ทุกชั้นปี ในทุก ๆ ด้านของ well-being</p>
+                    </div>
+                </article>
+                <article class="card reveal" style="background-color: #fff; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden;">
+                    <div class="card-body" style="padding: 1.5rem;">
+                        <div class="chip" style="display: inline-block; background-color: #5da999; color: #fff; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">Department</div>
+                        <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">ACADEMIC AFFAIRS</h3>
+                        <p class="card-text" style="color: #718096; line-height: 1.5; white-space: pre-wrap;">ฝ่ายวิชาการ RAMSC มีเป้าหมายในการสนับสนุนศักยภาพด้านวิชาการสำหรับนศพ.รามาธิบดี ทั้งพัฒนาศักยภาพการเรียนรู้ในหลักสูตรเเละต่อยอดความสนใจผ่านโอกาสทางวิชาการนอกหลักสูตร</p>
+                    </div>
+                </article>
+            </div>
 
-          <div class="contact-card reveal">
-            <h3>Social Media</h3>
-            <ul class="unstyled">
-              <li>Instagram: <a href="https://instagram.com/ramsc.official" target="_blank" rel="noopener">@ramsc.official</a></li>
-              <li>Facebook: <a href="#" target="_blank" rel="noopener">RAMSC on Facebook</a></li>
-              <li>RAMA Broadcast: <a href="#" target="_blank" rel="noopener">Watch updates</a></li>
-            </ul>
-          </div>
-
-          <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Demo form — wire to EmailJS/Netlify to enable.');">
-            <label>Name <input required /></label>
-            <label>Email <input type="email" required /></label>
-            <label>Message <textarea required></textarea></label>
-            <button class="btn btn-primary">Send</button>
-          </form>
+            <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                <article class="card reveal" style="background-color: #fff; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden;">
+                    <div class="card-body" style="padding: 1.5rem;">
+                        <div class="chip" style="display: inline-block; background-color: #8fc0f9; color: #fff; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">Department</div>
+                        <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">EXTERNAL AFFAIRS</h3>
+                        <p class="card-text" style="color: #718096; line-height: 1.5; white-space: pre-wrap;">ประสานงาน อำนวยความสะดวก เเละจัดกิจกรรมตามความสนใจของนักศึกษาเเพทย์รามาธิบดี ร่วมกับองค์กรภายนอก ทั้งในระดับระหว่างสาขา คณะ มหาวิทยาลัย ชาติ เเละ นานาชาติ เป็นตัวเเทนในการเข้าร่วมการประชุมต่าง ๆ โดยมุ่งเน้นการเติมเต็มศักยภาพของนักศึกษาเเพทย์รามาธิบดี ผ่านโอกาสจากภายนอก</p>
+                    </div>
+                </article>
+                <article class="card reveal" style="background-color: #fff; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden;">
+                    <div class="card-body" style="padding: 1.5rem;">
+                        <div class="chip" style="display: inline-block; background-color: #f3ca59; color: #fff; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">Department</div>
+                        <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">CORPORATE COMMUNICATION</h3>
+                        <p class="card-text" style="color: #718096; line-height: 1.5; white-space: pre-wrap;">ศูนย์กลางการสื่อสารที่คอยดูเเล พัฒนา เเละสร้างสรรค์สื่อ ผ่านการประสานงานระหว่างนักศึกษาเเพทย์ อาจารย์ เเละคณะฯ เพื่อสื่อสารทั้งภายในเเละภายนอกองค์กร รวมถึงสื่อสารเอกลักษณ์ขององค์กรไปสู่สาธารณะให้มีประสิทธิภาพ</p>
+                    </div>
+                </article>
+                <article class="card reveal" style="background-color: #fff; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden;">
+                    <div class="card-body" style="padding: 1.5rem;">
+                        <div class="chip" style="display: inline-block; background-color: #5a6ff3; color: #fff; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">Department</div>
+                        <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">ORGANIZATIONAL DEVELOPMENT</h3>
+                        <p class="card-text" style="color: #718096; line-height: 1.5; white-space: pre-wrap;">ฝ่ายที่มีเป้าหมายในการพัฒนาองค์กรผ่านการเก็บข้อมูลอย่างทั่วถึงเพื่อนำไปพัฒนาสมาชิกในสภาฯ เเละพัฒนาระบบอย่างครบวงจร โดยมีการส่งเสริมการเรียนรู้ร่วมกันระหว่างสมาชิกในทุกระดับ</p>
+                    </div>
+                </article>
+            </div>
         </div>
+    </section>
+
+    <!-- white seperation -->
+     <div class = 'white_seperation'></div>
+
+    <!-- contact -->
+    <section class="section" id="contact_section" aria-labelledby="contact-head"; style="background-image: url('assets/img/index_contact_bg.png'); background-size: cover; background-position: center;" >
+      <div class="row_contact">
+
+          <div class="column_contact left_contact">
+            <h2  style="color: #fff; font-size: 3rem">Contact Us</h2>
+
+            <!-- Google Maps Iframe -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3878.506540541457!2d100.75165997607739!3d13.561570186985396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2be52b314fe83%3A0x867c29e718d09852!2sChakri%20Naruebodindra%20Medical%20Institute%2C%20Ramathibodi%20Hospital%2C%20Mahidol%20University!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
+                        width="90%"
+                        height="60%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+
+                    <a href="https://www.google.com/maps/place/CNMI+Pre-clinic+and+Research+Center+Building/@13.5234358,100.7595129,17z/data=!3m1!4b1!4m6!3m5!1s0x311d5b8aa290e769:0xcf1b72c11baff963!8m2!3d13.5234306!4d100.7620878!16s%2Fg%2F11lqlb5798?entry=ttu&g_ep=EgoyMDI1MDkwOS4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    class="" style = "color: #fff;">
+                     -- View on google maps --
+                    </a>
+          </div>
+
+          <div class="column_contact right_contact"> <!-- this is the big right column-->
+            <!-- Logo and Hospital Name -->
+            <div class="inner_row_contact">
+              <div class = "column_contact inner_left_contact">
+                  <img src="assets/img/index_rama_logo.png" alt="Hospital Logo" class="rounded-full shadow-md" style="width: auto; height: 80%;">
+              </div>
+              <div class = "column_contact inner_right_contact">
+                  <p class="text-lg"  style = "color: #fff; font-weight: 700; font-size: 1.5rem">Faculty of Medicine Ramathibodi Hospital</p>
+              </div>
+            </div>
+
+            <!-- Address -->
+             <div class="inner_row_contact">
+              <div class = "column_contact inner_left_contact">
+                  <p class="text-lg"  style = "color: #fff; font-weight: 700; font-size: 1rem">Address</p>
+              </div>
+              <div class = "column_contact inner_right_contact">
+                  <p class="text-lg"  style = "color: #fff; font-weight: 400; font-size: 1rem">Chakri Naruebodindra Medical Institute 111 - 14 Suwannabhumi Canal Rd, Tambon Bang Pla, Amphoe Bang Phli, Chang Wat Samut Prakan 10540</p>
+              </div>
+            </div>
+
+            <!-- Telephone -->
+             <div class="inner_row_contact">
+              <div class = "column_contact inner_left_contact">
+                  <p class="text-lg"  style = "color: #fff; font-weight: 700; font-size: 1rem">Telephone</p>
+              </div>
+              <div class = "column_contact inner_right_contact">
+                  <p class="text-lg"  style = "color: #fff; font-weight: 400; font-size: 1rem">0 2201 2193, 0 2201 1542, and 0 2201 2990</p>
+              </div>
+            </div>
+            <!-- Email -->
+              <div class="inner_row_contact">
+              <div class = "column_contact inner_left_contact">
+                  <p class="text-lg"  style = "color: #fff; font-weight: 700; font-size: 1rem">Email</p>
+              </div>
+              <div class = "column_contact inner_right_contact">
+                  <p class="text-lg"  style = "color: #fff; font-weight: 400; font-size: 1rem">gradrama@mahidol.ac.th.</p>
+              </div>
+            </div>
+            <!-- Social Media -->
+             <div class="inner_row_contact">
+              <div class = "column_contact inner_left_contact">
+                  <p class="text-lg"  style = "color: #fff; font-weight: 700; font-size: 1rem">Social Media</p>
+              </div>
+              <div class = "column_contact inner_right_contact">
+                  <p class="text-lg"  style = "color: #fff; font-weight: 400; font-size: 1rem">Line bot: RAMSC</p>
+                  <p class="text-lg"  style = "color: #fff; font-weight: 400; font-size: 1rem">Instragram: RAMSC</p>
+              </div>
+            </div>
+          
       </div>
     </section>
+
+    <!-- white seperation -->
+     <div class = 'white_seperation'></div>
+
   </main>
 
   <div class="footers">
