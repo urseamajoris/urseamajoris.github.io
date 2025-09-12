@@ -223,6 +223,25 @@
       const res = await fetch('articles.json');
       if (!res.ok) throw new Error(res.statusText);
       const articles = await res.json();
+      articles
+        .slice()
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 3)
+        .forEach(a => {
+          const card = document.createElement('article');
+          card.className = 'card reveal';
+          const imgSrc = a.hero || 'assets/img/card.png';
+          const dateStr = new Date(a.date).toLocaleDateString('en-GB');
+          card.innerHTML = `
+          <a href="articles.html?id=${a.id}" class="card-link">
+            <img src="${imgSrc}" alt="${a.title}">
+            <div class="card-body">
+              <h3 class="card-titles">${a.title}</h3>
+              <p class="card-date"><time datetime="${a.date}">${dateStr}</time></p>
+            </div>
+          </a>`;
+          container.appendChild(card);
+        });
       articles.slice(0, 3).forEach(a => {
         const card = document.createElement('article');
         card.className = 'card reveal';
