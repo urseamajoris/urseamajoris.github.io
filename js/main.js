@@ -242,6 +242,17 @@
           </a>`;
           container.appendChild(card);
         });
+      articles.slice(0, 3).forEach(a => {
+        const card = document.createElement('article');
+        card.className = 'card reveal';
+        const imgSrc = a.hero || 'assets/img/card.png';
+        card.innerHTML = `
+          <a href="articles.html?id=${a.id}" class="card-link">
+            <img src="${imgSrc}" alt="${a.title}">
+            <div class="card-body"><h3 class="card-titles">${a.title}</h3></div>
+          </a>`;
+        container.appendChild(card);
+      });
     } catch (err) {
       console.error('Failed to load dashboard articles', err);
       container.innerHTML = '<p>Unable to load articles.</p>';
