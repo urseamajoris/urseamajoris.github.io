@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RAMSC Articles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .article-hero img{width:100%;height:auto;display:block}
+    .article-container{max-width:800px;margin:0 auto;padding:1rem}
+    .article-meta{font-size:.9rem;color:#666;margin-bottom:1rem}
+    #debug-panel{max-width:800px;margin:2rem auto;padding:1rem;border:1px solid #ccc}
+    #debug-panel textarea{width:100%;height:6rem}
+  </style>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <div class="container nav-wrap">
+      <a class="logo" href="index.html" aria-label="RAMSC Home">RAMSC</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" role="navigation">
+        <ul>
+          <li><a href="index.html" class="btnsite">Home</a></li>
+          <li><a href="about.html" class="btnsite">About Us</a></li>
+          <li><a href="faqs.html" class="btnsite">FAQs</a></li>
+          <li><a href="index.html#contact" class="btnsite">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section" id="articles-list" aria-labelledby="articles-title">
+      <div class="container">
+        <header class="section-header reveal">
+          <h2 id="articles-title">Articles</h2>
+          <p>Updates and stories from RAMSC.</p>
+        </header>
+        <div id="article-list" class="card-grid"></div>
+        <noscript>
+          <div class="card-grid">
+            <article class="card">
+              <a href="articles.html?id=orientation-roadshow" class="card-img-link"><img src="assets/img/placeholder-thumb-1.jpg" alt="Orientation Roadshow"></a>
+              <div class="card-body">
+                <div class="chip">Event</div>
+                <h3 class="card-title"><a href="articles.html?id=orientation-roadshow">Orientation Roadshow</a></h3>
+                <p class="card-text">Meet RAMSC, explore services, and discover how to get involved across campuses.</p>
+                <time class="card-date" datetime="2025-09-15">15/09/2025</time>
+              </div>
+            </article>
+            <article class="card">
+              <a href="articles.html?id=peer-coaching" class="card-img-link"><img src="assets/img/placeholder-thumb-2.jpg" alt="Peer & Near-Peer Coaching"></a>
+              <div class="card-body">
+                <div class="chip">Program</div>
+                <h3 class="card-title"><a href="articles.html?id=peer-coaching">Peer & Near-Peer Coaching</a></h3>
+                <p class="card-text">Small-group learning with mentors—pre-clinic and clinic tracks available.</p>
+                <time class="card-date" datetime="2025-09-20">20/09/2025</time>
+              </div>
+            </article>
+            <article class="card">
+              <a href="articles.html?id=wellbeing-workshops" class="card-img-link"><img src="assets/img/placeholder-thumb-3.jpg" alt="Well-Being Workshops"></a>
+              <div class="card-body">
+                <div class="chip">Well-Being</div>
+                <h3 class="card-title"><a href="articles.html?id=wellbeing-workshops">Well-Being Workshops</a></h3>
+                <p class="card-text">Stress management, self-awareness, and mental health support series.</p>
+                <time class="card-date" datetime="2025-09-25">25/09/2025</time>
+              </div>
+            </article>
+          </div>
+        </noscript>
+      </div>
+    </section>
+
+    <article id="single-article" class="article-container" hidden></article>
+
+    <section id="debug-panel" hidden></section>
+  </main>
+
+  <div class="footers">
+    <div class="col-1">
+      <h3 class="HText">Contact</h3>
+      <a>Chakri Naruebodindra Medical Institute, 111-14 Suwannabhumi Canal Rd, Bang Phli, Samut Prakan 10540</a>
+      <a>📞 : 0 2201 2193</a>
+      <a>✉️ : rama.med@gmail.com</a>
+      <div class="social-icons">
+        <p href="#"><img src="assets/img/About-fb.webp" alt="" class="footimg"></p>
+        <p href="#"><img src="assets/img/About-ig.webp" alt="" class="footimg"></p>
+        <p href="#"><img src="assets/img/About-li.webp" alt="" class="footimg"></p>
+      </div>
+    </div>
+    <div class="col-2">
+      <h3 class="HText">Links</h3>
+      <a class="btnfoot" href="#">Recent News</a>
+      <a class="btnfoot" href="#">Evaluation Form</a>
+      <a class="btnfoot" href="#">Line Official</a>
+      <a class="btnfoot" href="#">Moderator</a>
+      <a class="btnfoot" href="#">Request Form</a>
+    </div>
+    <div class="col-3">
+      <h3 class="HText">Pages</h3>
+      <a class="btnfoot" href="index.html">Index</a>
+      <a class="btnfoot" href="about.html">About us</a>
+      <a class="btnfoot" href="faqs.html">FAQs</a>
+      <a class="btnfoot" href="contact.html">Contact</a>
+    </div>
+    <div class="col-4">
+      <h3 class="HText">Support us</h3>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="container smallprint">© <span data-year></span> RAMSC, Ramathibodi Medical Student’s Council.</div>
+    </div>
+  </footer>
+
+  <script>
+    const ARTICLES = [
+      {
+        id: "orientation-roadshow",
+        title: "Orientation Roadshow",
+        date: "2025-09-15",
+        author: "RAMSC",
+        tags: ["Event"],
+        hero: "assets/img/placeholder-thumb-1.jpg",
+        summary: "Meet RAMSC, explore services, and discover how to get involved across campuses.",
+        paragraphs: [
+          "The Orientation Roadshow brings the council to new students across campuses, offering a first-hand look at services and initiatives.",
+          "Participants can connect with leaders, explore volunteer opportunities, and learn how RAMSC supports student life."
+        ]
+      },
+      {
+        id: "peer-coaching",
+        title: "Peer & Near-Peer Coaching",
+        date: "2025-09-20",
+        author: "RAMSC",
+        tags: ["Program"],
+        hero: "assets/img/placeholder-thumb-2.jpg",
+        summary: "Small-group learning with mentors—pre-clinic and clinic tracks available.",
+        paragraphs: [
+          "Our coaching program pairs juniors with experienced mentors for targeted study support.",
+          "Sessions are tailored for both pre-clinic and clinic stages, building knowledge and community."
+        ]
+      },
+      {
+        id: "wellbeing-workshops",
+        title: "Well-Being Workshops",
+        date: "2025-09-25",
+        author: "RAMSC",
+        tags: ["Well-Being"],
+        hero: "assets/img/placeholder-thumb-3.jpg",
+        summary: "Stress management, self-awareness, and mental health support series.",
+        paragraphs: [
+          "These workshops help students cultivate resilience through practical tools and peer discussion.",
+          "Topics range from mindfulness to time management, fostering a supportive environment."
+        ]
+      }
+    ];
+
+    function qs(key){
+      return new URLSearchParams(window.location.search).get(key);
+    }
+
+    function renderList(){
+      const list = document.getElementById('article-list');
+      ARTICLES.forEach(a => {
+        const card = document.createElement('article');
+        card.className = 'card reveal';
+        const imgSrc = a.hero || 'assets/img/card.png';
+        card.innerHTML = `
+          <a href="articles.html?id=${a.id}" class="card-img-link"><img src="${imgSrc}" alt="${a.title}"></a>
+          <div class="card-body">
+            <div class="chip">${a.tags[0] || ''}</div>
+            <h3 class="card-title"><a href="articles.html?id=${a.id}">${a.title}</a></h3>
+            <p class="card-text">${a.summary}</p>
+            <time class="card-date" datetime="${a.date}">${new Date(a.date).toLocaleDateString('en-GB')}</time>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    function renderArticle(id){
+      const article = ARTICLES.find(a => a.id === id);
+      if(!article) return;
+      document.getElementById('articles-list').style.display = 'none';
+      const container = document.getElementById('single-article');
+      const tagsHtml = article.tags.map(t => `<span class="chip">${t}</span>`).join(' ');
+      const dateStr = new Date(article.date).toLocaleDateString('en-GB');
+      container.innerHTML = `
+        <div class="article-hero"><img src="${article.hero || 'assets/img/card.png'}" alt="${article.title}"></div>
+        <h1>${article.title}</h1>
+        <div class="article-meta">${dateStr} · ${article.author} · ${tagsHtml}</div>
+        ${article.paragraphs.map(p => `<p>${p}</p>`).join('')}
+        <p><a href="articles.html">&larr; Back to all articles</a></p>
+      `;
+      container.hidden = false;
+    }
+
+    function initDebug(){
+      if(qs('debug')){
+        const panel = document.getElementById('debug-panel');
+        panel.hidden = false;
+        panel.innerHTML = `
+          <h2>Article Encoder</h2>
+          <form id="encoder-form">
+            <label>ID <input name="id" required></label>
+            <label>Title <input name="title" required></label>
+            <label>Date <input name="date" type="date" required></label>
+            <label>Author <input name="author" required></label>
+            <label>Tags (comma-separated) <input name="tags"></label>
+            <label>Hero URL <input name="hero"></label>
+            <label>Summary <textarea name="summary"></textarea></label>
+            <label>Paragraphs (one per line)<textarea name="paragraphs"></textarea></label>
+            <button type="submit" class="btn btn-primary">Generate</button>
+          </form>
+          <div id="encoder-output"></div>
+        `;
+        document.getElementById('encoder-form').addEventListener('submit', e => {
+          e.preventDefault();
+          const data = Object.fromEntries(new FormData(e.target).entries());
+          const article = {
+            id: data.id.trim(),
+            title: data.title.trim(),
+            date: data.date,
+            author: data.author.trim(),
+            tags: data.tags ? data.tags.split(',').map(t => t.trim()).filter(Boolean) : [],
+            hero: data.hero.trim(),
+            summary: data.summary.trim(),
+            paragraphs: data.paragraphs.split('\n').map(p => p.trim()).filter(Boolean)
+          };
+          const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>${article.title}</title><link rel="stylesheet" href="css/styles.css"/></head><body><div class="article-hero"><img src="${article.hero}" alt="${article.title}"></div><h1>${article.title}</h1><div class="article-meta">${article.date} · ${article.author} · ${article.tags.join(', ')}</div>${article.paragraphs.map(p=>`<p>${p}</p>`).join('')}</body></html>`;
+          const blob = new Blob([html], {type:'text/html'});
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = article.id + '.html';
+          link.textContent = 'Download Article HTML';
+          const jsonSnippet = JSON.stringify(article, null, 2);
+          const out = document.getElementById('encoder-output');
+          out.innerHTML = '';
+          out.appendChild(link);
+          const pre = document.createElement('pre');
+          pre.textContent = jsonSnippet;
+          out.appendChild(pre);
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const id = qs('id');
+      if(id){
+        renderArticle(id);
+      } else {
+        renderList();
+      }
+      initDebug();
+    });
+  </script>
+</body>
+</html>
