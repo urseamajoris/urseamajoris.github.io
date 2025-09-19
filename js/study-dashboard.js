@@ -23,19 +23,9 @@
   document.addEventListener('DOMContentLoaded', async () => {
     console.log('🚀 Initializing Study Dashboard...');
     
-    // Check authentication
-    if (authToken) {
-      try {
-        await validateToken();
-        showUserDashboard();
-        await loadDashboardData();
-      } catch (error) {
-        console.error('Authentication failed:', error);
-        showAuthSection();
-      }
-    } else {
-      showAuthSection();
-    }
+    // Show preview mode by default (no authentication required)
+    showUserDashboard();
+    await loadPreviewData();
 
     // Setup event listeners
     setupEventListeners();
@@ -99,30 +89,45 @@
 
   // Event Listeners Setup
   function setupEventListeners() {
-    // Authentication
-    document.getElementById('login-btn').addEventListener('click', showLoginModal);
-    document.getElementById('register-btn').addEventListener('click', showRegisterModal);
+    // Authentication (original)
+    document.getElementById('login-btn')?.addEventListener('click', showLoginModal);
+    document.getElementById('register-btn')?.addEventListener('click', showRegisterModal);
+    
+    // Preview mode buttons
+    document.getElementById('preview-login-btn')?.addEventListener('click', showRegisterModal);
+    document.getElementById('preview-info-btn')?.addEventListener('click', showPreviewInfo);
 
     // File Upload
     const uploadArea = document.getElementById('upload-area');
     const fileInput = document.getElementById('file-input');
 
-    uploadArea.addEventListener('click', () => fileInput.click());
-    uploadArea.addEventListener('dragover', handleDragOver);
-    uploadArea.addEventListener('dragleave', handleDragLeave);
-    uploadArea.addEventListener('drop', handleFileDrop);
-    fileInput.addEventListener('change', handleFileSelect);
+    if (uploadArea && fileInput) {
+      uploadArea.addEventListener('click', () => {
+        if (!authToken) {
+          showNotification('🔍 Preview: File upload requires an account. Create one to upload your own documents!', 'info');
+          return;
+        }
+        fileInput.click();
+      });
+      uploadArea.addEventListener('dragover', handleDragOver);
+      uploadArea.addEventListener('dragleave', handleDragLeave);
+      uploadArea.addEventListener('drop', handleFileDrop);
+      fileInput.addEventListener('change', handleFileSelect);
+    }
 
     // Study Controls
-    document.getElementById('generate-daily-btn').addEventListener('click', generateDailyPack);
-    document.getElementById('start-study-btn').addEventListener('click', startStudySession);
-    document.getElementById('create-pack-btn').addEventListener('click', showCreatePackModal);
+    document.getElementById('generate-daily-btn')?.addEventListener('click', generateDailyPack);
+    document.getElementById('start-study-btn')?.addEventListener('click', startStudySession);
+    document.getElementById('create-pack-btn')?.addEventListener('click', showCreatePackModal);
   }
 
   // File Upload Handlers
   function handleDragOver(e) {
     e.preventDefault();
     e.stopPropagation();
+    if (!authToken) {
+      return; // Don't show drag effects in preview mode
+    }
     e.currentTarget.classList.add('dragover');
   }
 
@@ -137,6 +142,11 @@
     e.stopPropagation();
     e.currentTarget.classList.remove('dragover');
     
+    if (!authToken) {
+      showNotification('🔍 Preview: File upload requires an account. Create one to upload your own PDFs!', 'info');
+      return;
+    }
+    
     const files = Array.from(e.dataTransfer.files).filter(file => file.type === 'application/pdf');
     if (files.length > 0) {
       uploadFiles(files);
@@ -146,6 +156,10 @@
   }
 
   function handleFileSelect(e) {
+    if (!authToken) {
+      showNotification('🔍 Preview: File upload requires an account. Create one to upload your own documents!', 'info');
+      return;
+    }
     const files = Array.from(e.target.files);
     if (files.length > 0) {
       uploadFiles(files);
@@ -220,6 +234,21 @@
     } catch (error) {
       console.error('Failed to load dashboard data:', error);
       showNotification('Failed to load dashboard data', 'error');
+    }
+  }
+
+  // Preview Data Loading (no authentication required)
+  async function loadPreviewData() {
+    try {
+      await Promise.all([
+        loadPreviewStatistics(),
+        loadPreviewSources(),
+        loadPreviewStudyPacks(),
+        loadPreviewWeakTopics()
+      ]);
+      showNotification('🔍 Preview Mode: Experience AI study features without login!', 'info');
+    } catch (error) {
+      console.error('Failed to load preview data:', error);
     }
   }
 
@@ -353,6 +382,94 @@
     }
   }
 
+  // Preview Data Functions (Mock data for demonstration)
+  async function loadPreviewStatistics() {
+    // Simulate loading with timeout
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Mock data for preview
+    document.getElementById('total-sources').textContent = '12';
+    document.getElementById('total-flashcards').textContent = '184';
+    document.getElementById('total-mcqs').textContent = '67';
+    document.getElementById('study-accuracy').textContent = '87%';
+  }
+
+  async function loadPreviewSources() {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    const container = document.getElementById('recent-sources');
+    container.innerHTML = `
+      <div class="study-item">
+        <h4>📖 Cardiovascular Physiology - Chapter 3</h4>
+        <p>Status: <strong>Processed</strong> | Chunks: 45 | Uploaded: ${new Date(Date.now() - 86400000).toLocaleDateString()}</p>
+        <span class="tag">cardiology</span><span class="tag">physiology</span>
+      </div>
+      <div class="study-item">
+        <h4>📋 Pharmacology Notes - Antibiotics</h4>
+        <p>Status: <strong>Processed</strong> | Chunks: 28 | Uploaded: ${new Date(Date.now() - 172800000).toLocaleDateString()}</p>
+        <span class="tag">pharmacology</span><span class="tag">antibiotics</span>
+      </div>
+      <div class="study-item">
+        <h4>🧬 Molecular Biology Fundamentals</h4>
+        <p>Status: <strong>Processing</strong> | Chunks: 12 | Uploaded: ${new Date().toLocaleDateString()}</p>
+        <span class="tag">molecular biology</span>
+      </div>
+      <div style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px;">
+        <p><strong>🔍 Preview Mode:</strong> These are sample documents. In the full version, upload your own PDFs to generate personalized study materials!</p>
+      </div>
+    `;
+  }
+
+  async function loadPreviewStudyPacks() {
+    await new Promise(resolve => setTimeout(resolve, 400));
+    
+    const container = document.getElementById('study-packs');
+    container.innerHTML = `
+      <div class="study-item">
+        <h4>🫀 Cardiovascular System Review</h4>
+        <p><strong>24 flashcards</strong> • <strong>8 MCQs</strong> • Difficulty: Intermediate</p>
+        <p>Topics: Heart anatomy, Blood pressure regulation, Cardiac cycle</p>
+        <div class="study-controls">
+          <button class="btn btn-primary" onclick="previewStudyPack('cardio')">Preview Pack</button>
+          <button class="btn btn-secondary">View Details</button>
+        </div>
+      </div>
+      <div class="study-item">
+        <h4>💊 Antibiotic Mechanisms</h4>
+        <p><strong>18 flashcards</strong> • <strong>12 MCQs</strong> • Difficulty: Advanced</p>
+        <p>Topics: Beta-lactams, Protein synthesis inhibitors, Resistance mechanisms</p>
+        <div class="study-controls">
+          <button class="btn btn-primary" onclick="previewStudyPack('antibiotics')">Preview Pack</button>
+          <button class="btn btn-secondary">View Details</button>
+        </div>
+      </div>
+      <div style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px;">
+        <p><strong>🤖 AI-Generated:</strong> Study packs are automatically created from your documents using advanced AI to identify key concepts and generate relevant questions.</p>
+      </div>
+    `;
+  }
+
+  async function loadPreviewWeakTopics() {
+    await new Promise(resolve => setTimeout(resolve, 600));
+    
+    const container = document.getElementById('weak-topics');
+    container.innerHTML = `
+      <div class="study-item weak-topic">
+        <h4>⚠️ Pharmacokinetics</h4>
+        <p>Recent accuracy: 64.5% (23 attempts)</p>
+        <button class="btn btn-primary" onclick="focusOnTopic('pharmacokinetics')">Practice This Topic</button>
+      </div>
+      <div class="study-item weak-topic">
+        <h4>⚠️ ECG Interpretation</h4>
+        <p>Recent accuracy: 71.2% (18 attempts)</p>
+        <button class="btn btn-primary" onclick="focusOnTopic('ecg')">Practice This Topic</button>
+      </div>
+      <div style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px;">
+        <p><strong>📊 AI Analytics:</strong> The system tracks your performance and identifies areas needing improvement using spaced repetition algorithms.</p>
+      </div>
+    `;
+  }
+
   // Study Functions
   async function generateDailyPack() {
     const button = document.getElementById('generate-daily-btn');
@@ -361,6 +478,12 @@
     try {
       button.textContent = 'Generating...';
       button.disabled = true;
+
+      // Preview mode - show sample data instead of API call
+      if (!authToken) {
+        await generatePreviewDailyPack();
+        return;
+      }
 
       const response = await fetch(`${API_BASE}/scheduler/daily`, {
         headers: { 'Authorization': `Bearer ${authToken}` }
@@ -399,7 +522,37 @@
     }
   }
 
+  async function generatePreviewDailyPack() {
+    // Simulate AI generation delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    const container = document.getElementById('daily-pack-content');
+    container.innerHTML = `
+      <div class="study-item">
+        <h4>🤖 AI-Generated Daily Study Pack Ready!</h4>
+        <p><strong>15</strong> items total:</p>
+        <ul>
+          <li>📝 8 due reviews (flashcards & MCQs)</li>
+          <li>🎯 4 weak topic items (Pharmacokinetics, ECG)</li>
+          <li>✨ 3 new content items</li>
+        </ul>
+        <p><strong>Focus areas:</strong> Cardiovascular Physiology, Drug Metabolism</p>
+        <div style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px;">
+          <p><strong>🧠 AI Optimization:</strong> This pack is optimized using spaced repetition algorithms and your performance data to maximize learning efficiency!</p>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('start-study-btn').disabled = false;
+    showNotification('🔍 Preview: AI daily pack generated! Create an account for personalized content.', 'info');
+  }
+
   function startStudySession() {
+    if (!authToken) {
+      // Preview mode - show sample study content
+      showNotification('🔍 Preview: Study sessions include interactive flashcards, MCQs, and AI explanations. Create an account to start studying!', 'info');
+      return;
+    }
     // This would open a study interface - for now, show a placeholder
     showNotification('Study session feature coming soon!', 'info');
   }
@@ -427,10 +580,34 @@
   }
 
   function showCreatePackModal() {
+    if (!authToken) {
+      showNotification('🔍 Preview: Create custom study packs from your documents. Sign up to access this feature!', 'info');
+      return;
+    }
     const topics = prompt('Enter topics (comma-separated):');
     if (topics) {
       createStudyPack(topics.split(',').map(t => t.trim()));
     }
+  }
+
+  function showPreviewInfo() {
+    showNotification('🤖 This AI study dashboard analyzes your documents to create personalized flashcards, MCQs, and study schedules using advanced machine learning!', 'info');
+  }
+
+  function previewStudyPack(packType) {
+    let message = '';
+    if (packType === 'cardio') {
+      message = '🫀 Cardiovascular pack includes: Heart anatomy diagrams, ECG interpretation, blood pressure regulation mechanisms, and cardiac cycle timing. Create an account to access full content!';
+    } else if (packType === 'antibiotics') {
+      message = '💊 Antibiotic pack covers: Mechanism of action, spectrum of activity, resistance patterns, and clinical applications. Sign up to study this pack!';
+    } else {
+      message = '📚 This study pack contains AI-generated flashcards and MCQs. Create an account to access full study materials!';
+    }
+    showNotification(message, 'info');
+  }
+
+  function focusOnTopic(topic) {
+    showNotification(`🎯 Focus mode for ${topic}: Would generate targeted practice questions and explanations. Create an account to access personalized weak topic training!`, 'info');
   }
 
   async function createStudyPack(topics) {

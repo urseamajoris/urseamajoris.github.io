@@ -162,8 +162,8 @@
           <p>Intelligent study assistance powered by AI - upload documents, generate study materials, and track your progress.</p>
         </header>
 
-        <!-- Authentication Section -->
-        <div id="auth-section" class="dashboard-card">
+        <!-- Authentication Section (Hidden in preview mode) -->
+        <div id="auth-section" class="dashboard-card hidden">
           <h3>🔐 Login to Access Your Study Dashboard</h3>
           <p>Please log in to access your personalized study materials and progress tracking.</p>
           <div class="study-controls">
@@ -172,8 +172,18 @@
           </div>
         </div>
 
-        <!-- User Dashboard (Hidden until authenticated) -->
-        <div id="user-dashboard" class="hidden">
+        <!-- User Dashboard (Preview Mode) -->
+        <div id="user-dashboard">
+          
+          <!-- Preview Mode Banner -->
+          <div class="dashboard-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-left: none;">
+            <h3>🔍 Preview Mode: Experience AI Study Features</h3>
+            <p>Explore our AI-powered study dashboard with sample data. Create an account to upload your own documents and track real progress!</p>
+            <div class="study-controls">
+              <button id="preview-login-btn" class="btn" style="background: white; color: #667eea;">Create Account</button>
+              <button id="preview-info-btn" class="btn" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3);">Learn More</button>
+            </div>
+          </div>
           
           <!-- Study Statistics -->
           <div class="dashboard-card">
