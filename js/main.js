@@ -274,3 +274,52 @@
 
   loadDashboardArticles();
 })();
+document.addEventListener("mousemove", (e) => {
+  const layers = document.querySelectorAll(".layer");
+  const x = (e.clientX / window.innerWidth - 0.5) * 2; 
+  const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+  layers.forEach(layer => {
+    const depth = layer.getAttribute("data-depth");
+    const moveX = x * depth * 30;  // adjust 30 for intensity
+    const moveY = y * depth * 30;
+
+    layer.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+  });
+});
+document.addEventListener("mousemove", (e) => {
+  const layers = document.querySelectorAll(".layer");
+  const x = (e.clientX / window.innerWidth - 0.5) * 2; // -1 (left) → +1 (right)
+  const y = (e.clientY / window.innerHeight - 0.5) * 2; // -1 (top) → +1 (bottom)
+
+  layers.forEach(layer => {
+    const depth = layer.getAttribute("data-depth");
+    let moveX = x * depth * 13;
+    let moveY = y * depth * 13;
+
+    // default parallax shift
+    let transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+
+    // Flask rotates with X
+    if (layer.classList.contains("flask")) {
+      const rotate = x * 15; // max ±30deg
+      transform += ` rotate(${rotate}deg)`;
+    }
+
+    // Aura scales with X
+    if (layer.classList.contains("aura")) {
+      const scale = 1 + (x * -0.07); 
+      transform += ` scale(${scale})`;
+    }
+
+    // Background scales with Y
+    if (layer.classList.contains("background")) {
+      const scale = 1 + (y * -0.05); 
+      // y=-1 (top) → scale=1.3 (bigger)
+      // y=+1 (bottom) → scale=0.7 (smaller)
+      transform += ` scale(${scale})`;
+    }
+
+    layer.style.transform = transform;
+  });
+});
