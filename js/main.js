@@ -274,6 +274,62 @@
 
   loadDashboardArticles();
 })();
+
+
+// Dashboard add up
+let slideIndex = 1;
+        
+        // This function displays the current slide and is called on page load
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            slides[slideIndex-1].style.display = "flex";
+            dots[slideIndex-1].className += " active";
+        }
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        // Modal functions
+        function openModal(element) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImg.src = element.src;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        // Call showSlides() on page load to display the first slide
+        window.onload = function() {
+            showSlides(slideIndex);
+        };
+
+// End of dashboard add up 
+
 document.addEventListener("mousemove", (e) => {
   const layers = document.querySelectorAll(".layer");
   const x = (e.clientX / window.innerWidth - 0.5) * 2; 
