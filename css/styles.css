@@ -380,6 +380,10 @@ h3{font-size:clamp(1.1rem,1vw + .8rem,1.4rem)}
     align-items: center;
 }
 
+.mySlides.active { /* ADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD*/
+    display: block; /* or flex, depending on your layout */
+}
+
 /* Ensures all images fit within the container */
 .mySlides img {
     width: 100%;
