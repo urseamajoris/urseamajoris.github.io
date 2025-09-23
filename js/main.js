@@ -379,3 +379,6 @@ document.addEventListener("mousemove", (e) => {
     layer.style.transform = transform;
   });
 });
+swiper.el.querySelectorAll('.info').forEach(el => {
+  el.addEventListener('mousedown', e => e.stopPropagation());
+});

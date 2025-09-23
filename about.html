@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,6 +34,7 @@
       </nav>
     </div>
   </header>
+</script>
 
   <main id="main">
     <div class="parallax-container" style="">
@@ -48,6 +51,67 @@
         <p class="email">✉️ : seksan.yoa@student.mahidol.edu</p>
       </div>
     </div>
+    <div class="VicePR">Vice-President of RAMSC</div>
+    <div class="swiper">
+  <!-- Navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+  <!-- Wrapper -->
+      <div class="swiper-wrapper">
+    <!-- Slide 1 -->
+      <div class="swiper-slide IAbg">
+        <h2 data-swiper-parallax="-100" class="Vice TT">🏢Internal Affairs🏢</h2>
+        <div class="content-Ab">
+          <div class="avatarv"><img src="assets/img/Vice-IA.png" class="Vice-img"></div>
+          <div class="info">
+            <h3 data-swiper-parallax="-30" class="Vice-name">MR. NIPITPHON TUNGKARAK</h3>
+            <p data-swiper-parallax="-20" class="Vice-des">"Description"</p>
+          </div>
+        </div>
+      </div>
+    
+
+    <!-- Slide 2 -->
+      <div class="swiper-slide CCbg">
+        <h2 data-swiper-parallax="-100" class="Vice TT">📞Cooperate Communication📞</h2>
+        <div class="content-Ab">
+          <div class="avatarv"><img src="assets/img/Vice-CC.png" class="Vice-img"></div>
+          <div class="info">
+            <h3 data-swiper-parallax="-30" class="Vice-name">MS. CHUTHAMAS RATTANAPONGVANICH</h3>
+            <p data-swiper-parallax="-20" class="Vice-des">"Description"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper === 'undefined') {
+      console.error('Swiper not loaded. Check CDN link or network.');
+      return;
+    }
+
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      speed: 600,
+      parallax: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    console.log('Swiper initialized', swiper);
+  });
+  </script>
+  
+  <!-- navigation -->
+   <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+  </div>
 
     
     <!-- 6 DEPARTMENTS (HEADS + BLURB) -->
