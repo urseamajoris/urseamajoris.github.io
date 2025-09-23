@@ -8,6 +8,8 @@
 :root{ --brand-1:#2ED3E6; --brand-2:#FFD166; --bg:#ffffff; --text:#0f172a; --muted:#475569; --accent:#7C3AED; --surface:#f8fafc; --radius:16px; --shadow:0 10px 30px rgba(2,6,23,.1); }
 *{box-sizing:border-box} 
 html{scroll-behavior:smooth}
+body{margin:0;font-family:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,'Noto Sans Thai',sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+img{max-width:100%;display:block;height:auto} 
 body{margin:0;font-family:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Arial,'Noto Sans Thai',sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
 img{max-width:100%;display:block;height:auto;} 
 a{color:inherit;text-decoration:none}
