@@ -10,8 +10,6 @@
 html{scroll-behavior:smooth}
 body{margin:0;font-family:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,'Noto Sans Thai',sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
 img{max-width:100%;display:block;height:auto} 
-body{margin:0;font-family:'Montserrat',system-ui,-apple-system,Segoe UI,Roboto,Arial,'Noto Sans Thai',sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
-img{max-width:100%;display:block;height:auto;} 
 a{color:inherit;text-decoration:none}
 .container{width:min(1100px,92vw);margin-inline:auto;} 
 .section{padding:clamp(2rem,4vw,4rem) 0;}
@@ -715,3 +713,206 @@ h3{font-size:clamp(1.1rem,1vw + .8rem,1.4rem)}
 .Vice-name{color: #ffffff;text-shadow: 2px 2px 6px rgba(0,0,0,0.5);margin-left: 30px;margin-top: 30px;font-size: 22px;text-align: center;}
 .Vice-des{color: #5c5c5c;margin-left: 30px;margin-top: 10px;font-size: 20px;text-align: center;}
 .VicePR{text-align: center;font-size: 50px;color: #000;font-weight: 1000px; margin-top: 50px;margin-bottom: 30px;text-shadow: 2px 2px 6px rgba(81, 81, 81, 0.5)}
+
+/* contact fix */
+
+/* 1. The White Circle for the Logo */
+.logo-white-circle {
+    width: 80px;            /* Fixed width */
+    height: 80px;           /* Fixed height to match width */
+    background-color: #fff; /* Solid white background */
+    border-radius: 50%;     /* Pure circle */
+    display: flex;
+    align-items: center;    /* Center logo vertically */
+    justify-content: center;/* Center logo horizontally */
+    overflow: hidden;
+    padding: 8px;           /* Space inside circle */
+}
+
+.logo-white-circle img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* 2. Social Media Row Styling */
+.social-icon-row {
+    display: flex;
+    flex-direction: row;    /* Put icons side by side */
+    gap: 15px;              /* Space between icons */
+    margin-top: 5px;
+}
+
+.social-mini-logo {
+    width: 40px;            /* Adjust icon size */
+    height: 40px;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
+    transition: transform 0.2s ease;
+}
+
+.social-mini-logo:hover {
+    transform: scale(1.1);
+}
+
+/* 3. General Alignment Fix */
+.inner_row_contact {
+    display: flex;
+    align-items: flex-start; /* Aligns labels with text start */
+}
+
+.inner_row_contact[style*="center"] {
+    align-items: center !important; /* Forces the logo and Faculty name to align centers */
+}
+
+/* for header logo*/
+/* Header Logo Styling *//* --- Header Logo --- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-circle {
+  width: 45px;
+  height: 45px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 5px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.logo:hover .logo-circle {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* --- Hero Layout & Alignment --- */
+.hero-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Fixed the typo here */
+  width: 100%;
+}
+
+.hero-left-column {
+  flex: 0 0 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;     /* Only one definition needed */
+  text-align: center;
+}
+
+.hero-right-column {
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Hero Content Elements --- */
+.mb-logo {
+  margin-bottom: 4rem; 
+  align-self: center;
+  max-width: 90%;
+}
+
+.hero-text-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem; 
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-description-th {
+  font-size: 1.1rem;
+  font-weight: 300;
+  max-width: 800px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  margin: 0 auto; /* Removed redundant bottom margin */
+}
+
+.hero-cta {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* --- Right Side Logo & Animation --- */
+.hero-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-side-logo {
+  width: 75%;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(0,0,0, 0.6)) 
+          drop-shadow(0 0 30px rgba(0,0,0, 0.6));
+  animation: float 4s ease-in-out infinite;
+  transition: filter 0.3s ease;
+}
+
+.hero-side-logo:hover {
+  filter: drop-shadow(0 0 20px rgba(0,0,0, 0.7)) 
+          drop-shadow(0 0 40px rgba(0,0,0, 0.7));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 992px) {
+  .hero-row {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-left-column, .hero-right-column {
+    flex: 0 0 100%;
+    align-items: center;
+  }
+  .hero-side-logo {
+    width: 50%;
+    margin-top: 2rem;
+  }
+  .hero-left-column {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-subtitle { font-size: 1.2rem; }
+  .hero-description-th { font-size: 1rem; padding: 0 1rem; }
+  .mobile-break { display: none; }
+}
