@@ -18,7 +18,12 @@
   <!-- Header / Navigation -->
   <header class="site-header" data-header>
     <div class="container nav-wrap">
-      <a class="logo" href="index.html" aria-label="RAMSC Home">RAMSC</a>
+      <a class="logo" href="index.html" aria-label="RAMSC Home">
+        <div class="logo-circle">
+          <img src="assets/img/ramsclogo.png" alt="RAMSC Logo">
+        </div>
+        <span class="logo-text">RAMSC</span>
+      </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
@@ -43,11 +48,27 @@
           <source src="video/video.mp4" type="video/mp4" />
         </video>
         <div class="hero-overlay">
-          <img class="hero-title reveal", data-reveal-delay="0" src="assets/img/index_ramsc_graphic_text.png" alt="RAMSC Logo" />
-          <p class="" data-reveal-delay="0.1" style="font-size: 1.5rem; font-weight: 500;">Ramathibodi Medical Student Council (RAMSC)</p>
-          <div class="hero-cta reveal" data-reveal-delay="0.2">
-            <a class="btn btn-primary" href="about.html">About RAMSC</a>
-            <a class="btn btn-secondary" href="#dashboard">See Updates</a>
+          <div class="container hero-row">
+            <div class="hero-left-column">
+              <img class="hero-title reveal mb-logo" data-reveal-delay="0" src="assets/img/index_ramsc_graphic_text.png" alt="RAMSC Logo" />
+              
+              <div class="hero-text-stack">
+                <p class="hero-subtitle" data-reveal-delay="0.1">Ramathibodi Medical Student Council (RAMSC)</p>
+                <p class="hero-description-th" data-reveal-delay="0.15">
+                  สภานักศึกษาแพทย์รามาธิบดี มุ่งมั่นพัฒนาศักยภาพ สร้างสรรค์กิจกรรม <br class="mobile-break"> และดูแลสวัสดิการ เพื่อคุณภาพชีวิตที่ดีของนักศึกษาแพทย์รามาธิบดี
+                </p>
+                <div class="hero-cta reveal" data-reveal-delay="0.2">
+                  <a class="btn btn-primary" href="about.html">About RAMSC</a>
+                  <a class="btn btn-secondary" href="#dashboard">See Updates</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-right-column reveal" data-reveal-delay="0.3">
+              <div class="hero-logo-wrapper">
+                <img src="assets/img/ramsclogo.png" alt="RAMSC Emblem" class="hero-side-logo">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -235,7 +256,7 @@
                     <div class="card-body" style="padding: 1.5rem;">
                         <div class="chip" style="display: inline-block; background-color: #fc8eba; color: #fff; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">Department</div>
                         <h3 class="card-title" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">WELL-BEING AFFAIRS</h3>
-                        <p class="card-text" style="color: #718096; line-height: 1.5; white-space: pre-wrap;">ฝ่ายที่มีหน้าที่สนับสนุน พัฒนาคุณภาพชีวิตของนักศึกษาเเพทย์รามาธิบดีทุกคน ทุกชั้นปี ในทุก ๆ ด้านของ well-being</p>
+                        <p class="card-text" style="color: #718096; line-height: 1.5; white-space: pre-wrap;">ฝ่ายที่มีหน้าที่สนับสนุนและพัฒนาคุณภาพชีวิตของนักศึกษาแพทย์รามาธิบดีในทุก ๆ มิติ โดยมุ่งเน้นการสร้างสภาพแวดล้อมที่เอื้อต่อการเรียนรู้และการใช้ชีวิตอย่างมีความสุข ทั้งด้านสุขภาพกาย และสุขภาพจิต (Mental Health)</p>
                     </div>
                 </article>
                 <article class="card reveal" style="background-color: #fff; border-radius: 0.75rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden;">
@@ -277,82 +298,84 @@
      <div class = 'white_seperation'></div>
 
     <!-- contact -->
-    <section class="section" id="contact_section" aria-labelledby="contact-head"; style="background-image: url('assets/img/index_contact_bg.png'); background-size: cover; background-position: center;" >
-      <div class="row_contact">
+    <section class="section" id="contact_section" aria-labelledby="contact-head" style="background-image: url('assets/img/index_contact_bg.png'); background-size: cover; background-position: center;">
+  <div class="row_contact">
 
-          <div class="column_contact left_contact">
-            <h2  style="color: #fff; font-size: 3rem">Contact Us</h2>
+    <div class="column_contact left_contact">
+      <h2 style="color: #fff; font-size: 3rem">Contact Us</h2>
+      
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.620063234907!2d100.7845348758866!3d13.55883710185122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d436ec088899b%3A0x6a0c562e64230d4a!2sChakri%20Naruebodindra%20Medical%20Institute!5e0!3m2!1sen!2sth!4v1715600000000!5m2!1sen!2sth" 
+        width="90%" 
+        height="60%" 
+        style="border:0; border-radius: 12px;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
 
-            <!-- Google Maps Iframe -->
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3878.506540541457!2d100.75165997607739!3d13.561570186985396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2be52b314fe83%3A0x867c29e718d09852!2sChakri%20Naruebodindra%20Medical%20Institute%2C%20Ramathibodi%20Hospital%2C%20Mahidol%20University!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
-                        width="90%"
-                        height="60%"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+      <br>
+      
+      <a href="https://maps.app.goo.gl/P48y35rKxW9u8KzD7" 
+        target="_blank" 
+        style="color: #fff; text-decoration: underline; font-size: 0.9rem; margin-top: 10px; display: inline-block;">
+        -- View on Google Maps --
+      </a>
+  </div>
 
-                    <a href="https://www.google.com/maps/place/CNMI+Pre-clinic+and+Research+Center+Building/@13.5234358,100.7595129,17z/data=!3m1!4b1!4m6!3m5!1s0x311d5b8aa290e769:0xcf1b72c11baff963!8m2!3d13.5234306!4d100.7620878!16s%2Fg%2F11lqlb5798?entry=ttu&g_ep=EgoyMDI1MDkwOS4wIKXMDSoASAFQAw%3D%3D"
-                    target="_blank"
-                    class="" style = "color: #fff;">
-                     -- View on google maps --
-                    </a>
+    <div class="column_contact right_contact">
+      <div class="inner_row_contact" style="align-items: center; margin-bottom: 1rem;">
+        <div class="column_contact inner_left_contact">
+          <div class="logo-white-circle">
+            <img src="assets/img/index_rama_logo.png" alt="Hospital Logo">
           </div>
-
-          <div class="column_contact right_contact"> <!-- this is the big right column-->
-            <!-- Logo and Hospital Name -->
-            <div class="inner_row_contact">
-              <div class = "column_contact inner_left_contact">
-                  <img src="assets/img/index_rama_logo.png" alt="Hospital Logo" class="rounded-full shadow-md" style="width: auto; height: 80%;">
-              </div>
-              <div class = "column_contact inner_right_contact">
-                  <p class="text-lg"  style = "color: #fff; font-weight: 700; font-size: 1.5rem">Faculty of Medicine Ramathibodi Hospital</p>
-              </div>
-            </div>
-
-            <!-- Address -->
-             <div class="inner_row_contact">
-              <div class = "column_contact inner_left_contact">
-                  <p class="text-lg"  style = "color: #fff; font-weight: 700; font-size: 1rem">Address</p>
-              </div>
-              <div class = "column_contact inner_right_contact">
-                  <p class="text-lg"  style = "color: #fff; font-weight: 400; font-size: 1rem">Chakri Naruebodindra Medical Institute 111 - 14 Suwannabhumi Canal Rd, Tambon Bang Pla, Amphoe Bang Phli, Chang Wat Samut Prakan 10540</p>
-              </div>
-            </div>
-
-            <!-- Telephone -->
-             <div class="inner_row_contact">
-              <div class = "column_contact inner_left_contact">
-                  <p class="text-lg"  style = "color: #fff; font-weight: 700; font-size: 1rem">Telephone</p>
-              </div>
-              <div class = "column_contact inner_right_contact">
-                  <p class="text-lg"  style = "color: #fff; font-weight: 400; font-size: 1rem">0 2201 2193, 0 2201 1542, and 0 2201 2990</p>
-              </div>
-            </div>
-            <!-- Email -->
-              <div class="inner_row_contact">
-              <div class = "column_contact inner_left_contact">
-                  <p class="text-lg"  style = "color: #fff; font-weight: 700; font-size: 1rem">Email</p>
-              </div>
-              <div class = "column_contact inner_right_contact">
-                  <p class="text-lg"  style = "color: #fff; font-weight: 400; font-size: 1rem">gradrama@mahidol.ac.th.</p>
-              </div>
-            </div>
-            <!-- Social Media -->
-             <div class="inner_row_contact">
-              <div class = "column_contact inner_left_contact">
-                  <p class="text-lg"  style = "color: #fff; font-weight: 700; font-size: 1rem">Social Media</p>
-              </div>
-              <div class = "column_contact inner_right_contact">
-                  <p class="text-lg"  style = "color: #fff; font-weight: 400; font-size: 1rem">Line bot: RAMSC</p>
-                  <p class="text-lg"  style = "color: #fff; font-weight: 400; font-size: 1rem">Instragram: RAMSC</p>
-              </div>
-            </div>
-          
+        </div>
+        <div class="column_contact inner_right_contact">
+          <p class="text-lg" style="color: #fff; font-weight: 700; font-size: 1.5rem; margin: 0;">Faculty of Medicine Ramathibodi Hospital</p>
+        </div>
       </div>
-    </section>
+
+      <div class="inner_row_contact">
+        <div class="column_contact inner_left_contact">
+          <p class="text-lg" style="color: #fff; font-weight: 700; font-size: 1rem">Address</p>
+        </div>
+        <div class="column_contact inner_right_contact">
+          <p class="text-lg" style="color: #fff; font-weight: 400; font-size: 1rem">Chakri Naruebodindra Medical Institute 111 - 14 Suwannabhumi Canal Rd, Tambon Bang Pla, Samut Prakan 10540</p>
+        </div>
+      </div>
+
+      <div class="inner_row_contact">
+        <div class="column_contact inner_left_contact">
+          <p class="text-lg" style="color: #fff; font-weight: 700; font-size: 1rem">Telephone</p>
+        </div>
+        <div class="column_contact inner_right_contact">
+          <p class="text-lg" style="color: #fff; font-weight: 400; font-size: 1rem">0 2201 2193, 0 2201 1542</p>
+        </div>
+      </div>
+
+      <div class="inner_row_contact">
+        <div class="column_contact inner_left_contact">
+          <p class="text-lg" style="color: #fff; font-weight: 700; font-size: 1rem">Email</p>
+        </div>
+        <div class="column_contact inner_right_contact">
+          <p class="text-lg" style="color: #fff; font-weight: 400; font-size: 1rem">gradrama@mahidol.ac.th</p>
+        </div>
+      </div>
+
+      <div class="inner_row_contact">
+        <div class="column_contact inner_left_contact">
+          <p class="text-lg" style="color: #fff; font-weight: 700; font-size: 1rem">Social Media</p>
+        </div>
+        <div class="column_contact inner_right_contact">
+          <div class="social-icon-row">
+            <a href="https://line.me/R/ti/p/@851bivqg" target="_blank"><img src="assets/img/index_line_logo.png" alt="Line" class="social-mini-logo"></a>
+            <a href="https://www.instagram.com/ramsc.official/" target="_blank"><img src="assets/img/index_instragram_logo.png" alt="Instagram" class="social-mini-logo"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- white seperation -->
      <div class = 'white_seperation'></div>
