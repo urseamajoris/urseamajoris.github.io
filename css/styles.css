@@ -22,7 +22,7 @@ a{color:inherit;text-decoration:none}
   position: sticky;
   top: 0;
   z-index: 9999;
-  background:#1c005c; 
+  background:rgb(11, 77, 131); 
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   color: #e5e7eb;
@@ -1215,3 +1215,196 @@ h3{font-size:clamp(1.1rem,1vw + .8rem,1.4rem)}
     border: 1px solid #fed7d7;
 }
 /* contact page --end --*/
+
+
+/* about_us page --start --*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #ffffff;
+    color: #111111;
+}
+
+.au_navbar {
+    background-color: #1a065c;
+    padding: 18px 24px;
+}
+
+.au_nav_container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.au_brand_logo {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.au_main_container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.au_about_section {
+    display: flex;
+    align-items: flex-start;
+    gap: 35px;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+}
+
+.au_logo_wrapper {
+    flex-shrink: 0;
+    width: 100px;
+}
+
+.au_logo_img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.au_about_text_block {
+    flex-grow: 1;
+}
+
+.au_about_title {
+    font-size: 32px;
+    font-weight: 400;
+    margin: 0 0 12px 0;
+}
+
+.au_about_description {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #444444;
+    margin: 0;
+    border-top: 1px solid #cccccc;
+    padding-top: 12px;
+}
+
+.au_directory_section {
+    text-align: center;
+}
+
+.au_directory_heading {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.au_year_row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.au_label_text {
+    font-size: 16px;
+    color: #444444;
+}
+
+.au_badge_year {
+    background-color: #bde0f5;
+    color: #1a1a1a;
+    padding: 6px 24px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.au_filter_nav {
+    display: inline-flex;
+    background-color: #bde0f5;
+    border-radius: 25px;
+    padding: 4px;
+    margin-bottom: 45px;
+    gap: 2px;
+}
+
+.au_filter_btn {
+    background: transparent;
+    border: none;
+    padding: 6px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #444444;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+}
+
+.au_filter_btn.au_active {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.au_grid_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+    row-gap: 40px;
+    justify-items: center;
+}
+
+.au_card {
+    width: 100%;
+    max-width: 210px;
+    text-align: center;
+    animation: au_fadeIn 0.4s ease-in-out;
+}
+
+.au_image_frame {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background-color: #eaeaea; 
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.au_image_frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.au_member_name {
+    font-size: 13.5px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.au_member_role {
+    font-size: 12px;
+    color: #666666;
+    margin: 0;
+}
+
+@keyframes au_fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 650px) {
+    .au_about_section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+    .au_grid_container {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 15px;
+    }
+}
+/* about_us page --end--*/

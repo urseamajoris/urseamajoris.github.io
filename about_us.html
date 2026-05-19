@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RAMSC — Ramathibodi Medical Student's Council</title>
+  <meta name="description" content="RAMSC — Ramathibodi Medical Student's Council.">
+  <link rel="canonical" href="https://example.com/">
+  <meta property="og:title" content="RAMSC — Ramathibodi Medical Student's Council">
+  <meta property="og:description" content="A bright, uplifting, immersive site for RAMSC.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/hero.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/about_us.js"></script>
+
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="container nav-wrap">
+      <a class="logo" href="index.html" aria-label="RAMSC Home">
+        <div class="logo-circle">
+          <img src="assets/img/ramsclogo.png" alt="RAMSC Logo">
+        </div>
+        <span class="logo-text">RAMSC</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" role="navigation">
+        <ul>
+          <li><a href="index.html" aria-current="page" class="btnsite">Home</a></li>
+          <li><a href="about_us.html" class="btnsite">About Us</a></li>
+          <li><a href="articles.html" class="btnsite">Articles</a></li>
+          <li><a href="faqs.html" class="btnsite">FAQs</a></li>
+          <li><a href="contact.html" class="btnsite">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <main class="au_main_container">
+        
+        <section class="au_about_section">
+            <div class="au_logo_wrapper">
+                <img src="\assets\img\ramsclogo.png" alt="RAMSC Logo" class="au_logo_img">
+            </div>
+            <div class="au_about_text_block">
+                <h1 class="au_about_title">About RAMSC</h1>
+                <p class="au_about_description">
+                    We serves as the voice of all medical students at Ramathibodi across all academic years and to support opportunities and skill development
+                </p>
+            </div>
+        </section>
+
+        <section class="au_directory_section">
+            <h2 class="au_directory_heading">Members Directory</h2>
+            
+            <div class="au_year_row">
+                <span class="au_label_text">Year</span>
+                <span class="au_badge_year">2026</span>
+            </div>
+
+            <nav class="au_filter_nav">
+                <button class="au_filter_btn au_active" data-dept="Exec">Exec</button>
+                <button class="au_filter_btn" data-dept="IA">IA</button>
+                <button class="au_filter_btn" data-dept="EA">EA</button>
+                <button class="au_filter_btn" data-dept="CC">CC</button>
+                <button class="au_filter_btn" data-dept="AA">AA</button>
+                <button class="au_filter_btn" data-dept="OD">OD</button>
+                <button class="au_filter_btn" data-dept="WB">WB</button>
+            </nav>
+
+            <div id="au_loading_status" style="text-align: center; color: #666; font-size: 14px; margin-bottom: 20px;">
+                Loading directory...
+            </div>
+
+            <div class="au_grid_container" id="au_members_grid">
+                </div>
+        </section>
+    </main>
+</body>
+</html>
