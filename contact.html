@@ -35,7 +35,7 @@
           <li><a href="index.html" aria-current="page" class="btnsite">Home</a></li>
           <li><a href="about_us.html" class="btnsite">About Us</a></li>
           <li><a href="articles.html" class="btnsite">Articles</a></li>
-          <li><a href="faqs.html" class="btnsite">FAQs</a></li>
+          <li><a href="resource.html" class="btnsite">Resources and Services</a></li>
           <li><a href="contact.html" class="btnsite">Contact</a></li>
         </ul>
       </nav>
@@ -53,73 +53,6 @@
 
         <!-- Main Content Split Grid -->
         <div class="RAContact_grid">
-            
-            <!-- Left Side: Interactive Portal Form -->
-            <main class="RAContact_form_wrapper">
-                <form id="RAContact_portal_form" class="RAContact_form">
-                    
-                    <!-- Dropdown Selectors Group -->
-                    <div class="RAContact_form_row">
-                        <div class="RAContact_form_group">
-                            <label for="RAContact_recipient" class="RAContact_label">Who would you like to contact?</label>
-                            <div class="RAContact_select_wrapper">
-                                <select id="RAContact_recipient" class="RAContact_select" required>
-                                    <option value="" disabled selected>— Select Division / Affair —</option>
-                                    <option value="exec">Executive Committee (President/VP)</option>
-                                    <option value="IA">Internal Affairs</option>
-                                    <option value="WB">Well-being Affairs</option>
-                                    <option value="AA">Academic Affairs</option>
-                                    <option value="EA">External Affairs</option>
-                                    <option value="CC">Coordinate Coorperation</option>
-                                    <option value="OD">Organizational Development</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="RAContact_form_group">
-                            <label for="RAContact_purpose" class="RAContact_label">Purpose of Contact</label>
-                            <div class="RAContact_select_wrapper">
-                                <select id="RAContact_purpose" class="RAContact_select" required>
-                                    <option value="" disabled selected>— Select Purpose —</option>
-                                    <option value="questions">Questions</option>
-                                    <option value="sponsor">Sponsorship</option>
-                                    <option value="suggestion">Suggestion</option>
-                                    <option value="concerns">Concerns / Grievance</option>
-                                    <option value="collaboration">Collaboration</option>
-                                    <option value="others">Others</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Name Input (with Anonymity Instruction) -->
-                    <div class="RAContact_form_group">
-                        <label for="RAContact_name" class="RAContact_label">
-                            Your Name <span class="RAContact_sub_label">(Enter '-' to remain anonymous)</span>
-                        </label>
-                        <input type="text" id="RAContact_name" class="RAContact_input" placeholder="Your name or '-' for anonymity" required>
-                    </div>
-
-                    <!-- Message Textarea -->
-                    <div class="RAContact_form_group">
-                        <label for="RAContact_message" class="RAContact_label">Your Message</label>
-                        <textarea id="RAContact_message" class="RAContact_input RAContact_textarea" placeholder="Type your message here..." required></textarea>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="RAContact_submit_btn">
-                        <span>Send Message</span>
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
-                </form>
-
-                <!-- Status Feedback Notification -->
-                <div id="RAContact_status_msg" class="RAContact_status_box"></div>
-            </main>
-
-            <!-- Right Side: High Priority Channels & Physical Office Info -->
-            <aside class="RAContact_sidebar">
-                
                 <!-- Quick Response Channels -->
                 <div class="RAContact_card">
                     <h3 class="RAContact_card_title"><i class="fa-solid fa-bolt"></i> High-Priority Support</h3>
@@ -166,42 +99,46 @@
 
         </div>
     </div>
-
+  
 </main>
+
   
   <div class="footers">
+    <div class="col-0">
+      
+      <div>
+        <p href="#"><img src="assets/img/ramsclogo.png" alt="" class="footlogo"></p>
+      </div>
+    </div>
     <div class="col-1">
       <h3 class="HText">Contact</h3>
-      <a>Chakri Naruebodindra Medical Institute, 111-14 Suwannabhumi Canal Rd, Bang Phli, Samut Prakan 10540</a>
-      <a>📞 : 0 2201 2193</a>
+      <a>Chakri Naruebodindra Medical Institute, 111-14 Suwannabhumi Canal Rd,<br> Bang Phli, Samut Prakan 10540</a>
+      <a>📞 : 0 2201 2193 / 1542 / 2990</a>
       <a>✉️ : rama.med@gmail.com</a>
       <div class="social-icons">
-        <p href="#"><img src="assets/img/About-fb.webp" alt="" class="footimg"></p>
-        <p href="#"><img src="assets/img/About-ig.webp" alt="" class="footimg"></p>
-        <p href="#"><img src="assets/img/About-li.webp" alt="" class="footimg"></p>
+        <a href="https://www.facebook.com/share/1jkeBp5w3v/?mibextid=wwXIfr" target="_blank"><img src="assets/img/About-fb.webp" alt="Facebook" class="footimg"></a>
+        <a href="https://www.instagram.com/ramsc.official/" target="_blank"><img src="assets/img/About-ig.webp" alt="Instagram" class="footimg"></a>
+        <a href="https://line.me/R/ti/p/@851bivqg" target="_blank"><img src="assets/img/About-li.webp" alt="Line" class="footimg"></a>
       </div>
     </div>
     <div class="col-2">
       <h3 class="HText">Links</h3>
-      <a class="btnfoot" href="#">Recent News</a>
+      <a class="btnfoot" href="articles.html">Recent News</a>
       <a class="btnfoot" href="#">Evaluation Form</a>
-      <a class="btnfoot" href="#">Line Official</a>
-      <a class="btnfoot" href="#">Moderator</a>
-      <a class="btnfoot" href="#">Request Form</a>
+  
     </div>
     <div class="col-3">
       <h3 class="HText">Pages</h3>
-      <a class="btnfoot" href="index.html">Index</a>
-      <a class="btnfoot" href="about.html">About us</a>
-      <a class="btnfoot" href="faqs.html">FAQs</a>
+      <a class="btnfoot" href="index.html">Main</a>
+      <a class="btnfoot" href="about_us.html">About us</a>
+      <a class="btnfoot" href="articles.html">Articles</a>
+      <a class="btnfoot" href="resource.html">Resources and Services</a>
       <a class="btnfoot" href="contact.html">Contact</a>
-    </div>
-    <div class="col-4">
-      <h3 class="HText">Support us</h3>
+      <a class="btnfoot" href="faqs.html">FAQs</a>
     </div>
   </div>
-
-  <footer class="site-footer" id = "contact">
+  
+  <footer class="site-footer">
     <div class="container footer-grid">
       <div class="container smallprint">© <span data-year></span> RAMSC, Ramathibodi Medical Student’s Council.</div>
     </div>
