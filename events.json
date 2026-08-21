@@ -2,17 +2,17 @@
   {
     "title": "RAMSC Website will be launch soon",
     "date": "15/8/2026",
-    "time": 08:00-10:00,
+    "time": "08:00-10:00",
     "description": "Let's use this as a central working space",
     "imageLink": "-",
-    "category": "Announcement"
+    "category": "Category1"
   },
   {
     "title": "Pleurm will go sleep soon",
     "date": "16/8/2026",
-    "time": 12:00-13:00,
+    "time": "12:00-13:00",
     "description": "Let's use this as a central working space",
     "imageLink": "-",
-    "category": "Announcement"
+    "category": "Category2"
   }
 ]

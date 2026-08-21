@@ -275,110 +275,216 @@
   loadDashboardArticles();
 })();
 
-
-// Dashboard add up
-let slideIndex = 1;
+// Event sorting function
+function sortEvents(eventsData) {
+    return eventsData.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
         
-        // This function displays the current slide and is called on page load
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            
-            slides[slideIndex-1].style.display = "flex";
-            dots[slideIndex-1].className += " active";
+        if (dateA.getTime() !== dateB.getTime()) {
+            return dateA.getTime() - dateB.getTime();
         }
+        
+        const timeA = a.time.split('-')[0].trim();
+        const timeB = b.time.split('-')[0].trim();
+        
+        if (timeA < timeB) return -1;
+        if (timeA > timeB) return 1;
+        return 0;
+    });
+}
 
-        // Next/previous controls
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+function formatEventDate(dateString) {
+    if (!dateString) return '';
+    const dateObj = new Date(dateString);
+    if (!isNaN(dateObj)) {
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        return `${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+    }
+    return dateString;
+}
+
+function sortEvents(eventsData) {
+    return eventsData.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        
+        if (dateA.getTime() !== dateB.getTime()) {
+            return dateA.getTime() - dateB.getTime();
         }
+        
+        // Add fallback for missing time property
+        const timeA = (a.time || '00:00').split('-')[0].trim();
+        const timeB = (b.time || '00:00').split('-')[0].trim();
+        
+        if (timeA < timeB) return -1;
+        if (timeA > timeB) return 1;
+        return 0;
+    });
+}
 
-        // Thumbnail image controls
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
+// Upcoming events rendering
+function renderUpcomingEvents(eventsData) {
+    const list = document.getElementById('upcoming-list');
+    if (!list) return;
+    list.innerHTML = '';
 
-        // Modal functions
-        function openModal(element) {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImage");
-            modal.style.display = "flex";
-            modalImg.src = element.src;
-        }
+    const icons = {
+        'Academic': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/><line x1="2" y1="22" x2="22" y2="22"/></svg>',
+        'Activity': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><circle cx="12" cy="12" r="3"/></svg>',
+        'Well-being': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>',
+        'Announcement': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/></svg>'
+    };
 
-        function closeModal() {
-            const modal = document.getElementById("imageModal");
-            modal.style.display = "none";
-        }
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    const futureEvents = eventsData.filter(event => {
+        return new Date(event.date) >= today;
+    });
 
-        // Call showSlides() on page load to display the first slide
-        window.onload = function() {
-            showSlides(slideIndex);
-        };
+    futureEvents.slice(0, 3).forEach((event) => {
+        const card = document.createElement('div');
+        const formattedDate = formatEventDate(event.date); 
+        
+        // Ensure a valid tag string exists
+        const safeTag = (event.tags || 'Announcement').trim();
+        const iconSvg = icons[safeTag] || icons['Announcement'];
+        const safeTime = event.time || 'TBA';
+        
+        card.className = 'event-card theme-' + safeTag;
+        
+        card.innerHTML = `<div class="event-icon-wrapper icon-${safeTag}">${iconSvg}</div>
+                          <div class="event-details">
+                              <h4 class="event-name">${event.title}</h4>
+                              <p class="event-time">${formattedDate} | ${safeTime}</p>
+                          </div>`;
+        
+        list.appendChild(card);
+    });
+}
 
-// End of dashboard add up 
+// Format event date to "DD MMM YYYY"
+let currentDate = new Date();
+let currentMonth = currentDate.getMonth() + 1;
+let currentYear = currentDate.getFullYear();
+let globalEvents = [];
+let currentFilter = 'All';
 
-document.addEventListener("mousemove", (e) => {
-  const layers = document.querySelectorAll(".layer");
-  const x = (e.clientX / window.innerWidth - 0.5) * 2; 
-  const y = (e.clientY / window.innerHeight - 0.5) * 2;
+function initCalendar(eventsData) {
+    globalEvents = eventsData;
+    renderCalendar(currentMonth, currentYear);
+}
 
-  layers.forEach(layer => {
-    const depth = layer.getAttribute("data-depth");
-    const moveX = x * depth * 30;  // adjust 30 for intensity
-    const moveY = y * depth * 30;
+// Render calendar for a given month and year
+function renderCalendar(month, year) {
+    const grid = document.getElementById('calendar-grid');
+    const headerDisplay = document.getElementById('month-year-display');
+    if (!grid || !headerDisplay) return;
 
-    layer.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
-  });
-});
-document.addEventListener("mousemove", (e) => {
-  const layers = document.querySelectorAll(".layer");
-  const x = (e.clientX / window.innerWidth - 0.5) * 2; // -1 (left) → +1 (right)
-  const y = (e.clientY / window.innerHeight - 0.5) * 2; // -1 (top) → +1 (bottom)
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    headerDisplay.textContent = months[month - 1] + ' ' + year;
 
-  layers.forEach(layer => {
-    const depth = layer.getAttribute("data-depth");
-    let moveX = x * depth * 13;
-    let moveY = y * depth * 13;
+    const daysInMonth = new Date(year, month, 0).getDate();
+    const startDay = new Date(year, month - 1, 1).getDay();
 
-    // default parallax shift
-    let transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+    grid.innerHTML = '';
 
-    // Flask rotates with X
-    if (layer.classList.contains("flask")) {
-      const rotate = x * 15; // max ±30deg
-      transform += ` rotate(${rotate}deg)`;
+    let i = 0;
+    while (i < startDay) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.className = 'calendar-day empty-day';
+        grid.appendChild(emptyDiv);
+        i++;
     }
 
-    // Aura scales with X
-    if (layer.classList.contains("aura")) {
-      const scale = 1 + (x * -0.07); 
-      transform += ` scale(${scale})`;
-    }
+    const tagColors = {
+        'Academic': '#37beb0',
+        'Activity': '#ff4d4d',
+        'Well-being': '#ff85b4',
+        'Announcement': '#a694fb'
+    };
 
-    // Background scales with Y
-    if (layer.classList.contains("background")) {
-      const scale = 1 + (y * -0.05); 
-      // y=-1 (top) → scale=1.3 (bigger)
-      // y=+1 (bottom) → scale=0.7 (smaller)
-      transform += ` scale(${scale})`;
-    }
+    let j = 1;
+    while (j <= daysInMonth) {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'calendar-day';
 
-    layer.style.transform = transform;
-  });
+        const dayNum = document.createElement('div');
+        dayNum.className = 'day-number';
+        dayNum.textContent = j;
+        dayDiv.appendChild(dayNum);
+
+        if (globalEvents && Array.isArray(globalEvents)) {
+            globalEvents.forEach(event => {
+                if (!event.date) return;
+                
+                const parts = event.date.split('/');
+                if (parts.length !== 3) return;
+                
+                const m = parseInt(parts[0].trim(), 10);
+                const d = parseInt(parts[1].trim(), 10);
+                const y = parseInt(parts[2].trim(), 10);
+
+                if (d === j && m === month && y === year) {
+                    const cleanTag = (event.tags || 'Announcement').trim();
+                    
+                    if (currentFilter === 'All' || cleanTag === currentFilter) {
+                        const eventDiv = document.createElement('div');
+                        eventDiv.className = 'event';
+                        
+                        eventDiv.style.backgroundColor = tagColors[cleanTag] || tagColors['Announcement'];
+                        eventDiv.style.color = '#ffffff'; 
+                        
+                        eventDiv.textContent = event.title;
+                        dayDiv.appendChild(eventDiv);
+                    }
+                }
+            });
+        }
+        grid.appendChild(dayDiv);
+        j++;
+    }
+}
+
+const filterBtns = document.querySelectorAll('.filter-btn');
+if (filterBtns.length > 0) {
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            currentFilter = e.target.getAttribute('data-tag');
+            renderCalendar(currentMonth, currentYear);
+        });
+    });
+}
+
+document.getElementById('prev-month').addEventListener('click', () => {
+    currentMonth--;
+    if (currentMonth < 1) {
+        currentMonth = 12;
+        currentYear--;
+    }
+    renderCalendar(currentMonth, currentYear);
 });
-swiper.el.querySelectorAll('.info').forEach(el => {
-  el.addEventListener('mousedown', e => e.stopPropagation());
+
+document.getElementById('next-month').addEventListener('click', () => {
+    currentMonth++;
+    if (currentMonth > 12) {
+        currentMonth = 1;
+        currentYear++;
+    }
+    renderCalendar(currentMonth, currentYear);
 });
+
+// Fetch events data from GitHub
+const githubUrl = 'https://raw.githubusercontent.com/Abhi-Ya/RAMSC/main/events.json?t=' + new Date().getTime();
+
+fetch(githubUrl)
+    .then(response => response.json())
+    .then(data => {
+        const sortedData = sortEvents(data);
+        initCalendar(sortedData);
+        renderUpcomingEvents(sortedData);
+    })
+    .catch(error => console.error("Error loading events:", error));
