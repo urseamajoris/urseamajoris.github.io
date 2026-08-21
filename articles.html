@@ -16,6 +16,7 @@
     #debug-panel textarea{width:100%;height:6rem}
   </style>
   <script defer src="js/main.js"></script>
+  <script defer src="js/main.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,9 +33,9 @@
       </button>
       <nav id="site-nav" class="site-nav" role="navigation">
         <ul>
-          <li><a href="index.html" aria-current="page" class="btnsite">Home</a></li>
+          <li><a href="index.html" class="btnsite">Home</a></li>
           <li><a href="about_us.html" class="btnsite">About Us</a></li>
-          <li><a href="articles.html" class="btnsite">Articles</a></li>
+          <li><a href="articles.html" class="btnsite active">Articles</a></li>
           <li><a href="resource.html" class="btnsite">Resources and Services</a></li>
           <li><a href="contact.html" class="btnsite">Contact</a></li>
         </ul>
@@ -42,56 +43,36 @@
     </div>
   </header>
 
-  <main id="main">
-    <section class="section" id="articles-list" aria-labelledby="articles-title">
-      <div class="container">
-        <header class="section-header reveal">
-          <h2 id="articles-title">Articles</h2>
-          <p>Updates and stories from RAMSC.</p>
-        </header>
-        <div id="article-controls" class="reveal" style="margin-bottom:1rem;">
-          <input type="search" id="filter-name" placeholder="Filter by name" />
-          <div id="tag-filters" style="margin:0.5rem 0;"></div>
-          <button id="sort-name" class="btn btn-secondary">Sort by Name</button>
-          <button id="sort-date" class="btn btn-secondary">Sort by Date</button>
-          <button id="sort-tag" class="btn btn-secondary">Sort by Tag</button>
-        </div>
-        <div id="article-list" class="card-grid"></div>
-        <noscript>
-          <div class="card-grid">
-            <article class="card">
-              <a href="articles.html?id=orientation-roadshow" class="card-link">
-                <img src="assets/img/placeholder-thumb-1.jpg" alt="Orientation Roadshow">
-                <div class="card-body">
-                  <h3 class="card-titles">Orientation Roadshow</h3>
-                </div>
-              </a>
-            </article>
-            <article class="card">
-              <a href="articles.html?id=peer-coaching" class="card-link">
-                <img src="assets/img/placeholder-thumb-2.jpg" alt="Peer & Near-Peer Coaching">
-                <div class="card-body">
-                  <h3 class="card-titles">Peer & Near-Peer Coaching</h3>
-                </div>
-              </a>
-            </article>
-            <article class="card">
-              <a href="articles.html?id=wellbeing-workshops" class="card-link">
-                <img src="assets/img/placeholder-thumb-3.jpg" alt="Well-Being Workshops">
-                <div class="card-body">
-                  <h3 class="card-titles">Well-Being Workshops</h3>
-                </div>
-              </a>
-            </article>
-          </div>
-        </noscript>
-      </div>
-    </section>
+    <header class="main-header">
+        <h2>Ramathibodi NEWS</h2>
+    </header>
 
-    <article id="single-article" class="article-container" hidden></article>
+    <main class="container">
+        <!-- Recent Highlights Section -->
+        <section class="news-section">
+            <div class="section-label label-recent">
+                <span>Recent Highlights</span>
+            </div>
+            <div class="section-content" id="recent-highlights-container">
+                <!-- Injected via JS -->
+            </div>
+        </section>
 
-    <section id="debug-panel" hidden></section>
-  </main>
+        <!-- More News Section -->
+        <section class="news-section">
+            <div class="section-label label-more">
+                <span>More news</span>
+            </div>
+            <div class="section-content">
+                <div class="more-news-grid" id="more-news-container">
+                    <!-- Injected via JS -->
+                </div>
+                <div class="load-more-container">
+                    <button id="load-more-btn" class="hidden">more..</button>
+                </div>
+            </div>
+        </section>
+    </main>
 
   <div class="footers">
     <div class="col-0">
@@ -134,163 +115,5 @@
     </div>
   </footer>
 
-    <script>
-    let ARTICLES = [];
-    let filterName = '';
-    let filterTag = '';
-    let sortBy = 'date';
-
-    function qs(key){
-      return new URLSearchParams(window.location.search).get(key);
-    }
-
-    function renderList(data){
-      const list = document.getElementById('article-list');
-      list.innerHTML = '';
-      data.forEach(a => {
-        const card = document.createElement('article');
-        card.className = 'card reveal';
-        const imgSrc = a.hero || 'assets/img/card.png';
-        card.innerHTML = `
-          <a href="articles.html?id=${a.id}" class="card-link">
-            <img src="${imgSrc}" alt="${a.title}">
-            <div class="card-body">
-              <h3 class="card-titles">${a.title}</h3>
-            </div>
-          </a>
-        `;
-        list.appendChild(card);
-      });
-    }
-
-    function applyFilters(){
-      let data = ARTICLES.slice();
-      if(filterName) data = data.filter(a => a.title.toLowerCase().includes(filterName));
-      if(filterTag) data = data.filter(a => a.tags.includes(filterTag));
-      data.sort((a,b) => {
-        if(sortBy === 'name') return a.title.localeCompare(b.title);
-        if(sortBy === 'tag') return (a.tags[0] || '').localeCompare(b.tags[0] || '');
-        return new Date(b.date) - new Date(a.date);
-      });
-      renderList(data);
-    }
-
-    function renderArticle(id){
-      const article = ARTICLES.find(a => a.id === id);
-      if(!article) return;
-      document.getElementById('articles-list').style.display = 'none';
-      const container = document.getElementById('single-article');
-      const tagsHtml = article.tags.map(t => `<span class="chip">${t}</span>`).join(' ');
-      const dateStr = new Date(article.date).toLocaleDateString('en-GB');
-      container.innerHTML = `
-        <div class="article-hero"><img src="${article.hero || 'assets/img/card.png'}" alt="${article.title}"></div>
-        <h1>${article.title}</h1>
-        <div class="article-meta">${dateStr} · ${article.author} · ${tagsHtml}</div>
-        ${article.paragraphs.map(p => `<p>${p}</p>`).join('')}
-        <p><a href="articles.html">&larr; Back to all articles</a></p>
-      `;
-      container.hidden = false;
-    }
-
-    function initControls(){
-      const nameInput = document.getElementById('filter-name');
-      const tagWrap = document.getElementById('tag-filters');
-      const sortNameBtn = document.getElementById('sort-name');
-      const sortDateBtn = document.getElementById('sort-date');
-      const sortTagBtn = document.getElementById('sort-tag');
-      if(nameInput){
-        nameInput.addEventListener('input', e => { filterName = e.target.value.toLowerCase(); applyFilters(); });
-      }
-      if(tagWrap){
-        const tags = Array.from(new Set(ARTICLES.flatMap(a => a.tags)));
-        tagWrap.innerHTML = '<button class="btn btn-secondary" data-tag="">All</button>' + tags.map(t => `<button class="btn btn-secondary" data-tag="${t}">${t}</button>`).join('');
-        tagWrap.addEventListener('click', e => {
-          const tag = e.target.dataset.tag;
-          if(tag !== undefined){
-            filterTag = tag;
-            applyFilters();
-          }
-        });
-      }
-      if(sortNameBtn) sortNameBtn.addEventListener('click', () => { sortBy = 'name'; applyFilters(); });
-      if(sortDateBtn) sortDateBtn.addEventListener('click', () => { sortBy = 'date'; applyFilters(); });
-      if(sortTagBtn) sortTagBtn.addEventListener('click', () => { sortBy = 'tag'; applyFilters(); });
-    }
-
-    function initDebug(){
-      if(qs('debug')){
-        const panel = document.getElementById('debug-panel');
-        panel.hidden = false;
-        panel.innerHTML = `
-          <h2>Article Encoder</h2>
-          <form id="encoder-form">
-            <label>ID <input name="id" required></label>
-            <label>Title <input name="title" required></label>
-            <label>Date <input name="date" type="date" required></label>
-            <label>Author <input name="author" required></label>
-            <label>Tags (comma-separated) <input name="tags"></label>
-            <label>Hero URL <input name="hero"></label>
-            <label>Summary <textarea name="summary"></textarea></label>
-            <label>Paragraphs (one per line)<textarea name="paragraphs"></textarea></label>
-            <button type="submit" class="btn btn-primary">Generate</button>
-          </form>
-          <div id="encoder-output"></div>
-        `;
-        document.getElementById('encoder-form').addEventListener('submit', e => {
-          e.preventDefault();
-          const data = Object.fromEntries(new FormData(e.target).entries());
-          const article = {
-            id: data.id.trim(),
-            title: data.title.trim(),
-            date: data.date,
-            author: data.author.trim(),
-            tags: data.tags ? data.tags.split(',').map(t => t.trim()).filter(Boolean) : [],
-            hero: data.hero.trim(),
-            summary: data.summary.trim(),
-            paragraphs: data.paragraphs.split('\n').map(p => p.trim()).filter(Boolean)
-          };
-          const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>${article.title}</title><link rel="stylesheet" href="css/styles.css"/></head><body><div class="article-hero"><img src="${article.hero}" alt="${article.title}"></div><h1>${article.title}</h1><div class="article-meta">${article.date} · ${article.author} · ${article.tags.join(', ')}</div>${article.paragraphs.map(p=>`<p>${p}</p>`).join('')}</body></html>`;
-          const blob = new Blob([html], {type:'text/html'});
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = article.id + '.html';
-          link.textContent = 'Download Article HTML';
-          const jsonSnippet = JSON.stringify(article, null, 2);
-          const out = document.getElementById('encoder-output');
-          out.innerHTML = '';
-          out.appendChild(link);
-          const pre = document.createElement('pre');
-          pre.textContent = jsonSnippet;
-          out.appendChild(pre);
-        });
-      }
-    }
-
-    async function init(){
-      try {
-        const res = await fetch('./articles.json');
-        if (!res.ok) throw new Error(res.statusText);
-        ARTICLES = await res.json();
-      } catch (err) {
-        console.error('Failed to load articles.json', err);
-        const list = document.getElementById('article-list');
-        if (list) list.innerHTML = '<p>Unable to load articles.</p>';
-        return;
-      }
-
-      ARTICLES = await fetch('articles.json').then(r => r.json());
-      initControls();
-      const id = qs('id');
-      if(id){
-        renderArticle(id);
-      } else {
-        applyFilters();
-      }
-      initDebug();
-    }
-
-    document.addEventListener('DOMContentLoaded', init);
-  </script>
 </body>
 </html>

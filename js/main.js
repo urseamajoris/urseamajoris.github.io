@@ -59,8 +59,14 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   // Mobile nav
-  const nav = $('#site-nav');
-  const toggle = $('.nav-toggle');
+  const navToggle = document.querySelector('.nav-toggle');
+const siteNav   = document.querySelector('.site-nav');
+
+navToggle.addEventListener('click', () => {
+  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', !expanded);
+  siteNav.classList.toggle('open');
+});
   const openNav = () => {
     if (!nav) return;
     nav.classList.add('open');
@@ -488,3 +494,237 @@ fetch(githubUrl)
         renderUpcomingEvents(sortedData);
     })
     .catch(error => console.error("Error loading events:", error));
+// Global variable to store the fetched data
+let eventsData = [];
+
+// Fetch the JSON file dynamically
+fetch('events.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        eventsData = data;
+        // Initial render and routing once data is successfully loaded
+        renderGrid(eventsData);
+        handleRouting();
+    })
+    .catch(error => {
+        console.error('Error loading events.json:', error);
+        document.getElementById('news-grid').innerHTML = '<p style="color: var(--muted);">Error loading articles. Please ensure events.json exists.</p>';
+    });
+
+// 1. Helper to parse DD/MM/YYYY into a JavaScript Date object
+function parseDate(dateStr) {
+    if (!dateStr) return new Date();
+    const parts = dateStr.split('/');
+    // new Date(Year, Month (0-11), Day)
+    return new Date(parts[2], parts[1] - 1, parts[0]);
+}
+
+// 2. Helper to check if a date is within 30 days (past or future)
+function isWithin30Days(dateStr) {
+    if (!dateStr) return false;
+    const articleDate = parseDate(dateStr);
+    const today = new Date();
+    
+    // Calculate difference in days
+    const diffTime = Math.abs(today - articleDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+    
+    return diffDays <= 30;
+}
+
+// 3. Render the Grid
+function renderGrid(articles) {
+    const grid = document.getElementById('news-grid');
+    grid.innerHTML = ''; // Clear existing
+
+    // Filter for recent news (within 30 days)
+    const recentArticles = articles.filter(article => isWithin30Days(article.date));
+
+    if (recentArticles.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1 / -1; color: var(--muted);">No recent articles found in the last 30 days.</p>';
+        return;
+    }
+
+    recentArticles.forEach((article, index) => {
+        // Use ID if it exists in your JSON, otherwise fallback to array index
+        const articleId = article.id !== undefined ? article.id : index;
+        
+        // Handle missing/placeholder images using your theme's surface color
+        const imgSrc = (article.imageLink === "-" || !article.imageLink) 
+            ? 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="110"><rect width="160" height="110" fill="%23f8fafc"/></svg>' 
+            : article.imageLink;
+
+        const cardHTML = `
+            <a href="#article-${articleId}" class="article-card">
+                <img src="${imgSrc}" alt="Thumbnail" class="article-img">
+                <div class="article-content">
+                    <h3 class="article-title">${article.title}</h3>
+                    <p class="article-desc">${article.description}</p>
+                    <span class="article-meta">${article.category || 'Announcement'} | ${article.date}</span>
+                </div>
+            </a>
+        `;
+        grid.innerHTML += cardHTML;
+    });
+}
+
+// 4. Render Single Article dynamically based on URL Hash
+function renderSingleArticle(articles, id) {
+    // Find by ID, or fallback to array index
+    const article = articles.find(a => a.id == id) || articles[id];
+    
+    if (!article) return;
+
+    const content = document.getElementById('single-content');
+    content.innerHTML = `
+        <h1 style="margin-top:0;">${article.title}</h1>
+        <p style="color: var(--muted);">
+            <strong>Date:</strong> ${article.date} | 
+            <strong>Time:</strong> ${article.time || 'TBA'}
+        </p>
+        <p style="color: var(--muted);"><strong>Category:</strong> ${article.category || 'Announcement'}</p>
+        <hr style="border: 0; border-top: 1px solid var(--surface); margin: 20px 0;">
+        ${(article.imageLink && article.imageLink !== "-") ? `<img src="${article.imageLink}" style="max-width: 100%; border-radius: var(--radius); margin-bottom: 20px;" />` : ''}
+        <p style="font-size: 1.1rem; line-height: 1.6;">${article.description}</p>
+    `;
+}
+
+// 5. Router: Detects URL changes (the "tail link" / hash) and switches views
+function handleRouting() {
+    const hash = window.location.hash; // e.g., "#article-1"
+    const homeView = document.getElementById('home-view');
+    const singleView = document.getElementById('single-view');
+
+    if (hash.startsWith('#article-')) {
+        // Show single article
+        const id = hash.replace('#article-', '');
+        renderSingleArticle(eventsData, id); // pass the globally fetched data
+        homeView.style.display = 'none';
+        singleView.style.display = 'block';
+        window.scrollTo(0, 0);
+    } else {
+        // Show home grid
+        homeView.style.display = 'flex';
+        singleView.style.display = 'none';
+    }
+}
+
+// Listen for URL changes
+window.addEventListener('hashchange', handleRouting);
+
+// article
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Helper function to convert Google Drive viewer links to direct image links
+    function formatDriveLink(url) {
+        const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        if (match && match[1]) {
+            return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+        }
+        return url; 
+    }
+
+    // Helper to get CSS class for tags
+    function getTagClass(tag) {
+        const tagMap = {
+            "Academic": "tag-academic",
+            "Activity": "tag-activity",
+            "Well-being": "tag-well-being",
+            "Announcement": "tag-announcement"
+        };
+        return tagMap[tag] || "tag-activity";
+    }
+
+    // Fetch and process data
+    fetch('events.json')
+        .then(response => response.json())
+        .then(data => {
+            const today = new Date();
+            const fourteenDaysFromNow = new Date(today);
+            fourteenDaysFromNow.setDate(today.getDate() + 14);
+
+            const recentHighlights = [];
+            const moreNews = [];
+
+            data.forEach(event => {
+                const eventDate = new Date(event.date);
+                
+                // If event is upcoming and within 14 days
+                if (eventDate >= today && eventDate <= fourteenDaysFromNow) {
+                    recentHighlights.push(event);
+                } else {
+                    moreNews.push(event);
+                }
+            });
+
+            renderRecentHighlights(recentHighlights);
+            renderMoreNews(moreNews);
+        })
+        .catch(error => console.error('Error loading events:', error));
+
+    function createCardHTML(event) {
+        const imgSrc = formatDriveLink(event.cover);
+        const tagClass = getTagClass(event.tags);
+        
+        return `
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="${imgSrc}" alt="Cover image">
+                </div>
+                <div class="news-card-content">
+                    <h3 class="title-fade">${event.title}</h3>
+                    <div class="meta-info">
+                        <span>${event.author}</span>
+                        <span class="tag ${tagClass}">${event.tags}</span>
+                    </div>
+                    <div class="paragraphs">
+                        ${event.date} | ${event.time} <br>
+                        ${event.paragraphs}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderRecentHighlights(events) {
+        const container = document.getElementById('recent-highlights-container');
+        if (events.length === 0) {
+            container.innerHTML = '<p style="color: #666;">No upcoming events in the next 14 days.</p>';
+            return;
+        }
+        container.innerHTML = events.map(createCardHTML).join('');
+    }
+
+    function renderMoreNews(events) {
+        const container = document.getElementById('more-news-container');
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        
+        // 2 columns x 6 rows = 12 items max initially
+        let currentDisplayCount = 12; 
+
+        function renderItems(count) {
+            const itemsToShow = events.slice(0, count);
+            container.innerHTML = itemsToShow.map(createCardHTML).join('');
+            
+            if (events.length > count) {
+                loadMoreBtn.classList.remove('hidden');
+            } else {
+                loadMoreBtn.classList.add('hidden');
+            }
+        }
+
+        renderItems(currentDisplayCount);
+
+        loadMoreBtn.addEventListener('click', () => {
+            currentDisplayCount += 12; // Load 12 more on click
+            renderItems(currentDisplayCount);
+        });
+    }
+});
+
+// end article
