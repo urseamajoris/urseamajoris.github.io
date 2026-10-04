@@ -1,13 +1,4 @@
 
-/*! main.js — Smooth navigation + robust reveal-on-scroll
-   RAMSC site utilities
-   - Adds `html.js` to enable CSS-gated animations
-   - Smooth anchor scroll with sticky header offset & reduced-motion respect
-   - Sticky header state, mobile nav (ARIA), close-on-link + ESC
-   - Reveal-on-scroll (IntersectionObserver) with safe fallback
-   - Lightbox and Members filters
-*/
-
 (function () {
   'use strict';
 
@@ -481,3 +472,173 @@ if (document.getElementById('calendar-grid') || document.getElementById('upcomin
         renderUpcomingEvents(sortedData);
     })
     .catch(error => console.error("Error loading events:", error));
+
+
+// upcoming event fetching and linking part 
+// ==========================================
+// UPCOMING EVENTS WIDGET LOGIC
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const eventsList = document.getElementById("upcoming-list");
+    if (!eventsList) return; // Stop if the upcoming-list container doesn't exist on this page
+
+    const dataFolder = "_data";
+    let allEvents = [];
+
+    // Helper function to return SVGs matching your design based on the tag
+    function getIconSVG(tag) {
+        switch(tag) {
+            case 'Academic':
+                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`;
+            case 'Activity':
+                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
+            case 'Well-being':
+                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+            default: // Announcement
+                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>`;
+        }
+    }
+
+    async function fetchEvents() {
+        let id = 2; // Assuming files start at 2.md
+        let keepFetching = true;
+
+        while (keepFetching) {
+            try {
+                const mdResponse = await fetch(`${dataFolder}/${id}.md`);
+                if (!mdResponse.ok) {
+                    keepFetching = false;
+                    break;
+                }
+
+                const mdText = await mdResponse.text();
+                
+                let title = "Untitled";
+                let dateStr = ""; 
+                let rawDateStr = "";
+                let tags = [];
+
+                const fmRegex = /^---\s*[\r\n]+([\s\S]*?)[\r\n]+---\s*[\r\n]+([\s\S]*)$/;
+                const match = mdText.match(fmRegex);
+
+                if (match) {
+                    const fmText = match[1];
+
+                    // Extract Title
+                    const titleMatch = fmText.match(/title:\s*"?(.*?)"?\s*(?:\r?\n|$)/);
+                    if (titleMatch) title = titleMatch[1];
+
+                    // Extract Tags to map to CSS colors
+                    const tagsMatch = fmText.match(/tags:\s*\[(.*?)\]/);
+                    if (tagsMatch) {
+                        tags = tagsMatch[1].split(',').map(t => t.replace(/["']/g, '').trim());
+                    }
+
+                    // Extract Date
+                    const dateMatch = fmText.match(/date:\s*"?(.*?)"?\s*(?:\r?\n|$)/);
+                    if (dateMatch) {
+                        rawDateStr = dateMatch[1].trim();
+                        const dayMatch = rawDateStr.match(/\d{1,2}\/\d{1,2}\/\d{4}/);
+                        if (dayMatch) {
+                            dateStr = dayMatch[0];
+                        } else {
+                            dateStr = rawDateStr.split('T')[0];
+                        }
+                    }
+                }
+
+                // Default to Announcement styling if no tag is found
+                let primaryTag = tags.length > 0 ? tags[0] : "Announcement";
+                // Ensure format matches your CSS exactly
+                primaryTag = primaryTag.replace(/\s+/g, '-'); 
+
+                let eventDate = new Date();
+                if (dateStr) {
+                     eventDate = new Date(dateStr);
+                } else {
+                     eventDate = new Date(0); 
+                }
+
+                allEvents.push({
+                    id: id,
+                    title: title,
+                    dateObj: eventDate,
+                    displayDate: dateStr,
+                    rawDate: rawDateStr,
+                    theme: primaryTag
+                });
+
+                id++;
+            } catch (error) {
+                console.error(error);
+                keepFetching = false;
+            }
+        }
+
+        processAndRenderEvents();
+    }
+
+    function processAndRenderEvents() {
+        const now = new Date();
+        now.setHours(0, 0, 0, 0); // Reset today's time to midnight
+
+        const upcoming = [];
+        const past = [];
+
+        // Separate events based on date
+        allEvents.forEach(ev => {
+            if (ev.dateObj >= now) {
+                upcoming.push(ev);
+            } else {
+                past.push(ev);
+            }
+        });
+
+        // Sort upcoming events (closest first) and past events (most recent first)
+        upcoming.sort((a, b) => a.dateObj - b.dateObj);
+        past.sort((a, b) => b.dateObj - a.dateObj);
+
+        // Apply display rules: 3 upcoming, OR 1 past if no upcoming
+        let eventsToDisplay = [];
+        if (upcoming.length > 0) {
+            eventsToDisplay = upcoming.slice(0, 3);
+        } else if (past.length > 0) {
+            eventsToDisplay = past.slice(0, 1);
+        }
+
+        if (eventsToDisplay.length === 0) {
+            eventsList.innerHTML = "<p style='color: #666;'>No events scheduled.</p>";
+            return;
+        }
+
+        // Generate the HTML mapping exactly to your CSS
+        let html = "";
+        eventsToDisplay.forEach(ev => {
+            
+            let finalDisplayDate = ev.displayDate;
+            const timeMatch = ev.rawDate.match(/\d{2}:\d{2}/g);
+            if (timeMatch && timeMatch.length >= 2) {
+                finalDisplayDate += `, ${timeMatch[0]} - ${timeMatch[1]}`;
+            }
+
+            html += `
+                <a href="read.html?id=${ev.id}" class="event-card theme-${ev.theme}">
+                    <div class="event-icon-wrapper icon-${ev.theme}">
+                        ${getIconSVG(ev.theme)}
+                    </div>
+                    <div class="event-details">
+                        <h3 class="event-name">${ev.title}</h3>
+                        <p class="event-time">${finalDisplayDate}</p>
+                    </div>
+                </a>
+            `;
+        });
+
+        eventsList.innerHTML = html;
+    }
+
+    // Start execution
+    fetchEvents();
+});
+
+/* end of upcoming events fetching and linking part */
