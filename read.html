@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RAMSC Article</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  
+  <!-- Required for parsing Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- New script for the read page -->
+  <script defer src="js/read.js"></script>
+</head>
+<body>
+  <header class="site-header" data-header>
+    <div class="container nav-wrap">
+      <a class="logo" href="index.html" aria-label="RAMSC Home">
+        <div class="logo-circle">
+          <img src="assets/img/ramsclogo.png" alt="RAMSC Logo">
+        </div>
+        <span class="logo-text">RAMSC</span>
+      </a>
+      <nav id="site-nav" class="site-nav" role="navigation">
+        <ul>
+          <li><a href="index.html" class="btnsite">Home</a></li>
+          <li><a href="about_us.html" class="btnsite">About Us</a></li>
+          <li><a href="articles.html" class="btnsite active">Articles</a></li>
+          <li><a href="resource.html" class="btnsite">Resources and Services</a></li>
+          <li><a href="contact.html" class="btnsite">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container full-article-container">
+    <a href="articles.html" class="back-link">← Back to Articles</a>
+    <div id="full-article-content">
+        <!-- Injected via read.js -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="container smallprint">© <span data-year></span> RAMSC, Ramathibodi Medical Student’s Council.</div>
+    </div>
+  </footer>
+</body>
+</html>

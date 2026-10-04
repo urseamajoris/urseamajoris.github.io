@@ -1,13 +1,4 @@
 
-/*! main.js — Smooth navigation + robust reveal-on-scroll
-   RAMSC site utilities
-   - Adds `html.js` to enable CSS-gated animations
-   - Smooth anchor scroll with sticky header offset & reduced-motion respect
-   - Sticky header state, mobile nav (ARIA), close-on-link + ESC
-   - Reveal-on-scroll (IntersectionObserver) with safe fallback
-   - Lightbox and Members filters
-*/
-
 (function () {
   'use strict';
 
@@ -59,14 +50,8 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   // Mobile nav
-  const navToggle = document.querySelector('.nav-toggle');
-const siteNav   = document.querySelector('.site-nav');
-
-navToggle.addEventListener('click', () => {
-  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-  navToggle.setAttribute('aria-expanded', !expanded);
-  siteNav.classList.toggle('open');
-});
+  const nav = $('#site-nav');
+  const toggle = $('.nav-toggle');
   const openNav = () => {
     if (!nav) return;
     nav.classList.add('open');
@@ -252,26 +237,15 @@ navToggle.addEventListener('click', () => {
           const imgSrc = a.hero || 'assets/img/card.png';
           const dateStr = new Date(a.date).toLocaleDateString('en-GB');
           card.innerHTML = `
-          <a href="articles.html?id=${a.id}" class="card-link">
-            <img src="${imgSrc}" alt="${a.title}">
+          <a href="articles.html?id=${encodeURIComponent(a.id)}" class="card-link">
+            <img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(a.title)}">
             <div class="card-body">
-              <h3 class="card-titles">${a.title}</h3>
-              <p class="card-date"><time datetime="${a.date}">${dateStr}</time></p>
+              <h3 class="card-titles">${escapeHTML(a.title)}</h3>
+              <p class="card-date"><time datetime="${escapeHTML(a.date)}">${dateStr}</time></p>
             </div>
           </a>`;
           container.appendChild(card);
         });
-      articles.slice(0, 3).forEach(a => {
-        const card = document.createElement('article');
-        card.className = 'card reveal';
-        const imgSrc = a.hero || 'assets/img/card.png';
-        card.innerHTML = `
-          <a href="articles.html?id=${a.id}" class="card-link">
-            <img src="${imgSrc}" alt="${a.title}">
-            <div class="card-body"><h3 class="card-titles">${a.title}</h3></div>
-          </a>`;
-        container.appendChild(card);
-      });
     } catch (err) {
       console.error('Failed to load dashboard articles', err);
       container.innerHTML = '<p>Unable to load articles.</p>';
@@ -281,342 +255,390 @@ navToggle.addEventListener('click', () => {
   loadDashboardArticles();
 })();
 
+// ── Safe-rendering helpers ────────────────────────────────────────────────
+// Event/article text comes from the submission form, so never put it into
+// innerHTML unescaped.
+const ALLOWED_TAGS = ['Academic', 'Activity', 'Well-being', 'Announcement'];
 
-// Dashboard add up
-let slideIndex = 1;
-        
-        // This function displays the current slide and is called on page load
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            
-            slides[slideIndex-1].style.display = "flex";
-            dots[slideIndex-1].className += " active";
-        }
-
-        // Next/previous controls
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        // Thumbnail image controls
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        // Modal functions
-        function openModal(element) {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImage");
-            modal.style.display = "flex";
-            modalImg.src = element.src;
-        }
-
-        function closeModal() {
-            const modal = document.getElementById("imageModal");
-            modal.style.display = "none";
-        }
-
-        // Call showSlides() on page load to display the first slide
-        window.onload = function() {
-            showSlides(slideIndex);
-        };
-
-// End of dashboard add up 
-
-document.addEventListener("mousemove", (e) => {
-  const layers = document.querySelectorAll(".layer");
-  const x = (e.clientX / window.innerWidth - 0.5) * 2; 
-  const y = (e.clientY / window.innerHeight - 0.5) * 2;
-
-  layers.forEach(layer => {
-    const depth = layer.getAttribute("data-depth");
-    const moveX = x * depth * 30;  // adjust 30 for intensity
-    const moveY = y * depth * 30;
-
-    layer.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
-  });
-});
-document.addEventListener("mousemove", (e) => {
-  const layers = document.querySelectorAll(".layer");
-  const x = (e.clientX / window.innerWidth - 0.5) * 2; // -1 (left) → +1 (right)
-  const y = (e.clientY / window.innerHeight - 0.5) * 2; // -1 (top) → +1 (bottom)
-
-  layers.forEach(layer => {
-    const depth = layer.getAttribute("data-depth");
-    let moveX = x * depth * 13;
-    let moveY = y * depth * 13;
-
-    // default parallax shift
-    let transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
-
-    // Flask rotates with X
-    if (layer.classList.contains("flask")) {
-      const rotate = x * 15; // max ±30deg
-      transform += ` rotate(${rotate}deg)`;
-    }
-
-    // Aura scales with X
-    if (layer.classList.contains("aura")) {
-      const scale = 1 + (x * -0.07); 
-      transform += ` scale(${scale})`;
-    }
-
-    // Background scales with Y
-    if (layer.classList.contains("background")) {
-      const scale = 1 + (y * -0.05); 
-      // y=-1 (top) → scale=1.3 (bigger)
-      // y=+1 (bottom) → scale=0.7 (smaller)
-      transform += ` scale(${scale})`;
-    }
-
-    layer.style.transform = transform;
-  });
-});
-
-// Global variable to store the fetched data
-let eventsData = [];
-
-// Fetch the JSON file dynamically
-fetch('events.json')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        eventsData = data;
-        // Initial render and routing once data is successfully loaded
-        renderGrid(eventsData);
-        handleRouting();
-    })
-    .catch(error => {
-        console.error('Error loading events.json:', error);
-        document.getElementById('news-grid').innerHTML = '<p style="color: var(--muted);">Error loading articles. Please ensure events.json exists.</p>';
-    });
-
-// 1. Helper to parse DD/MM/YYYY into a JavaScript Date object
-function parseDate(dateStr) {
-    if (!dateStr) return new Date();
-    const parts = dateStr.split('/');
-    // new Date(Year, Month (0-11), Day)
-    return new Date(parts[2], parts[1] - 1, parts[0]);
+function escapeHTML(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, c => (
+        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
 }
 
-// 2. Helper to check if a date is within 30 days (past or future)
-function isWithin30Days(dateStr) {
-    if (!dateStr) return false;
-    const articleDate = parseDate(dateStr);
+// The form can submit several tags ("Academic, Activity"); return the valid ones.
+function getTags(event) {
+    const tags = String((event && event.tags) || '')
+        .split(',')
+        .map(t => t.trim())
+        .filter(t => ALLOWED_TAGS.includes(t));
+    return tags.length ? tags : ['Announcement'];
+}
+
+function formatEventDate(dateString) {
+    if (!dateString) return '';
+    const dateObj = new Date(dateString);
+    if (!isNaN(dateObj)) {
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        return `${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+    }
+    return dateString;
+}
+
+function sortEvents(eventsData) {
+    return eventsData.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        
+        if (dateA.getTime() !== dateB.getTime()) {
+            return dateA.getTime() - dateB.getTime();
+        }
+        
+        // Add fallback for missing time property
+        const timeA = (a.time || '00:00').split('-')[0].trim();
+        const timeB = (b.time || '00:00').split('-')[0].trim();
+        
+        if (timeA < timeB) return -1;
+        if (timeA > timeB) return 1;
+        return 0;
+    });
+}
+
+// Upcoming events rendering
+function renderUpcomingEvents(eventsData) {
+    const list = document.getElementById('upcoming-list');
+    if (!list) return;
+    list.innerHTML = '';
+
+    const icons = {
+        'Academic': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/><line x1="2" y1="22" x2="22" y2="22"/></svg>',
+        'Activity': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><circle cx="12" cy="12" r="3"/></svg>',
+        'Well-being': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>',
+        'Announcement': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/></svg>'
+    };
+
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
     
-    // Calculate difference in days
-    const diffTime = Math.abs(today - articleDate);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    
-    return diffDays <= 30;
-}
+    const futureEvents = eventsData.filter(event => {
+        return new Date(event.date) >= today;
+    });
 
-// 3. Render the Grid
-function renderGrid(articles) {
-    const grid = document.getElementById('news-grid');
-    grid.innerHTML = ''; // Clear existing
-
-    // Filter for recent news (within 30 days)
-    const recentArticles = articles.filter(article => isWithin30Days(article.date));
-
-    if (recentArticles.length === 0) {
-        grid.innerHTML = '<p style="grid-column: 1 / -1; color: var(--muted);">No recent articles found in the last 30 days.</p>';
-        return;
-    }
-
-    recentArticles.forEach((article, index) => {
-        // Use ID if it exists in your JSON, otherwise fallback to array index
-        const articleId = article.id !== undefined ? article.id : index;
+    futureEvents.slice(0, 3).forEach((event) => {
+        const card = document.createElement('div');
+        const formattedDate = formatEventDate(event.date); 
         
-        // Handle missing/placeholder images using your theme's surface color
-        const imgSrc = (article.imageLink === "-" || !article.imageLink) 
-            ? 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="110"><rect width="160" height="110" fill="%23f8fafc"/></svg>' 
-            : article.imageLink;
-
-        const cardHTML = `
-            <a href="#article-${articleId}" class="article-card">
-                <img src="${imgSrc}" alt="Thumbnail" class="article-img">
-                <div class="article-content">
-                    <h3 class="article-title">${article.title}</h3>
-                    <p class="article-desc">${article.description}</p>
-                    <span class="article-meta">${article.category || 'Announcement'} | ${article.date}</span>
-                </div>
-            </a>
-        `;
-        grid.innerHTML += cardHTML;
+        // Ensure a valid tag string exists
+        const safeTag = getTags(event)[0];
+        const iconSvg = icons[safeTag] || icons['Announcement'];
+        const safeTime = event.time || 'TBA';
+        
+        card.className = 'event-card theme-' + safeTag;
+        
+        card.innerHTML = `<div class="event-icon-wrapper icon-${safeTag}">${iconSvg}</div>
+                          <div class="event-details">
+                              <h4 class="event-name">${escapeHTML(event.title)}</h4>
+                              <p class="event-time">${escapeHTML(formattedDate)} | ${escapeHTML(safeTime)}</p>
+                          </div>`;
+        
+        list.appendChild(card);
     });
 }
 
-// 4. Render Single Article dynamically based on URL Hash
-function renderSingleArticle(articles, id) {
-    // Find by ID, or fallback to array index
-    const article = articles.find(a => a.id == id) || articles[id];
-    
-    if (!article) return;
+// Format event date to "DD MMM YYYY"
+let currentDate = new Date();
+let currentMonth = currentDate.getMonth() + 1;
+let currentYear = currentDate.getFullYear();
+let globalEvents = [];
+let currentFilter = 'All';
 
-    const content = document.getElementById('single-content');
-    content.innerHTML = `
-        <h1 style="margin-top:0;">${article.title}</h1>
-        <p style="color: var(--muted);">
-            <strong>Date:</strong> ${article.date} | 
-            <strong>Time:</strong> ${article.time || 'TBA'}
-        </p>
-        <p style="color: var(--muted);"><strong>Category:</strong> ${article.category || 'Announcement'}</p>
-        <hr style="border: 0; border-top: 1px solid var(--surface); margin: 20px 0;">
-        ${(article.imageLink && article.imageLink !== "-") ? `<img src="${article.imageLink}" style="max-width: 100%; border-radius: var(--radius); margin-bottom: 20px;" />` : ''}
-        <p style="font-size: 1.1rem; line-height: 1.6;">${article.description}</p>
-    `;
+function initCalendar(eventsData) {
+    globalEvents = eventsData;
+    renderCalendar(currentMonth, currentYear);
 }
 
-// 5. Router: Detects URL changes (the "tail link" / hash) and switches views
-function handleRouting() {
-    const hash = window.location.hash; // e.g., "#article-1"
-    const homeView = document.getElementById('home-view');
-    const singleView = document.getElementById('single-view');
+// Render calendar for a given month and year
+function renderCalendar(month, year) {
+    const grid = document.getElementById('calendar-grid');
+    const headerDisplay = document.getElementById('month-year-display');
+    if (!grid || !headerDisplay) return;
 
-    if (hash.startsWith('#article-')) {
-        // Show single article
-        const id = hash.replace('#article-', '');
-        renderSingleArticle(eventsData, id); // pass the globally fetched data
-        homeView.style.display = 'none';
-        singleView.style.display = 'block';
-        window.scrollTo(0, 0);
-    } else {
-        // Show home grid
-        homeView.style.display = 'flex';
-        singleView.style.display = 'none';
-    }
-}
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    headerDisplay.textContent = months[month - 1] + ' ' + year;
 
-// Listen for URL changes
-window.addEventListener('hashchange', handleRouting);
+    const daysInMonth = new Date(year, month, 0).getDate();
+    const startDay = new Date(year, month - 1, 1).getDay();
 
-// article
+    grid.innerHTML = '';
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Helper function to convert Google Drive viewer links to direct image links
-    function formatDriveLink(url) {
-        const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
-        if (match && match[1]) {
-            return `https://drive.google.com/uc?export=view&id=${match[1]}`;
-        }
-        return url; 
+    let i = 0;
+    while (i < startDay) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.className = 'calendar-day empty-day';
+        grid.appendChild(emptyDiv);
+        i++;
     }
 
-    // Helper to get CSS class for tags
-    function getTagClass(tag) {
-        const tagMap = {
-            "Academic": "tag-academic",
-            "Activity": "tag-activity",
-            "Well-being": "tag-well-being",
-            "Announcement": "tag-announcement"
-        };
-        return tagMap[tag] || "tag-activity";
-    }
+    const tagColors = {
+        'Academic': '#37beb0',
+        'Activity': '#ff4d4d',
+        'Well-being': '#ff85b4',
+        'Announcement': '#a694fb'
+    };
 
-    // Fetch and process data
-    fetch('events.json')
-        .then(response => response.json())
-        .then(data => {
-            const today = new Date();
-            const fourteenDaysFromNow = new Date(today);
-            fourteenDaysFromNow.setDate(today.getDate() + 14);
+    let j = 1;
+    while (j <= daysInMonth) {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'calendar-day';
 
-            const recentHighlights = [];
-            const moreNews = [];
+        const dayNum = document.createElement('div');
+        dayNum.className = 'day-number';
+        dayNum.textContent = j;
+        dayDiv.appendChild(dayNum);
 
-            data.forEach(event => {
-                const eventDate = new Date(event.date);
+        if (globalEvents && Array.isArray(globalEvents)) {
+            globalEvents.forEach(event => {
+                if (!event.date) return;
                 
-                // If event is upcoming and within 14 days
-                if (eventDate >= today && eventDate <= fourteenDaysFromNow) {
-                    recentHighlights.push(event);
-                } else {
-                    moreNews.push(event);
+                const parts = event.date.split('/');
+                if (parts.length !== 3) return;
+                
+                const m = parseInt(parts[0].trim(), 10);
+                const d = parseInt(parts[1].trim(), 10);
+                const y = parseInt(parts[2].trim(), 10);
+
+                if (d === j && m === month && y === year) {
+                    const eventTags = getTags(event);
+                    const cleanTag = eventTags[0];
+                    
+                    if (currentFilter === 'All' || eventTags.includes(currentFilter)) {
+                        const eventDiv = document.createElement('div');
+                        eventDiv.className = 'event';
+                        
+                        eventDiv.style.backgroundColor = tagColors[cleanTag] || tagColors['Announcement'];
+                        eventDiv.style.color = '#ffffff'; 
+                        
+                        eventDiv.textContent = event.title;
+                        dayDiv.appendChild(eventDiv);
+                    }
                 }
             });
-
-            renderRecentHighlights(recentHighlights);
-            renderMoreNews(moreNews);
-        })
-        .catch(error => console.error('Error loading events:', error));
-
-    function createCardHTML(event) {
-        const imgSrc = formatDriveLink(event.cover);
-        const tagClass = getTagClass(event.tags);
-        
-        return `
-            <div class="news-card">
-                <div class="news-card-img">
-                    <img src="${imgSrc}" alt="Cover image">
-                </div>
-                <div class="news-card-content">
-                    <h3 class="title-fade">${event.title}</h3>
-                    <div class="meta-info">
-                        <span>${event.author}</span>
-                        <span class="tag ${tagClass}">${event.tags}</span>
-                    </div>
-                    <div class="paragraphs">
-                        ${event.date} | ${event.time} <br>
-                        ${event.paragraphs}
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    function renderRecentHighlights(events) {
-        const container = document.getElementById('recent-highlights-container');
-        if (events.length === 0) {
-            container.innerHTML = '<p style="color: #666;">No upcoming events in the next 14 days.</p>';
-            return;
         }
-        container.innerHTML = events.map(createCardHTML).join('');
+        grid.appendChild(dayDiv);
+        j++;
+    }
+}
+
+const filterBtns = document.querySelectorAll('.filter-btn');
+if (filterBtns.length > 0) {
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            currentFilter = e.target.getAttribute('data-tag');
+            renderCalendar(currentMonth, currentYear);
+        });
+    });
+}
+
+const prevMonthBtn = document.getElementById('prev-month');
+if (prevMonthBtn) prevMonthBtn.addEventListener('click', () => {
+    currentMonth--;
+    if (currentMonth < 1) {
+        currentMonth = 12;
+        currentYear--;
+    }
+    renderCalendar(currentMonth, currentYear);
+});
+
+const nextMonthBtn = document.getElementById('next-month');
+if (nextMonthBtn) nextMonthBtn.addEventListener('click', () => {
+    currentMonth++;
+    if (currentMonth > 12) {
+        currentMonth = 1;
+        currentYear++;
+    }
+    renderCalendar(currentMonth, currentYear);
+});
+
+// Fetch events data from GitHub
+const githubUrl = 'https://raw.githubusercontent.com/Abhi-Ya/RAMSC/main/events.json?t=' + new Date().getTime();
+
+if (document.getElementById('calendar-grid') || document.getElementById('upcoming-list')) fetch(githubUrl)
+    .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.json(); })
+    .then(data => {
+        const sortedData = sortEvents(data);
+        initCalendar(sortedData);
+        renderUpcomingEvents(sortedData);
+    })
+    .catch(error => console.error("Error loading events:", error));
+
+
+// upcoming event fetching and linking part 
+// ==========================================
+// UPCOMING EVENTS WIDGET LOGIC
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const eventsList = document.getElementById("upcoming-list");
+    if (!eventsList) return; // Stop if the upcoming-list container doesn't exist on this page
+
+    const dataFolder = "_data";
+    let allEvents = [];
+
+    // Helper function to return SVGs matching your design based on the tag
+    function getIconSVG(tag) {
+        switch(tag) {
+            case 'Academic':
+                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`;
+            case 'Activity':
+                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
+            case 'Well-being':
+                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+            default: // Announcement
+                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>`;
+        }
     }
 
-    function renderMoreNews(events) {
-        const container = document.getElementById('more-news-container');
-        const loadMoreBtn = document.getElementById('load-more-btn');
-        
-        // 2 columns x 6 rows = 12 items max initially
-        let currentDisplayCount = 12; 
+    async function fetchEvents() {
+        let id = 2; // Assuming files start at 2.md
+        let keepFetching = true;
 
-        function renderItems(count) {
-            const itemsToShow = events.slice(0, count);
-            container.innerHTML = itemsToShow.map(createCardHTML).join('');
-            
-            if (events.length > count) {
-                loadMoreBtn.classList.remove('hidden');
-            } else {
-                loadMoreBtn.classList.add('hidden');
+        while (keepFetching) {
+            try {
+                const mdResponse = await fetch(`${dataFolder}/${id}.md`);
+                if (!mdResponse.ok) {
+                    keepFetching = false;
+                    break;
+                }
+
+                const mdText = await mdResponse.text();
+                
+                let title = "Untitled";
+                let dateStr = ""; 
+                let rawDateStr = "";
+                let tags = [];
+
+                const fmRegex = /^---\s*[\r\n]+([\s\S]*?)[\r\n]+---\s*[\r\n]+([\s\S]*)$/;
+                const match = mdText.match(fmRegex);
+
+                if (match) {
+                    const fmText = match[1];
+
+                    // Extract Title
+                    const titleMatch = fmText.match(/title:\s*"?(.*?)"?\s*(?:\r?\n|$)/);
+                    if (titleMatch) title = titleMatch[1];
+
+                    // Extract Tags to map to CSS colors
+                    const tagsMatch = fmText.match(/tags:\s*\[(.*?)\]/);
+                    if (tagsMatch) {
+                        tags = tagsMatch[1].split(',').map(t => t.replace(/["']/g, '').trim());
+                    }
+
+                    // Extract Date
+                    const dateMatch = fmText.match(/date:\s*"?(.*?)"?\s*(?:\r?\n|$)/);
+                    if (dateMatch) {
+                        rawDateStr = dateMatch[1].trim();
+                        const dayMatch = rawDateStr.match(/\d{1,2}\/\d{1,2}\/\d{4}/);
+                        if (dayMatch) {
+                            dateStr = dayMatch[0];
+                        } else {
+                            dateStr = rawDateStr.split('T')[0];
+                        }
+                    }
+                }
+
+                // Default to Announcement styling if no tag is found
+                let primaryTag = tags.length > 0 ? tags[0] : "Announcement";
+                // Ensure format matches your CSS exactly
+                primaryTag = primaryTag.replace(/\s+/g, '-'); 
+
+                let eventDate = new Date();
+                if (dateStr) {
+                     eventDate = new Date(dateStr);
+                } else {
+                     eventDate = new Date(0); 
+                }
+
+                allEvents.push({
+                    id: id,
+                    title: title,
+                    dateObj: eventDate,
+                    displayDate: dateStr,
+                    rawDate: rawDateStr,
+                    theme: primaryTag
+                });
+
+                id++;
+            } catch (error) {
+                console.error(error);
+                keepFetching = false;
             }
         }
 
-        renderItems(currentDisplayCount);
-
-        loadMoreBtn.addEventListener('click', () => {
-            currentDisplayCount += 12; // Load 12 more on click
-            renderItems(currentDisplayCount);
-        });
+        processAndRenderEvents();
     }
+
+    function processAndRenderEvents() {
+        const now = new Date();
+        now.setHours(0, 0, 0, 0); // Reset today's time to midnight
+
+        const upcoming = [];
+        const past = [];
+
+        // Separate events based on date
+        allEvents.forEach(ev => {
+            if (ev.dateObj >= now) {
+                upcoming.push(ev);
+            } else {
+                past.push(ev);
+            }
+        });
+
+        // Sort upcoming events (closest first) and past events (most recent first)
+        upcoming.sort((a, b) => a.dateObj - b.dateObj);
+        past.sort((a, b) => b.dateObj - a.dateObj);
+
+        // Apply display rules: 3 upcoming, OR 1 past if no upcoming
+        let eventsToDisplay = [];
+        if (upcoming.length > 0) {
+            eventsToDisplay = upcoming.slice(0, 3);
+        } else if (past.length > 0) {
+            eventsToDisplay = past.slice(0, 1);
+        }
+
+        if (eventsToDisplay.length === 0) {
+            eventsList.innerHTML = "<p style='color: #666;'>No events scheduled.</p>";
+            return;
+        }
+
+        // Generate the HTML mapping exactly to your CSS
+        let html = "";
+        eventsToDisplay.forEach(ev => {
+            
+            let finalDisplayDate = ev.displayDate;
+            const timeMatch = ev.rawDate.match(/\d{2}:\d{2}/g);
+            if (timeMatch && timeMatch.length >= 2) {
+                finalDisplayDate += `, ${timeMatch[0]} - ${timeMatch[1]}`;
+            }
+
+            html += `
+                <a href="read.html?id=${ev.id}" class="event-card theme-${ev.theme}">
+                    <div class="event-icon-wrapper icon-${ev.theme}">
+                        ${getIconSVG(ev.theme)}
+                    </div>
+                    <div class="event-details">
+                        <h3 class="event-name">${ev.title}</h3>
+                        <p class="event-time">${finalDisplayDate}</p>
+                    </div>
+                </a>
+            `;
+        });
+
+        eventsList.innerHTML = html;
+    }
+
+    // Start execution
+    fetchEvents();
 });
 
-// end article
+/* end of upcoming events fetching and linking part */
