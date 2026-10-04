@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Announcement Request — RAMSC</title>
+  <meta name="description"
+    content="Request an announcement on the RAMSC website. For Mahidol University students and staff." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/announcement.js"></script>
+  <script async defer src="https://accounts.google.com/gsi/client"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header / Navigation (same as the rest of the site) -->
+  <header class="site-header" data-header>
+    <div class="container nav-wrap">
+      <a class="logo" href="index.html" aria-label="RAMSC Home">
+        <div class="logo-circle">
+          <img src="assets/img/ramsclogo.png" alt="RAMSC Logo">
+        </div>
+        <span class="logo-text">RAMSC</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <nav id="site-nav" class="site-nav" role="navigation">
+        <ul>
+          <li><a href="index.html" class="btnsite">Home</a></li>
+          <li><a href="about_us.html" class="btnsite">About Us</a></li>
+          <li><a href="articles.html" class="btnsite">Articles</a></li>
+          <li><a href="resource.html" aria-current="page" class="btnsite">Resources and Services</a></li>
+          <li><a href="contact.html" class="btnsite">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="ann-page">
+
+    <section class="ann-hero" aria-labelledby="ann-heading">
+      <p class="ann-eyebrow">Resources &amp; Services</p>
+      <h1 class="ann-hero-title" id="ann-heading">Announcement Request</h1>
+      <p class="ann-hero-sub">
+        Use this form to request the publication of an announcement on the RAMSC website.<br />
+        <strong>Available for Mahidol University students and staff.</strong>
+      </p>
+    </section>
+
+    <div class="ann-wrap">
+
+      <!-- Sign-in (shown first) -->
+      <div id="signinView" class="ann-card ann-signin">
+        <h2>Sign in with your Mahidol account</h2>
+        <p>Use your @mahidol.ac.th, @student.mahidol.ac.th or @student.mahidol.edu Google account.</p>
+        <div id="googleBtn" class="ann-gbtn"></div>
+        <p class="ann-error" id="signinError" role="alert" style="margin-top:1rem"></p>
+      </div>
+
+      <!-- Form (shown after sign-in) -->
+      <form id="announcementForm" class="hidden" novalidate>
+
+        <div class="ann-user">
+          <span>Signed in as <strong id="userName"></strong> (<span id="userEmail"></span>)</span>
+          <button type="button" id="signOutBtn" class="ann-linkbtn">Not you? Sign out</button>
+        </div>
+
+        <section class="ann-card" aria-labelledby="ann-s1">
+          <h2 class="ann-title" id="ann-s1"><span class="ann-num">01</span> Announcement Details</h2>
+
+          <div class="ann-field">
+            <label for="title" class="ann-label">Title <span class="ann-req">*</span></label>
+            <input class="ann-input" type="text" id="title" name="title" maxlength="200"
+              placeholder="e.g. Syringe Game 2025 — Sign Up Now!" />
+            <p class="ann-error" id="err-title"></p>
+          </div>
+
+          <div class="ann-row">
+            <div class="ann-field">
+              <label for="date" class="ann-label">Date <span class="ann-req">*</span></label>
+              <input class="ann-input" type="date" id="date" name="date" />
+              <p class="ann-hint">Recorded as MM/DD/YYYY.</p>
+              <p class="ann-error" id="err-date"></p>
+            </div>
+
+            <div class="ann-field">
+              <label for="time_period" class="ann-label">Time <span class="ann-req">*</span></label>
+              <input class="ann-input" type="text" id="time_period" name="time_period" placeholder="09:00 - 12:00" />
+              <p class="ann-hint">24-hour format, e.g. "09:00 - 12:00".</p>
+              <p class="ann-error" id="err-time_period"></p>
+            </div>
+          </div>
+
+          <div class="ann-field">
+            <label for="detail" class="ann-label">Paragraphs</label>
+            <textarea class="ann-input" id="detail" name="detail" rows="5" maxlength="5000"
+              placeholder="Provide all relevant details about the announcement…"></textarea>
+            <p class="ann-error" id="err-detail"></p>
+          </div>
+        </section>
+
+        <section class="ann-card" aria-labelledby="ann-s2">
+          <h2 class="ann-title" id="ann-s2"><span class="ann-num">02</span> Cover</h2>
+          <div class="ann-field">
+            <label for="cover" class="ann-label">Cover Image Link <span class="ann-req">*</span></label>
+            <input class="ann-input" type="url" id="cover" name="cover" placeholder="https://drive.google.com/…" />
+            <p class="ann-hint">
+              Required. Link to a cover image (Google Drive, Imgur, etc). Shape 1:1.5 (long horizontal).
+            </p>
+            <p class="ann-error" id="err-cover"></p>
+          </div>
+        </section>
+
+        <section class="ann-card" aria-labelledby="ann-s3">
+          <h2 class="ann-title" id="ann-s3"><span class="ann-num">03</span> Tags</h2>
+          <p class="ann-desc">Select all that apply. <span class="ann-req">*</span></p>
+          <div class="ann-checks">
+            <label class="ann-check" data-tag="Academic"><input type="checkbox" name="categories"
+                value="Academic" /><span class="ann-box" aria-hidden="true"></span>Academic</label>
+            <label class="ann-check" data-tag="Activity"><input type="checkbox" name="categories"
+                value="Activity" /><span class="ann-box" aria-hidden="true"></span>Activity</label>
+            <label class="ann-check" data-tag="Well-being"><input type="checkbox" name="categories"
+                value="Well-being" /><span class="ann-box" aria-hidden="true"></span>Well-being</label>
+            <label class="ann-check" data-tag="Announcement"><input type="checkbox" name="categories"
+                value="Announcement" /><span class="ann-box" aria-hidden="true"></span>Announcement</label>
+          </div>
+          <p class="ann-error" id="err-categories"></p>
+        </section>
+
+        <div class="ann-actions">
+          <p class="ann-note">
+            By submitting, your request will be reviewed by the RAMSC team.
+            Approval status will be updated in our records.
+          </p>
+          <button type="submit" id="submitBtn" class="ann-submit">
+            <span id="btnText">Submit Request</span>
+            <span id="btnSpinner" class="ann-spinner hidden"></span>
+          </button>
+        </div>
+
+        <div id="statusBanner" class="ann-banner hidden" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </main>
+
+  <!-- footer (same as the rest of the site) -->
+  <div class="footers">
+    <div class="col-0">
+      <div>
+        <p><img src="assets/img/ramsclogo.png" alt="" class="footlogo"></p>
+      </div>
+    </div>
+    <div class="col-1">
+      <h3 class="HText">Contact</h3>
+      <a>Chakri Naruebodindra Medical Institute, 111-14 Suwannabhumi Canal Rd,<br> Bang Phli, Samut Prakan 10540</a>
+      <a>📞 : 0 2201 2193 / 1542 / 2990</a>
+      <a>✉️ : rama.med@gmail.com</a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/share/1jkeBp5w3v/?mibextid=wwXIfr" target="_blank" rel="noopener"><img
+            src="assets/img/About-fb.webp" alt="Facebook" class="footimg"></a>
+        <a href="https://www.instagram.com/ramsc.official/" target="_blank" rel="noopener"><img
+            src="assets/img/About-ig.webp" alt="Instagram" class="footimg"></a>
+        <a href="https://line.me/R/ti/p/@851bivqg" target="_blank" rel="noopener"><img src="assets/img/About-li.webp"
+            alt="Line" class="footimg"></a>
+      </div>
+    </div>
+    <div class="col-2">
+      <h3 class="HText">Links</h3>
+      <a class="btnfoot" href="articles.html">Recent News</a>
+      <a class="btnfoot" href="https://forms.gle/SZhyGMjeBz5TBmzN9">Evaluation Form</a>
+    </div>
+    <div class="col-3">
+      <h3 class="HText">Pages</h3>
+      <a class="btnfoot" href="index.html">Main</a>
+      <a class="btnfoot" href="about_us.html">About us</a>
+      <a class="btnfoot" href="articles.html">Articles</a>
+      <a class="btnfoot" href="resource.html">Resources and Services</a>
+      <a class="btnfoot" href="contact.html">Contact</a>
+      <a class="btnfoot" href="faqs.html">FAQs</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="container smallprint">© <span data-year></span> RAMSC, Ramathibodi Medical Student’s Council.</div>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -246,26 +246,15 @@
           const imgSrc = a.hero || 'assets/img/card.png';
           const dateStr = new Date(a.date).toLocaleDateString('en-GB');
           card.innerHTML = `
-          <a href="articles.html?id=${a.id}" class="card-link">
-            <img src="${imgSrc}" alt="${a.title}">
+          <a href="articles.html?id=${encodeURIComponent(a.id)}" class="card-link">
+            <img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(a.title)}">
             <div class="card-body">
-              <h3 class="card-titles">${a.title}</h3>
-              <p class="card-date"><time datetime="${a.date}">${dateStr}</time></p>
+              <h3 class="card-titles">${escapeHTML(a.title)}</h3>
+              <p class="card-date"><time datetime="${escapeHTML(a.date)}">${dateStr}</time></p>
             </div>
           </a>`;
           container.appendChild(card);
         });
-      articles.slice(0, 3).forEach(a => {
-        const card = document.createElement('article');
-        card.className = 'card reveal';
-        const imgSrc = a.hero || 'assets/img/card.png';
-        card.innerHTML = `
-          <a href="articles.html?id=${a.id}" class="card-link">
-            <img src="${imgSrc}" alt="${a.title}">
-            <div class="card-body"><h3 class="card-titles">${a.title}</h3></div>
-          </a>`;
-        container.appendChild(card);
-      });
     } catch (err) {
       console.error('Failed to load dashboard articles', err);
       container.innerHTML = '<p>Unable to load articles.</p>';
@@ -275,23 +264,24 @@
   loadDashboardArticles();
 })();
 
-// Event sorting function
-function sortEvents(eventsData) {
-    return eventsData.sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        
-        if (dateA.getTime() !== dateB.getTime()) {
-            return dateA.getTime() - dateB.getTime();
-        }
-        
-        const timeA = a.time.split('-')[0].trim();
-        const timeB = b.time.split('-')[0].trim();
-        
-        if (timeA < timeB) return -1;
-        if (timeA > timeB) return 1;
-        return 0;
-    });
+// ── Safe-rendering helpers ────────────────────────────────────────────────
+// Event/article text comes from the submission form, so never put it into
+// innerHTML unescaped.
+const ALLOWED_TAGS = ['Academic', 'Activity', 'Well-being', 'Announcement'];
+
+function escapeHTML(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, c => (
+        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
+}
+
+// The form can submit several tags ("Academic, Activity"); return the valid ones.
+function getTags(event) {
+    const tags = String((event && event.tags) || '')
+        .split(',')
+        .map(t => t.trim())
+        .filter(t => ALLOWED_TAGS.includes(t));
+    return tags.length ? tags : ['Announcement'];
 }
 
 function formatEventDate(dateString) {
@@ -348,7 +338,7 @@ function renderUpcomingEvents(eventsData) {
         const formattedDate = formatEventDate(event.date); 
         
         // Ensure a valid tag string exists
-        const safeTag = (event.tags || 'Announcement').trim();
+        const safeTag = getTags(event)[0];
         const iconSvg = icons[safeTag] || icons['Announcement'];
         const safeTime = event.time || 'TBA';
         
@@ -356,8 +346,8 @@ function renderUpcomingEvents(eventsData) {
         
         card.innerHTML = `<div class="event-icon-wrapper icon-${safeTag}">${iconSvg}</div>
                           <div class="event-details">
-                              <h4 class="event-name">${event.title}</h4>
-                              <p class="event-time">${formattedDate} | ${safeTime}</p>
+                              <h4 class="event-name">${escapeHTML(event.title)}</h4>
+                              <p class="event-time">${escapeHTML(formattedDate)} | ${escapeHTML(safeTime)}</p>
                           </div>`;
         
         list.appendChild(card);
@@ -427,9 +417,10 @@ function renderCalendar(month, year) {
                 const y = parseInt(parts[2].trim(), 10);
 
                 if (d === j && m === month && y === year) {
-                    const cleanTag = (event.tags || 'Announcement').trim();
+                    const eventTags = getTags(event);
+                    const cleanTag = eventTags[0];
                     
-                    if (currentFilter === 'All' || cleanTag === currentFilter) {
+                    if (currentFilter === 'All' || eventTags.includes(currentFilter)) {
                         const eventDiv = document.createElement('div');
                         eventDiv.className = 'event';
                         
@@ -459,7 +450,8 @@ if (filterBtns.length > 0) {
     });
 }
 
-document.getElementById('prev-month').addEventListener('click', () => {
+const prevMonthBtn = document.getElementById('prev-month');
+if (prevMonthBtn) prevMonthBtn.addEventListener('click', () => {
     currentMonth--;
     if (currentMonth < 1) {
         currentMonth = 12;
@@ -468,7 +460,8 @@ document.getElementById('prev-month').addEventListener('click', () => {
     renderCalendar(currentMonth, currentYear);
 });
 
-document.getElementById('next-month').addEventListener('click', () => {
+const nextMonthBtn = document.getElementById('next-month');
+if (nextMonthBtn) nextMonthBtn.addEventListener('click', () => {
     currentMonth++;
     if (currentMonth > 12) {
         currentMonth = 1;
@@ -480,8 +473,8 @@ document.getElementById('next-month').addEventListener('click', () => {
 // Fetch events data from GitHub
 const githubUrl = 'https://raw.githubusercontent.com/Abhi-Ya/RAMSC/main/events.json?t=' + new Date().getTime();
 
-fetch(githubUrl)
-    .then(response => response.json())
+if (document.getElementById('calendar-grid') || document.getElementById('upcoming-list')) fetch(githubUrl)
+    .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.json(); })
     .then(data => {
         const sortedData = sortEvents(data);
         initCalendar(sortedData);

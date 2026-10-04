@@ -1,3 +1,4 @@
+
 /* RAMSC v2 — styles.css (patched & responsive) */
 
 :root {
@@ -2296,14 +2297,6 @@ body {
     align-items: center;
 }
 
-.calendar-header {
-    background-color: #e2f3f1;
-    padding: 20px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .calendar-header h2 {
     margin: 0;
     color: #5ab3a9;
@@ -2489,3 +2482,353 @@ body {
 .Activity { background-color: #ff4d4d; }
 .Well-being { background-color: #ff85b4; }
 .Announcement { background-color: #a694fb; }
+/* ==========================================================================
+   === ANNOUNCEMENT REQUEST FORM (announcement.html) ===
+   Every selector is namespaced .ann-* and scoped by .ann-page, so nothing here
+   can collide with the rules above. Header/footer come from the site itself.
+   ========================================================================== */
+.ann-page {
+  --ann-navy: #0d2146;
+  --ann-navy-mid: #1a3a6b;
+  --ann-gold: #b8962e;
+  --ann-text: #1c2b3a;
+  --ann-muted: #5a6a7a;
+  --ann-error: #c0392b;
+  --ann-success: #1a6b3a;
+  --ann-border: #c8d4e3;
+  --ann-radius: 8px;
+  --ann-ease: 0.2s ease;
+  font-family: "Sarabun", "Noto Sans Thai", "Segoe UI", system-ui, sans-serif;
+  color: var(--ann-text);
+  line-height: 1.65;
+}
+/* The global `* { font-family }` reset higher up would otherwise win on every child */
+.ann-page * {
+  font-family: inherit;
+}
+
+/* Hero */
+.ann-hero {
+  background: linear-gradient(135deg, var(--ann-navy) 0%, var(--ann-navy-mid) 100%);
+  color: #fff;
+  padding: 3.5rem 1.5rem 3rem;
+  text-align: center;
+  border-bottom: 3px solid var(--ann-gold);
+}
+.ann-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ann-gold);
+  margin-bottom: 0.6rem;
+}
+.ann-hero-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+.ann-hero-sub {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Layout + cards */
+.ann-wrap {
+  max-width: 760px;
+  margin: 2.5rem auto 4rem;
+  padding: 0 1.25rem;
+}
+.ann-card {
+  background: #fff;
+  border: 1px solid var(--ann-border);
+  border-radius: 12px;
+  padding: 2rem 2rem 1.75rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 4px rgba(13, 33, 70, 0.06);
+}
+.ann-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ann-navy);
+  margin-bottom: 1.4rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1.5px solid #e8edf5;
+}
+.ann-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  background: var(--ann-navy);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.ann-desc {
+  font-size: 0.875rem;
+  color: var(--ann-muted);
+  margin-bottom: 1rem;
+}
+
+/* Sign-in card + signed-in chip */
+.ann-signin {
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+.ann-signin h2 {
+  color: var(--ann-navy);
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+.ann-signin p {
+  color: var(--ann-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+.ann-gbtn {
+  display: flex;
+  justify-content: center;
+  min-height: 44px;
+}
+.ann-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: #e8edf5;
+  border: 1px solid var(--ann-border);
+  border-radius: var(--ann-radius);
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+.ann-user strong {
+  color: var(--ann-navy);
+}
+.ann-linkbtn {
+  background: none;
+  border: none;
+  color: #b91c1c;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* Fields */
+.ann-field {
+  margin-bottom: 1.25rem;
+}
+.ann-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.ann-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ann-navy);
+  margin-bottom: 0.35rem;
+}
+.ann-req {
+  color: var(--ann-error);
+  margin-left: 2px;
+}
+.ann-input {
+  width: 100%;
+  padding: 0.65rem 0.875rem;
+  border: 1.5px solid var(--ann-border);
+  border-radius: var(--ann-radius);
+  font-size: 0.9375rem;
+  color: var(--ann-text);
+  background: #fff;
+  transition: border-color var(--ann-ease), box-shadow var(--ann-ease);
+  outline: none;
+}
+.ann-input:focus {
+  border-color: var(--ann-navy-mid);
+  box-shadow: 0 0 0 3px rgba(26, 58, 107, 0.12);
+}
+.ann-input.ann-invalid {
+  border-color: var(--ann-error);
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+}
+textarea.ann-input {
+  resize: vertical;
+  min-height: 120px;
+}
+.ann-hint {
+  font-size: 0.78rem;
+  color: var(--ann-muted);
+  margin-top: 0.3rem;
+}
+.ann-error {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ann-error);
+  margin-top: 0.3rem;
+  min-height: 1em;
+}
+
+/* Tag checkboxes: coloured like the calendar tags; keyboard accessible */
+.ann-checks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+.ann-check {
+  --tag: #1a3a6b;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.9rem;
+  padding: 0.55rem 0.75rem;
+  background: #fff;
+  border: 1.5px solid var(--ann-border);
+  border-radius: var(--ann-radius);
+  transition: border-color var(--ann-ease), background var(--ann-ease);
+}
+.ann-check[data-tag="Academic"] { --tag: #37beb0; }
+.ann-check[data-tag="Activity"] { --tag: #ff4d4d; }
+.ann-check[data-tag="Well-being"] { --tag: #ff85b4; }
+.ann-check[data-tag="Announcement"] { --tag: #a694fb; }
+.ann-check:hover {
+  border-color: var(--tag);
+}
+.ann-check input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+.ann-box {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 2px solid var(--ann-border);
+  border-radius: 4px;
+  transition: all var(--ann-ease);
+}
+.ann-check input:checked ~ .ann-box {
+  background: var(--tag);
+  border-color: var(--tag);
+}
+.ann-check input:checked ~ .ann-box::after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+}
+.ann-check input:focus-visible ~ .ann-box {
+  outline: 2px solid var(--ann-navy);
+  outline-offset: 2px;
+}
+.ann-check:has(input:checked) {
+  border-color: var(--tag);
+  background: color-mix(in srgb, var(--tag) 12%, #fff);
+}
+
+/* Submit, spinner, status banner */
+.ann-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.ann-note {
+  font-size: 0.8rem;
+  color: var(--ann-muted);
+  text-align: center;
+  max-width: 500px;
+}
+.ann-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 2.5rem;
+  background: var(--ann-navy);
+  color: #fff;
+  border: none;
+  border-radius: var(--ann-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(13, 33, 70, 0.2);
+  transition: background var(--ann-ease), transform var(--ann-ease);
+}
+.ann-submit:hover {
+  background: var(--ann-navy-mid);
+  transform: translateY(-1px);
+}
+.ann-submit:active {
+  transform: translateY(0);
+}
+.ann-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+.ann-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: ann-spin 0.7s linear infinite;
+}
+@keyframes ann-spin {
+  to { transform: rotate(360deg); }
+}
+.ann-banner {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--ann-radius);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-align: center;
+}
+.ann-banner.is-success {
+  background: #e6f4ec;
+  color: var(--ann-success);
+  border: 1.5px solid #a3d4b5;
+}
+.ann-banner.is-error {
+  background: #fdf0ef;
+  color: var(--ann-error);
+  border: 1.5px solid #e8b4af;
+}
+
+@media (max-width: 520px) {
+  .ann-row { grid-template-columns: 1fr; }
+  .ann-card { padding: 1.5rem 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ann-submit, .ann-check, .ann-box { transition: none; }
+  .ann-spinner { animation-duration: 2s; }
+}
