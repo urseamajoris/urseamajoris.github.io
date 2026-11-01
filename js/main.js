@@ -304,47 +304,6 @@ function sortEvents(eventsData) {
     });
 }
 
-// Upcoming events rendering
-function renderUpcomingEvents(eventsData) {
-    const list = document.getElementById('upcoming-list');
-    if (!list) return;
-    list.innerHTML = '';
-
-    const icons = {
-        'Academic': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/><line x1="2" y1="22" x2="22" y2="22"/></svg>',
-        'Activity': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><circle cx="12" cy="12" r="3"/></svg>',
-        'Well-being': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>',
-        'Announcement': '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/></svg>'
-    };
-
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    
-    const futureEvents = eventsData.filter(event => {
-        return new Date(event.date) >= today;
-    });
-
-    futureEvents.slice(0, 3).forEach((event) => {
-        const card = document.createElement('div');
-        const formattedDate = formatEventDate(event.date); 
-        
-        // Ensure a valid tag string exists
-        const safeTag = getTags(event)[0];
-        const iconSvg = icons[safeTag] || icons['Announcement'];
-        const safeTime = event.time || 'TBA';
-        
-        card.className = 'event-card theme-' + safeTag;
-        
-        card.innerHTML = `<div class="event-icon-wrapper icon-${safeTag}">${iconSvg}</div>
-                          <div class="event-details">
-                              <h4 class="event-name">${escapeHTML(event.title)}</h4>
-                              <p class="event-time">${escapeHTML(formattedDate)} | ${escapeHTML(safeTime)}</p>
-                          </div>`;
-        
-        list.appendChild(card);
-    });
-}
-
 // Format event date to "DD MMM YYYY"
 let currentDate = new Date();
 let currentMonth = currentDate.getMonth() + 1;
@@ -356,6 +315,16 @@ function initCalendar(eventsData) {
     globalEvents = eventsData;
     renderCalendar(currentMonth, currentYear);
 }
+
+const tagColors = {
+    'Academic': '#37beb0',
+    'Activity': '#ff4d4d',
+    'Well-being': '#ff85b4',
+    'Announcement': '#a694fb'
+};
+
+// Touch / small screens have no hover, so tapping an event opens a bottom sheet instead
+const isMobileCalendar = () => window.matchMedia('(hover: none), (max-width: 768px)').matches;
 
 // Render calendar for a given month and year
 function renderCalendar(month, year) {
@@ -378,13 +347,6 @@ function renderCalendar(month, year) {
         grid.appendChild(emptyDiv);
         i++;
     }
-
-    const tagColors = {
-        'Academic': '#37beb0',
-        'Activity': '#ff4d4d',
-        'Well-being': '#ff85b4',
-        'Announcement': '#a694fb'
-    };
 
     let j = 1;
     while (j <= daysInMonth) {
@@ -412,13 +374,15 @@ function renderCalendar(month, year) {
                     const cleanTag = eventTags[0];
                     
                     if (currentFilter === 'All' || eventTags.includes(currentFilter)) {
-                        const eventDiv = document.createElement('div');
+                        const eventDiv = document.createElement('a');
                         eventDiv.className = 'event';
+                        eventDiv.href = 'read.html?id=' + encodeURIComponent(event.id);
                         
                         eventDiv.style.backgroundColor = tagColors[cleanTag] || tagColors['Announcement'];
                         eventDiv.style.color = '#ffffff'; 
                         
                         eventDiv.textContent = event.title;
+                        eventDiv.dataset.eventId = event.id;
                         dayDiv.appendChild(eventDiv);
                     }
                 }
@@ -427,6 +391,115 @@ function renderCalendar(month, year) {
         grid.appendChild(dayDiv);
         j++;
     }
+}
+
+// Hover pop-up: shows title, tags, author and date/time at the top-right of the cursor
+const calendarGrid = document.getElementById('calendar-grid');
+if (calendarGrid) {
+    const tooltip = document.createElement('div');
+    tooltip.className = 'event-tooltip';
+    tooltip.setAttribute('role', 'tooltip');
+    document.body.appendChild(tooltip);
+
+    const OFFSET = 14;
+
+    function positionTooltip(x, y) {
+        const w = tooltip.offsetWidth;
+        const h = tooltip.offsetHeight;
+        let left = x + OFFSET;
+        let top = y - h - OFFSET;
+        // Flip to the other side if it would run off the viewport
+        if (left + w > window.innerWidth - 8) left = x - w - OFFSET;
+        if (top < 8) top = y + OFFSET;
+        tooltip.style.left = Math.max(8, left) + 'px';
+        tooltip.style.top = Math.max(8, top) + 'px';
+    }
+
+    calendarGrid.addEventListener('mouseover', (e) => {
+        if (isMobileCalendar()) return;
+        const target = e.target.closest('.event');
+        if (!target) return;
+        const event = globalEvents.find(ev => String(ev.id) === target.dataset.eventId);
+        if (!event) return;
+
+        const tagsHtml = String(event.tags || 'Announcement').split(',')
+            .map(t => t.trim()).filter(t => ALLOWED_TAGS.includes(t))
+            .map(t => `<span class="tag tag-${t.toLowerCase()}">${escapeHTML(t)}</span>`).join('');
+        const when = [event.date, event.time].filter(Boolean).join(', ');
+
+        tooltip.innerHTML = `
+            <div class="event-tooltip-title">${escapeHTML(event.title)}</div>
+            <div class="event-tooltip-meta">
+                ${tagsHtml}
+                ${event.author ? `<span class="event-tooltip-author">By ${escapeHTML(event.author)}</span>` : ''}
+                <span class="event-tooltip-date">${escapeHTML(when)}</span>
+            </div>`;
+        tooltip.classList.add('visible');
+        positionTooltip(e.clientX, e.clientY);
+    });
+
+    calendarGrid.addEventListener('mousemove', (e) => {
+        if (tooltip.classList.contains('visible')) positionTooltip(e.clientX, e.clientY);
+    });
+
+    calendarGrid.addEventListener('mouseout', (e) => {
+        const from = e.target.closest('.event');
+        if (from && !from.contains(e.relatedTarget)) tooltip.classList.remove('visible');
+    });
+
+    // Mobile bottom sheet (Google Calendar style): tap an event to see its details
+    const sheetOverlay = document.createElement('div');
+    sheetOverlay.className = 'event-sheet-overlay';
+    sheetOverlay.innerHTML = `
+        <div class="event-sheet" role="dialog" aria-modal="true" aria-labelledby="event-sheet-title">
+            <div class="event-sheet-handle"></div>
+            <button type="button" class="event-sheet-close" aria-label="Close">&times;</button>
+            <div class="event-sheet-body"></div>
+        </div>`;
+    document.body.appendChild(sheetOverlay);
+    const sheetBody = sheetOverlay.querySelector('.event-sheet-body');
+
+    function openEventSheet(event) {
+        const tags = getTags(event);
+        const color = tagColors[tags[0]] || tagColors['Announcement'];
+        const tagsHtml = tags.map(t => `<span class="tag tag-${t.toLowerCase()}">${escapeHTML(t)}</span>`).join('');
+        const d = new Date(event.date);
+        const dateText = isNaN(d) ? event.date : d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        const when = [dateText, event.time].filter(Boolean).join(' · ');
+
+        sheetBody.innerHTML = `
+            <div class="event-sheet-head">
+                <span class="event-sheet-dot" style="background:${color}"></span>
+                <h3 class="event-sheet-title" id="event-sheet-title">${escapeHTML(event.title)}</h3>
+            </div>
+            <p class="event-sheet-row event-sheet-when">${escapeHTML(when)}</p>
+            ${event.author ? `<p class="event-sheet-row">By ${escapeHTML(event.author)}</p>` : ''}
+            <div class="event-sheet-tags">${tagsHtml}</div>
+            <a class="event-sheet-link" href="read.html?id=${encodeURIComponent(event.id)}">Read article</a>`;
+        sheetOverlay.classList.add('open');
+        document.body.classList.add('event-sheet-open');
+    }
+
+    function closeEventSheet() {
+        sheetOverlay.classList.remove('open');
+        document.body.classList.remove('event-sheet-open');
+    }
+
+    calendarGrid.addEventListener('click', (e) => {
+        const target = e.target.closest('.event');
+        if (!target || !isMobileCalendar()) return; // desktop: the link opens the article
+        const event = globalEvents.find(ev => String(ev.id) === target.dataset.eventId);
+        if (!event) return;
+        e.preventDefault();
+        openEventSheet(event);
+    });
+
+    sheetOverlay.addEventListener('click', (e) => {
+        if (e.target === sheetOverlay || e.target.closest('.event-sheet-close')) closeEventSheet();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeEventSheet();
+    });
 }
 
 const filterBtns = document.querySelectorAll('.filter-btn');
@@ -461,184 +534,134 @@ if (nextMonthBtn) nextMonthBtn.addEventListener('click', () => {
     renderCalendar(currentMonth, currentYear);
 });
 
-// Fetch events data from GitHub
-const githubUrl = 'https://raw.githubusercontent.com/Abhi-Ya/RAMSC/main/events.json?t=' + new Date().getTime();
-
-if (document.getElementById('calendar-grid') || document.getElementById('upcoming-list')) fetch(githubUrl)
-    .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.json(); })
-    .then(data => {
-        const sortedData = sortEvents(data);
-        initCalendar(sortedData);
-        renderUpcomingEvents(sortedData);
-    })
-    .catch(error => console.error("Error loading events:", error));
-
-
-// upcoming event fetching and linking part 
 // ==========================================
-// UPCOMING EVENTS WIDGET LOGIC
+// EVENTS FROM _data/*.md (single source for calendar + upcoming list)
 // ==========================================
-document.addEventListener("DOMContentLoaded", () => {
-    const eventsList = document.getElementById("upcoming-list");
-    if (!eventsList) return; // Stop if the upcoming-list container doesn't exist on this page
+// Each .md front-matter carries the event info, e.g.
+//   date: 10/04/2026T09:00 - 17:00:00.000Z   (MM/DD/YYYY, then start - end time)
+//   title: "..."
+//   tags: ["Activity", "Announcement"]
+const EVENTS_DATA_FOLDER = '_data';
+let markdownEventsPromise = null;
 
-    const dataFolder = "_data";
-    let allEvents = [];
+function parseEventMarkdown(mdText, id) {
+    const fmMatch = mdText.match(/^---\s*[\r\n]+([\s\S]*?)[\r\n]+---/);
+    if (!fmMatch) return null;
+    const fm = fmMatch[1];
 
-    // Helper function to return SVGs matching your design based on the tag
-    function getIconSVG(tag) {
-        switch(tag) {
-            case 'Academic':
-                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`;
-            case 'Activity':
-                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
-            case 'Well-being':
-                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
-            default: // Announcement
-                return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>`;
-        }
-    }
+    const field = (name) => {
+        const m = fm.match(new RegExp('^' + name + ':\\s*"?(.*?)"?\\s*$', 'm'));
+        return m ? m[1].trim() : '';
+    };
+    const pad = (n) => String(n).padStart(2, '0');
 
-    async function fetchEvents() {
-        let id = 2; // Assuming files start at 2.md
-        let keepFetching = true;
+    // Date -> normalised "MM/DD/YYYY" (what the calendar and sortEvents expect)
+    const rawDate = field('date');
+    let date = '';
+    const us = rawDate.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+    const iso = rawDate.match(/(\d{4})-(\d{2})-(\d{2})/);
+    if (us) date = `${pad(us[1])}/${pad(us[2])}/${us[3]}`;
+    else if (iso) date = `${iso[2]}/${iso[3]}/${iso[1]}`;
+    if (!date) return null; // no usable date -> can't be placed on the calendar
 
-        while (keepFetching) {
-            try {
-                const mdResponse = await fetch(`${dataFolder}/${id}.md`);
-                if (!mdResponse.ok) {
-                    keepFetching = false;
+    // Time -> "HH:MM - HH:MM" (zero-padded so string comparison sorts correctly)
+    const times = (rawDate.match(/\d{1,2}:\d{2}/g) || []).map(t => t.padStart(5, '0'));
+    const time = times.length >= 2 ? `${times[0]} - ${times[1]}` : (times[0] || '');
+
+    const tagsMatch = fm.match(/^tags:\s*\[(.*?)\]/m);
+    const tags = tagsMatch
+        ? tagsMatch[1].split(',').map(t => t.replace(/["']/g, '').trim()).filter(Boolean).join(', ')
+        : '';
+
+    return { id, title: field('title') || 'Untitled', author: field('author'), date, time, tags };
+}
+
+// Fetch 2.md, 3.md, ... until a file is missing; resolve to events sorted by date, then time
+function loadMarkdownEvents() {
+    if (!markdownEventsPromise) {
+        markdownEventsPromise = (async () => {
+            const events = [];
+            for (let id = 2; ; id++) {
+                try {
+                    const res = await fetch(`${EVENTS_DATA_FOLDER}/${id}.md`);
+                    if (!res.ok) break;
+                    const event = parseEventMarkdown(await res.text(), id);
+                    if (event) events.push(event);
+                } catch (error) {
+                    console.error('Error loading event ' + id + ':', error);
                     break;
                 }
-
-                const mdText = await mdResponse.text();
-                
-                let title = "Untitled";
-                let dateStr = ""; 
-                let rawDateStr = "";
-                let tags = [];
-
-                const fmRegex = /^---\s*[\r\n]+([\s\S]*?)[\r\n]+---\s*[\r\n]+([\s\S]*)$/;
-                const match = mdText.match(fmRegex);
-
-                if (match) {
-                    const fmText = match[1];
-
-                    // Extract Title
-                    const titleMatch = fmText.match(/title:\s*"?(.*?)"?\s*(?:\r?\n|$)/);
-                    if (titleMatch) title = titleMatch[1];
-
-                    // Extract Tags to map to CSS colors
-                    const tagsMatch = fmText.match(/tags:\s*\[(.*?)\]/);
-                    if (tagsMatch) {
-                        tags = tagsMatch[1].split(',').map(t => t.replace(/["']/g, '').trim());
-                    }
-
-                    // Extract Date
-                    const dateMatch = fmText.match(/date:\s*"?(.*?)"?\s*(?:\r?\n|$)/);
-                    if (dateMatch) {
-                        rawDateStr = dateMatch[1].trim();
-                        const dayMatch = rawDateStr.match(/\d{1,2}\/\d{1,2}\/\d{4}/);
-                        if (dayMatch) {
-                            dateStr = dayMatch[0];
-                        } else {
-                            dateStr = rawDateStr.split('T')[0];
-                        }
-                    }
-                }
-
-                // Default to Announcement styling if no tag is found
-                let primaryTag = tags.length > 0 ? tags[0] : "Announcement";
-                // Ensure format matches your CSS exactly
-                primaryTag = primaryTag.replace(/\s+/g, '-'); 
-
-                let eventDate = new Date();
-                if (dateStr) {
-                     eventDate = new Date(dateStr);
-                } else {
-                     eventDate = new Date(0); 
-                }
-
-                allEvents.push({
-                    id: id,
-                    title: title,
-                    dateObj: eventDate,
-                    displayDate: dateStr,
-                    rawDate: rawDateStr,
-                    theme: primaryTag
-                });
-
-                id++;
-            } catch (error) {
-                console.error(error);
-                keepFetching = false;
             }
-        }
+            return sortEvents(events);
+        })();
+    }
+    return markdownEventsPromise;
+}
 
-        processAndRenderEvents();
+function getIconSVG(tag) {
+    switch (tag) {
+        case 'Academic':
+            return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`;
+        case 'Activity':
+            return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
+        case 'Well-being':
+            return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
+        default: // Announcement
+            return `<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>`;
+    }
+}
+
+// When the event finishes: its end time on its date, or the end of that day if no time is given
+function getEventEnd(ev) {
+    const end = new Date(ev.date);
+    const times = String(ev.time || '').match(/\d{1,2}:\d{2}/g);
+    if (times) {
+        const [h, m] = times[times.length - 1].split(':').map(Number);
+        end.setHours(h, m, 0, 0);
+    } else {
+        end.setHours(23, 59, 59, 999);
+    }
+    return end;
+}
+
+// Upcoming events list: next 3 upcoming, or the 3 most recent expired ones if none are upcoming
+function renderUpcomingEvents(eventsData) {
+    const list = document.getElementById('upcoming-list');
+    if (!list) return;
+
+    // An event stays "upcoming" until its end time passes (end of day if it has no time)
+    const now = new Date();
+    const upcoming = eventsData.filter(ev => getEventEnd(ev) > now);
+    const eventsToShow = upcoming.length > 0
+        ? upcoming.slice(0, 3)
+        : eventsData.slice(-3).reverse(); // eventsData is ascending, so this is newest-first
+
+    if (eventsToShow.length === 0) {
+        list.innerHTML = "<p style='color: #666;'>No events scheduled.</p>";
+        return;
     }
 
-    function processAndRenderEvents() {
-        const now = new Date();
-        now.setHours(0, 0, 0, 0); // Reset today's time to midnight
+    list.innerHTML = eventsToShow.map(ev => {
+        const theme = getTags(ev)[0];
+        const when = [formatEventDate(ev.date), ev.time].filter(Boolean).join(' | ');
+        return `
+            <a href="read.html?id=${ev.id}" class="event-card theme-${theme}">
+                <div class="event-icon-wrapper icon-${theme}">
+                    ${getIconSVG(theme)}
+                </div>
+                <div class="event-details">
+                    <h3 class="event-name">${escapeHTML(ev.title)}</h3>
+                    <p class="event-time">${escapeHTML(when)}</p>
+                </div>
+            </a>`;
+    }).join('');
+}
 
-        const upcoming = [];
-        const past = [];
-
-        // Separate events based on date
-        allEvents.forEach(ev => {
-            if (ev.dateObj >= now) {
-                upcoming.push(ev);
-            } else {
-                past.push(ev);
-            }
-        });
-
-        // Sort upcoming events (closest first) and past events (most recent first)
-        upcoming.sort((a, b) => a.dateObj - b.dateObj);
-        past.sort((a, b) => b.dateObj - a.dateObj);
-
-        // Apply display rules: 3 upcoming, OR 1 past if no upcoming
-        let eventsToDisplay = [];
-        if (upcoming.length > 0) {
-            eventsToDisplay = upcoming.slice(0, 3);
-        } else if (past.length > 0) {
-            eventsToDisplay = past.slice(0, 1);
-        }
-
-        if (eventsToDisplay.length === 0) {
-            eventsList.innerHTML = "<p style='color: #666;'>No events scheduled.</p>";
-            return;
-        }
-
-        // Generate the HTML mapping exactly to your CSS
-        let html = "";
-        eventsToDisplay.forEach(ev => {
-            
-            let finalDisplayDate = ev.displayDate;
-            const timeMatch = ev.rawDate.match(/\d{2}:\d{2}/g);
-            if (timeMatch && timeMatch.length >= 2) {
-                finalDisplayDate += `, ${timeMatch[0]} - ${timeMatch[1]}`;
-            }
-
-            html += `
-                <a href="read.html?id=${ev.id}" class="event-card theme-${ev.theme}">
-                    <div class="event-icon-wrapper icon-${ev.theme}">
-                        ${getIconSVG(ev.theme)}
-                    </div>
-                    <div class="event-details">
-                        <h3 class="event-name">${ev.title}</h3>
-                        <p class="event-time">${finalDisplayDate}</p>
-                    </div>
-                </a>
-            `;
-        });
-
-        eventsList.innerHTML = html;
-    }
-
-    // Start execution
-    fetchEvents();
-});
-
-/* end of upcoming events fetching and linking part */
+if (document.getElementById('calendar-grid') || document.getElementById('upcoming-list')) {
+    loadMarkdownEvents()
+        .then(events => {
+            initCalendar(events);
+            renderUpcomingEvents(events);
+        })
+        .catch(error => console.error('Error loading events:', error));
+}

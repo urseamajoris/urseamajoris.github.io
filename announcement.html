@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
@@ -21,7 +21,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header / Navigation (same as the rest of the site) -->
+  <!-- Header / Navigation -->
   <header class="site-header" data-header>
     <div class="container nav-wrap">
       <a class="logo" href="index.html" aria-label="RAMSC Home">
@@ -58,7 +58,7 @@
 
     <div class="ann-wrap">
 
-      <!-- Sign-in (shown first) -->
+      <!-- Sign-in -->
       <div id="signinView" class="ann-card ann-signin">
         <h2>Sign in with your Mahidol account</h2>
         <p>Use your @mahidol.ac.th, @student.mahidol.ac.th or @student.mahidol.edu Google account.</p>
@@ -66,7 +66,7 @@
         <p class="ann-error" id="signinError" role="alert" style="margin-top:1rem"></p>
       </div>
 
-      <!-- Form (shown after sign-in) -->
+      <!-- Form -->
       <form id="announcementForm" class="hidden" novalidate>
 
         <div class="ann-user">
@@ -74,6 +74,7 @@
           <button type="button" id="signOutBtn" class="ann-linkbtn">Not you? Sign out</button>
         </div>
 
+        <!-- Section 1: Details -->
         <section class="ann-card" aria-labelledby="ann-s1">
           <h2 class="ann-title" id="ann-s1"><span class="ann-num">01</span> Announcement Details</h2>
 
@@ -86,10 +87,10 @@
 
           <div class="ann-row">
             <div class="ann-field">
-              <label for="date" class="ann-label">Date <span class="ann-req">*</span></label>
-              <input class="ann-input" type="date" id="date" name="date" />
-              <p class="ann-hint">Recorded as MM/DD/YYYY.</p>
-              <p class="ann-error" id="err-date"></p>
+              <label for="event_date" class="ann-label">Event Date <span class="ann-req">*</span></label>
+              <input class="ann-input" type="date" id="event_date" name="event_date" />
+              <p class="ann-hint">If the event spans a period, enter the 1st date.</p>
+              <p class="ann-error" id="err-event_date"></p>
             </div>
 
             <div class="ann-field">
@@ -108,32 +109,58 @@
           </div>
         </section>
 
+        <!-- Section 2: Images -->
         <section class="ann-card" aria-labelledby="ann-s2">
-          <h2 class="ann-title" id="ann-s2"><span class="ann-num">02</span> Cover</h2>
+          <h2 class="ann-title" id="ann-s2"><span class="ann-num">02</span> Images</h2>
           <div class="ann-field">
-            <label for="cover" class="ann-label">Cover Image Link <span class="ann-req">*</span></label>
-            <input class="ann-input" type="url" id="cover" name="cover" placeholder="https://drive.google.com/…" />
+            <label for="images" class="ann-label">Image Links <span class="ann-req">*</span></label>
+            <input class="ann-input" type="text" id="images" name="images" placeholder="https://drive.google.com/…" />
             <p class="ann-hint">
-              Required. Link to a cover image (Google Drive, Imgur, etc). Shape 1:1.5 (long horizontal).
+              Required: Link to a cover image (Google Drive, Imgur, etc.). Aspect ratio: 1:1.5 (long horizontal). Multiple links may be submitted; the first link will be used as the cover for the website article.
             </p>
-            <p class="ann-error" id="err-cover"></p>
+            <p class="ann-error" id="err-images"></p>
           </div>
         </section>
 
+        <!-- Section 3: Broadcast & Tags -->
         <section class="ann-card" aria-labelledby="ann-s3">
-          <h2 class="ann-title" id="ann-s3"><span class="ann-num">03</span> Tags</h2>
-          <p class="ann-desc">Select all that apply. <span class="ann-req">*</span></p>
+          <h2 class="ann-title" id="ann-s3"><span class="ann-num">03</span> Social Media Broadcast</h2>
+          
+          <div class="ann-field" style="margin-top: 1rem;">
+            <label for="broadcast_date" class="ann-label">Broadcast Date <span class="ann-req">*</span></label>
+            <input class="ann-input" type="date" id="broadcast_date" name="broadcast_date" />
+            <p class="ann-error" id="err-broadcast_date"></p>
+          </div>
+
+          <p class="ann-desc" style="margin-top: 1rem;">Posting Platforms <span class="ann-req">*</span></p>
+          <div class="ann-checks" style="margin-bottom: 1.5rem;">
+            <label class="ann-check"><input type="checkbox" name="platforms" value="Instagram post" /><span class="ann-box" aria-hidden="true"></span>Instagram post</label>
+            <label class="ann-check"><input type="checkbox" name="platforms" value="Instagram story" /><span class="ann-box" aria-hidden="true"></span>Instagram story</label>
+            <label class="ann-check"><input type="checkbox" name="platforms" value="Instagram reel" /><span class="ann-box" aria-hidden="true"></span>Instagram reel</label>
+            <label class="ann-check"><input type="checkbox" name="platforms" value="Line RAMSC Openchat" /><span class="ann-box" aria-hidden="true"></span>Line RAMSC Openchat</label>
+            <label class="ann-check"><input type="checkbox" name="platforms" value="Line Batch year 1-6" /><span class="ann-box" aria-hidden="true"></span>Line Batch year 1-6</label>
+          </div>
+          <p class="ann-error" id="err-platforms"></p>
+
+          <p class="ann-desc">Tags (Select all that apply) <span class="ann-req">*</span></p>
           <div class="ann-checks">
-            <label class="ann-check" data-tag="Academic"><input type="checkbox" name="categories"
-                value="Academic" /><span class="ann-box" aria-hidden="true"></span>Academic</label>
-            <label class="ann-check" data-tag="Activity"><input type="checkbox" name="categories"
-                value="Activity" /><span class="ann-box" aria-hidden="true"></span>Activity</label>
-            <label class="ann-check" data-tag="Well-being"><input type="checkbox" name="categories"
-                value="Well-being" /><span class="ann-box" aria-hidden="true"></span>Well-being</label>
-            <label class="ann-check" data-tag="Announcement"><input type="checkbox" name="categories"
-                value="Announcement" /><span class="ann-box" aria-hidden="true"></span>Announcement</label>
+            <label class="ann-check"><input type="checkbox" name="categories" value="Academic" /><span class="ann-box" aria-hidden="true"></span>Academic</label>
+            <label class="ann-check"><input type="checkbox" name="categories" value="Activity" /><span class="ann-box" aria-hidden="true"></span>Activity</label>
+            <label class="ann-check"><input type="checkbox" name="categories" value="Well-being" /><span class="ann-box" aria-hidden="true"></span>Well-being</label>
+            <label class="ann-check"><input type="checkbox" name="categories" value="Announcement" /><span class="ann-box" aria-hidden="true"></span>Announcement</label>
           </div>
           <p class="ann-error" id="err-categories"></p>
+        </section>
+
+        <!-- Section 4: Contact -->
+        <section class="ann-card" aria-labelledby="ann-s4">
+          <h2 class="ann-title" id="ann-s4"><span class="ann-num">04</span> Contact</h2>
+          <div class="ann-field">
+            <label for="line_id" class="ann-label">Contact Line ID <span class="ann-req">*</span></label>
+            <input class="ann-input" type="text" id="line_id" name="line_id" placeholder="Your Line ID" />
+            <p class="ann-hint">We will contact you if there are any edit requests or questions.</p>
+            <p class="ann-error" id="err-line_id"></p>
+          </div>
         </section>
 
         <div class="ann-actions">
@@ -152,7 +179,7 @@
     </div>
   </main>
 
-  <!-- footer (same as the rest of the site) -->
+  <!-- footer -->
   <div class="footers">
     <div class="col-0">
       <div>

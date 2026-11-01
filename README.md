@@ -1,21 +1,3 @@
-# RAMSC Website
-## 🏗️ Architecture
+This website was built by the Corporate Communication (CC), IT Teams. It is used for RAMSC contact broadcasts, internal communication, and broadcasting news.
 
-- **Frontend**: Static HTML/CSS/JS website with study dashboard
-- **Backend**: python 
-- **Database**: service host cloud
-
-## 📄 License
-
-MIT License - see LICENSE file for details (???)
-
-## 🆘 Support
-
-For issues and questions:
-- Create GitHub issue
-- Contact RAMSC development team
-- Email: rama.med@gmail.com
-
----
-
-Built with ❤️ for Ramathibodi Medical Students
+For any usage issues or inquiries, please contact abhipiya.paw@student.mahidol.edu or the RAMSC Line OA.

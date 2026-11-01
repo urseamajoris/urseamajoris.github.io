@@ -99,32 +99,41 @@ document.addEventListener("DOMContentLoaded", () => {
         renderArticles();
     }
 
-    function createCardHTML(article) {
-        // Map the parsed tags into HTML span elements
-        const tagsHtml = article.tags.map(tag => {
-            const tagClass = `tag-${tag.toLowerCase().replace(/\s+/g, '-')}`;
-            return `<span class="tag ${tagClass}">${tag}</span>`;
-        }).join('');
+function createCardHTML(article) {
+    // Map the parsed tags into HTML span elements
+    const tagsHtml = article.tags.map(tag => {
+        const tagClass = `tag-${tag.toLowerCase().replace(/\s+/g, '-')}`;
+        return `<span class="tag ${tagClass}">${tag}</span>`;
+    }).join('');
 
-        return `
-            <a href="read.html?id=${article.id}" class="news-card-link">
-                <div class="news-card">
-                    <div class="news-card-img">
-                        <img src="${article.image}" alt="${article.title}" onerror="this.src='https://via.placeholder.com/250x160?text=No+Image'">
-                    </div>
-                    <div class="news-card-content">
-                        <div class="title-fade">${article.title}</div>
-                        <div class="meta-info">
-                            ${tagsHtml}
-                        </div>
-                        <div class="paragraphs">
-                            ${article.content}
-                        </div>
-                    </div>
+    // Plain-text preview: no nested links, headings or images inside the card
+    const tmp = document.createElement("div");
+    tmp.innerHTML = article.content;
+    const excerpt = tmp.textContent
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 300)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+    return `
+        <a href="read.html?id=${article.id}" class="news-card-link">
+            <div class="news-card">
+                <div class="news-card-img">
+                    <img src="${article.image}" alt="${article.title}" onerror="this.src='assets/img/ramsclogo.png'">
                 </div>
-            </a>
-        `;
-    }
+                <div class="news-card-content">
+                    <div class="title-fade">${article.title}</div>
+                    <div class="meta-info">
+                        ${tagsHtml}
+                    </div>
+                    <div class="paragraphs">${excerpt}</div>
+                </div>
+            </div>
+        </a>
+    `;
+}
 
     
     function renderArticles() {

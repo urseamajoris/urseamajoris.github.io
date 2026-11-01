@@ -1,113 +1,196 @@
-﻿ฝ่าย,ตำแหน่ง,คำนำหน้า,ชื่อ - นามสกุล (ไทย),ชื่อเล่น (ไทย),Name - Surname (English),Nickname (English),รหัสนักศึกษา,Track,ชั้นปี,Line ID,เบอร์โทรศัพท์,Email (@student.mahidol.edu),รูปภาพ (แนบลิงก์รูป),To picture
-EC,President,นางสาว,ปาลิตา ประสพโชค,เป้ย,Palita Prasopchoke,Pei,6502059,M.D.,Y5,peians,0929942404,palita.prs@student.mahidol.edu,,
-EC,Vice President,นาย,วัชรพงศ์ ทิมคล้ายพชร,ไดม่อน,,,6502017,M.D. - M.Eng.,Y4,,0881926541,watcharapong.tim@student.mahidol.edu,,
-EC,Vice President,นาย,พิวัฒน์ ศุภวิทยา,ปู๊น,,,6502038,M.D. - M.M.,Y4,,0858130024,piwat.sup@student.mahidol.edu,,
-EC,Deputy Vice President,นางสาว,มนรดา ชิวหวรรณ,พราว,,,6502012,M.D. - M.Eng.,Y4,,0855322888,monrada.chi@student.mahidol.edu,,
-EC,Deputy Vice President,นาย,ปุญญพัฒน์ พันธ์นาค,ปลื้ม,Punyapat Phannak,Pluem,6502034,M.D. - M.M.,Y4,punyapatp2546,0881549151,Punyapat.pha@student.mahidol.edu,,
-EC,General Secretary,นาย,สรวิชญ์ สงวนงาม,คิม,Sorawit Sanguanngam ,Kim,6502171,M.D.,Y5,,0632124747,sorawit.san@student.mahidol.edu,https://photos.app.goo.gl/tmDXhd7EPhYTTjpJ9,
-EC,General Secretary,นางสาว,ชัชชญา พราหมเล็ก,มุก,Chatchaya Pramlek,Mook,6802082,M.D.,Y2,chatchaya.mook,0972494261,chatchaya.pra@student.mahidol.edu,https://drive.google.com/file/d/1w2rErTXipvSueD2b6dfNjtvJf1FOe10U/view?usp=drivesdk,
-EC,General Secretary,นาย,ยศวร บุตรประดิษฐ์,บูม,Yotsaworn Bootpradit,Boom,6802032,M.D. - M.M.,Y2,yotsawornboom,0910287525,yotsaworn.boo@student.mahidol.edu,,
-IA,Vice President of Internal Affairs,นางสาว,กัญจรีย์ ศุภวิทยา,ปิ่นปี๊น,Kanjaree Suppawittaya,Pinpin,6602004,M.D. - M.M.,Gap (M.Eng / M.M),pinpin32495,0930980020,kanjaree.sup@student.mahidol.edu,Profile_Kanjaree Suppawittaya.JPEG,
-IA,Deputy VPIA for Internal Activities and IA Identity,นางสาว,สิรภัทร เชาวริทธิ์,พิม,Sirapatr Chaovaritt,Pim,6702056,M.D. - M.Eng.,Y3,928852432,0928852432,sirapatr.cha@student.mahidol.edu,,
-IA,Deputy VPIA for Strategic Coaching,นางสาว,ปวริศา ปราบนอก,มะปราง,Pawarisa Prabnog,Maprang,6602037,M.D. - M.M.,Gap (M.Eng / M.M),138191849,0863215411,pawarisa.pra@student.mahidol.edu,https://drive.google.com/file/d/1vhLEHGLwx7ii9y2goBzgxiv9uC7R7an0/view?usp=drivesdk,
-IA,Coaching Managers,นาย,ไกรวิษย์ ไกยวงศ์,โอม,Kraiwish Kaiyawong,Ohm,6602007,M.D. - M.Eng.,Y3,turkeychicken,0971467609,kraiwish.kai@student.mahidol.edu,,
-IA,Coaching Managers,นางสาว￼,ณรฎา จะชาลี,ออย,Narada Jachalee,Oil,6702019,M.D. - M.Eng.,Y3,848348733,0910169143,narada.jac@student.mahidol.edu,,
-IA,Lead of Events Creatives,นางสาว,กีรติกา ทองชัยประสิทธิ์,ฟ้า,Keeratika Thongchaiprasit,Fah,6702004,M.D. - M.Eng.,Y3,keeratika_fah,0628538415,keeratika.tho@student.mahidol.edu,https://drive.google.com/file/d/1P3swul7OAC5nxXglvQE-iwKh8YOr23fn/view?usp=drivesdk,
-IA,Head of Internal Activities Coordination,นางสาว,ชัชชญา พราหมเล็ก,มุก,Chatchaya Pramlek,Mook,6802082,M.D.,Y2,chatchaya.mook,0972494261,chatchaya.pra@student.mahidol.edu,https://drive.google.com/file/d/1w2rErTXipvSueD2b6dfNjtvJf1FOe10U/view?usp=drivesdk,
-IA,Deputy Head of Internal Activities Coordination,นาย,พอเพียง จันทิมา,ไอติม,Phophiang Chanthima,Itim,6822026,RAK,Y2,timmmmmmi,0979593439,phophiang.cha@student.mahidol.edu,https://drive.google.com/file/d/1yS-e-80K9bPESnq38q3nIVzZG4govJJf/view?usp=drivesdk,
-IA,Engagement Director,นางสาว,นภสร โตสุโขวงศ์,นันนัน,Napasorn Tosukhowong ,Nannan,6802098,M.D.,Y2,nanikoari,0881929992,napasorn.tos@student.mahidol.edu,,
-IA,Engagement Director,นางสาว,มนสิชา โลพันธ์ศรี,มิ้นท์,Monsisha Lopansri,Mint,6802131,M.D.,Y2,iwannbegdfriend,0838197240,monsisha.lop@student.mahidol.edu,Profile_Monsisha Lopansri,
-IA,Visual Media Lead,นางสาว,พิมพาสุข อัศวราชันย์,แพตตี้,Pimpasook Assawarachan,Patty,6702042,M.D.,Y3,patty6096,0840726096,pimpasook.ass@student.mahidol.edu,https://drive.google.com/file/d/1XfGrFTHrgSwDE8OrDy7NVi62HIZuIq99/view,
-IA,Visual Media Lead,นาย,ปูรณ์ ตระกูลตั้งมั่น,ปูน,Poon Trakultangmun,Poon,6702037,M.D. - M.M.,Y3,Poon260148,0992627744,poon.tra@student.mahidol.edu,https://drive.google.com/file/d/1LnJeM6NKBJhIJj5VN4OaZVEhhdfPy-7J/view?usp=drivesdk,
-EA,Vice President of External Affairs,นางสาว,ภัสสร เจียรจรูญวงศ์,เอิร์น,Pussorn Jianjaroonwong,Earn,6702134,M.D.,Y3,pplussorn,0971232424,pussorn.jia@student.mahidol.edu,EA_Earn VPEA,
-EA,Head of Strategic Team,นาย,ณัฐพัชร์ พรหมมานันท์,อลีฟ,Nuttapat Prommanun,Alif,6702021,M.D. - M.M.,Y3,alif_alif_alof,0638208886,nuttapat.pro@student.mahidol.edu,EA_Alif_Head of strategic team.JPG,
-EA,EA Media Lead,นางสาว,ภชมน ธารสุวรรณวงศ์,พั้นช์,Phachamon Thansuwanwong,Punch,6702133,M.D.,Y3,punch_89,0815577242,phachamon.tha@student.mahidol.edu,EA_Punch Media Lead,
-EA,Deputy VPEA for External Relations,นางสาว,ศรียุพา พหลโยธิน,เอย,Sriyupa  Bahalayodhin ,Oei,6802060,M.D.,Y2,0814201244,0814201244,sriyupa.bah@student.mahidol.edu,EA_Oei DepVPEA ER,
-EA,Deputy VPEA for Project Development,นาย,ประวีร์ สินวีรุทัย,สมาร์ท,Prawee Sinweeruthai,Smart,6402009,M.D. - M.Eng.,Y5,smprv,0639156441 ,prawee.sin@student.mahidol.edu ,EA_Smart_Dep VPEA for project dev.jpg,
-EA,Deputy VPEA for Project Development,นางสาว,พรชนก วังรัตนากร,โอลิเวีย,Pornchanok Wangratanakorn,Olivia,6802027,M.D. - M.M.,Y2,lovelyoandm,0994188492,pornchanok.wag@student.mahidol.edu,EA_Olivia_dep VPEA project dev.,
-EA,Head of  EA Secretary,นางสาว,นลินภัสร์ จิรโรจน์กุลภูดิท,เชลซี,Nalinphas Jirarodkulpudit,Chelsea,6802008,M.D. - M.Eng.,Y2,sea210349,0805629265,Nalinphas.jir@student.mahidol.edu,EA_Chelsea_Head of Secretary,
-EA,Operational Strategy Officer,นาย,จิรัฐวริทธิ์ อินทรธนู,ต้นน้ำ,Chiratwarit Intaratanoo,Tonnam,6802021,M.D. - M.M.,Y2,axtn1234,0952652614,chiratwarit.int@student.mahidol.edu,,
-EA,AAR & Knowledge Management Officer,นาย,พชรพล ละมูล,มิก,Pacharapol Lamool,Mix,6702122,M.D.,Y3,mix-pacharapol,0642963888,pacharapol.lam@student.mahidol.edu,EA_ Mix AAR&Knowledge management affair,
-EA,Secretary,นาย,พสิษฐ์ ชิงสกล,โชกุน,Pasit Chingskol,Shokoon,6602043,M.D. - M.Eng.,Gap (M.Eng / M.M),shokoonipad,084922898,pasit.chn@student.mahidol.edu,EA_Shokoon_Secretary.jpg,
-EA,Secretary,นาย,จิรพัชร์ โชคสิริสรณ์,มิก,Jirapatch Choksirison,Mix,6802076,M.D.,Y2,jrp.m1x,0839935145,jirapatch.cho@student.mahidol.edu,EA_Mix_Secretary.jpg,
-EA,Project Manager,นางสาว,สิริยา เมฆทวีพงศ์,เซญ่า,Siriya Mektavepong,Seiya,6602064,M.D. - M.Eng.,Gap (M.Eng / M.M),siriya911,0906591546,siriya.mek@student.mahidol.edu,EA_Siriya_Project Maneger,
-EA,Rep MU,นางสาว,ชาลิสา ลิน,อันอัน,Chalisa Lin,AnAn,6902024,M.D. - M.M.,Y1,Chalisalin0216,0988264141,chalisa.lin@student.mahidol.edu,EA_AnAn_RepMU,
-EA,Syringe Team,นางสาว,ชาลิสา แวววีระกุล,วีเจย์,Chalisa Waewveerakun ,VJ,6902046,M.D.,Y1,vjchalisa,0980505969,chalisa.wae@student.mahidol.ac.th,EA_VJ Syringe Team,
-EA,Operational Strategy Officer,นางสาว,ชุติมา หงษ์เจริญไทย,พลอย,Chutima Hongcharoenthai,Ploy,6802041,M.D.,Y2,0947605936ploy,0947605936,chutima.hon@student.mahidol.edu,EA_Ploy_operational strategy officer,
-EA,Syringe Coordinator ,นางสาว,ชนกธีรา ฤชุเศรษฐ์,บริ๊งค์,Chanokteera Ruechuseth,Blink,6902045,M.D.,Y1,chanokteerablink,0915541498,chanokteera.rue@student.mahidol.ac.th,EA_blink_syringe coordinator,
-EA,Deputy of Medlunteers Project Manager,นางสาว,พีรญา เวชสิทธิ์,อิงอิง,Peeraya Wetchasit,IngIng,6902057,M.D.,Y1,ipeerayag,0649792491,peeraya.wet@student.mahidol.edu,EA_IngIng_Dep Medlunteers,
-EA,Operational Strategy Officer,นาย,ธรรมธัช ฉิมพาลี,ปุณณ์,Dhammadhat Chimpalee,Poon,6902030,M.D. - M.M.,Y1,0999412667,0961599263,dhammadhat.chi@student.mahidol.ac.th,EA_Poon_Operational Strategy Officer,
-EA,Medlunteers Project Manager,นางสาว,พรรณพัชร รอบรู้,น้ำพั้นช์,Phannapat Robru,Nampunch,6502133,M.D.,Y5,nampunch_16679,0982679456,phannapat.rob@student.mahidol.edu,EA_Nampunch_Medlunteers project manager,
-EA,Deputy of Medlunteers Project Manager,นาย,ณัฐภัทร อาชีวกุลมาศ,ผา,Natthaphat Acheewakullamas ,Pha,6802024,M.D. - M.M.,Y2,ipipeagle11059,0902933435,natthaphat.ach@student.mahidol.edu,,
-EA,Secretary of Medlunteers,นางสาว,กัญญ์ฤทัย รักแต่งาม,ณัฏฐ์,Kanruthay Ruktaengam,Nutt,6902042,M.D.,Y1,0955541445,0955541445,kanruthay.ruk@student.mahidol.ac.th,EA_Nutt_Secretary Medlunteers.jpg,
-EA,Syringe Team,นาย,ชยพล ว่องชาญอุดม,เซิ่น,Chayapon Wongchanaudom,Zern,6902002,M.D. - M.Eng.,Y1,lune696969,0932759699,w.chayapon69@gmail.com,,
-AA,Vice President of Academic Affairs,นาย,สุธีภัทท์ ลิมวิภูวัฒน์,นิว,Sutheephat Limvipuwat,New,6502176,M.D.,Y5,sutheephat,0951593369,sutheephat.lim@student.mahidol.edu,New Y5.jpeg,
-AA,Deputy of VPAA,นาย,พณิชพล เปลี่ยนขำ,ออสการ์,Panitchapol Pliankham,Oscar,6602041,M.D. - M.M.,Gap (M.Eng / M.M),https://line.me/ti/p/ynzNErp0K5,0638815882,panitchapol.pli@student.mahidol.edu,Oscar MM.JPG,
-AA,Secretary,นาย,พรพิพัฒน์ แหขุนทด,ฟิวส์,Pondpipat Haekhunthod,Fuse / Hae,6502132,M.D.,Y5,1212312121629,0854947162,pondpipat.hae@student.mahidol.edu,Fuse Y5.JPG,
-AA,Secretary,นาย,ภาวัต อุ่นเอม,ซิกตี้,Pawat Unaim,Sixty,6702135,M.D.,Y3,Sixty9944,0945639944,pawat.una@student.mahidol.edu,Sixty Y3.jpeg,
-AA,Secretary,นาย,ณัฐภัทร ทองน้อย,ท็อป,Nattapat Tongnoi,Top,6602026,M.D. - M.M.,Gap (M.Eng / M.M),nattapat500104,0989152548,nattapat.ton@student.mahidol.edu,Top MM.JPG,
-AA,Head of SC Academic Year 2,นางสาว,นภสร โตสุโขวงศ์,นันนัน,Napasorn Tosukhowong ,Nannan,6802098,M.D.,Y2,nanikoari,0881929992,napasorn.tos@student.mahidol.edu,Nannan Y2.jpg,
-AA,Head of SC Academic Year 3,นาย,วรวลัญช์ พละการ,กล้อง,Worawarun Phalakarn,Krong,6702143,M.D.,Y3,worawarun11028,0926532945,worawarun.pha@student.mahidol.edu,Krong Y3.JPG,
-AA,Head of SC Academic Year 4,นาย,อรรถพร สายแสง,ไตเติ้ล,Attaphorn Saisang,Title,6602157,M.D.,Y4,kaknonaw,0882945416,attaphorn.sai@student.mahidol.edu,Title Y4.JPG,
-AA,Head of SC Academic Year 4 NL,นางสาว,ปาณิศา สังข์แก้ว,ปาล์มมี่,Panisa Sungkaew,Palmmy,6602112,M.D.,Y4,0909903507,0800939075,panisa.sun@student.mahidol.edu,Palmmy Y4.JPG,
-AA,Head of SC Academic Year 4 RAK,นางสาว,เมธาวี มั่นธรรมมงคล,เมมโมรี่,Metawe Mantummongkol,Memory,6622041,RAK,Y4,may_memory2548,0991716992,metawe.man@student.mahidol.edu,Memory Y4 RAK.jpg,
-AA,Head of SC Academic Year 5,นาย,อิสยาห์ บรรพลิตานนท์,หมิง,Isaya Banpalitanon,Ming,6502180,M.D.,Y5,ming34212,0987478465,isaya.ban@student.mahidol.edu,Ming Y5.JPG,
-AA,Head of SC Academic Year 6,นางสาว,วิลาสินี ชุ่มเสนา,แพน,Wilasinee Chumsena,Pan,6402157,M.D.,Y6,0934154939,0934154939,wilasinee.chu@student.mahidol.edu,Pan Y6.JPG,
-AA,Head of SC Academic Year 6,นาย,ชยณัฎฒ์ กมลเดชเดชา,แวน,Chayanat Kamondetdecha,Val,6302003,M.D. - M.Eng.,Y6,11991val,0954924145,chayanat.kam@student.mahidol.edu,Van Y6.JPG,
-AA,Head of AA Resources,นางสาว,อันนา นววิธรัตนา,เอิง,Anna Nawawitrattana,Un,6702165,M.D. - M.Eng.,Y3,0924386636,0924386636,anna.naw@student.mahidol.edu,Un Y3.JPG,
-AA,Academic Media Lead,นาย,พชรพล พรหมสิรินิมิต,โปรเจค,Patcharapon Promsirinimit,Project,6502131,M.D.,Y5,progress193,0808080347,patcharapon.pro@student.mahidol.edu,Project Y5.JPG,
-AA,Graphic designer,นางสาว,ชลิตา ศิริโสภา,ซีซี,Chalita Sirisopha,CC,6702010,M.D.,Y3,chalitasirisopha,0858071087,chalita.sir@student.mahidol.edu,CC Y3.JPG,
-AA,Graphic designer,นาย,ปารินทร์ สระวัง,ฟีโน่,Parin Sawang,Fino,6902051,M.D.,Y1,fino_parin,0616738621,parin.saw@student.mahidol.ac.th,Fino Y1.JPG,
-AA,Head of Academic Competition,นางสาว,ณัฐวศา ยิ่งเจริญอนันต์,แพร,Natvasa Yingjaroenanun ,Pare,6502046,M.D.,Y5,Pare8147,0860377950,natvasa.yin@student.mahidol.edu,Pare Y5.JPG,
-AA,Member of Competition team,นางสาว,อรมน ตัณฑุลเวศม์,เหม่ย,Oramon Tuntoolavest,Mei,6502071,M.D.,Y5,oramon_mei ,0944267887,oramon.tun@student.mahidol.edu,Mei Y5.JPG,
-AA,Member of Competition team,นาย,ภูรินท์ องค์วรรณดี,เกียร์,Purin Ongwandee,Gear,6902060,M.D.,Y1,gearruyoute,0957519645,purin.ong@student.mahidol.edu,Gear Y1.JPG,
-AA,Member of Competition team,นาย,ภูริณัฐ สมชัย,ภูริ,Phurinut Somchai,Poohri,6502156,M.D.,Y5,poohrich24280,0879961001,phurinut.som@student.mahidol.edu,Poohri Y5.JPG,
-AA,Research team,นาย,ธัชฐพงษ์ บุญธรรมติระวุฒิ,ภณ,Tatchtapong Boonthamtirawuti,Paul,6902047,M.D.,Y1,tpb1234,0863839981,tatchtapong.boo@student.mahidol.edu,Paul Y1 .JPG,
-AA,Research team,นางสาว,ณัฐรดา มณีศรี,หนูดี,Nadrada Maneesri,Noodee,6802043,M.D.,Y2,ndeeravee,0905522290,nadrada.man@student.mahidol.edu,Noodee Y2.JPG,
-AA,Project manager of Academic event ,นางสาว,ศุภรดา โศจิศิริกุล,โฟท,Suparada Sojisirikul,Foath,6502167,M.D.,Y5,suparada-foath,0928722421,suparada.soj@student.mahidol.edu,Foath Y5.jpg,
-AA,Member of academic event,นาย,นิติธร มั่งพล,ธันวา,Nitithorn Mongphol,Tanwa,,M.D.,Y1,nitithorn.tanwa,0805355454,nitithorn.tanwa@gmail.com,Tanwa Y1,
-AA,Member of academic event,นางสาว,พาพร พลอยมนตรี,จั้ง,Paporn Phloi-montri,Jung,6602046,M.D. - M.M.,Gap (M.Eng / M.M),jung1507,0922537207,paporn.phl@student.mahidol.edu,Jung_MM.JPEG,
-WB,Vice President of Wellbeing Affairs,นางสาว,จิณณ์ รัชโน,จิณณ์,Jin Rushchano,Jin,6502021,M.D. - M.M.,Y4,jin78438,0871242202,jin.rus@student.mahidol.edu,,
-WB,Deputy VPWB (Screening & Promotion Cluster),นาย,ณัฐภัทร อภิธรรมใบบุญ,ณวิน,Natthaphat Apithambaiboon,Navin,6502104,M.D.,Y5,,0615575825,natthaphat.api@student.mahidol.edu,,
-WB,Secretary,นางสาว,พิชชานภา นุ่นโต,พิ้ง,Pithchanapa Noonto,Pink,6502037,M.D.,Y4,xutopia304,0952526901,pithchanapa.noo@student.mahidol.edu,,
-WB,Well-being Media Lead,นางสาว,พนิตพิชา สถิตอมรธรรม,แพนเค้ก,Panitpicha Sathitamorntham ,Pancake,6602042,M.D.,Y4,panccasm, 0944475595 ,panitpicha.sah@student.mahidol.edu ,,
-WB,WB Steering Committee Y2,นางสาว,ธัญดา อุปนัน,ไข่มุก,Thunyada Uppanan,Kaimook,6802025,M.D. - M.M.,Y2,Kmmmmmmmmmmmmm,0956764275,tunyada.upp@student.mahidol.edu,https://drive.google.com/file/d/16lWy3iYZTne-eKgfDqFcZQPQR-jSRVYa/view?usp=drivesdk,
-WB,WB Steering Committee Y3,นางสาว,ชยพล เอี่ยมสนธิ,มิน,Chayapon Iemsonthi,min,6702009,M.D.,Y3,wongrattanapitux,0885959141,chayapon.iem@student.mahidol.edu,,
-WB,WB Steering Committee Y4,นางสาว,ชิษณุชา จิโรจน์กุล,อัญอัญ,Chitsanucha Jirotkul ,An-an,6602020,M.D.,Y4,967649598,0967649598 ,chitsanucha.jir@student.mahidol.edu ,,
-CC,Vice President of Corporate Communications,นาย,สิริดนย์ รังษีหิรัญรัตน์,แทน,Siridon Rangsihiranrat,Tan,6702058,M.D.,Y3,,0816198114,siridon.ran@student.mahidol.edu,,
-CC,Deputy VPCC,นางสาว,รุ่งอรุณ อัศวลาภ,วีวี่,Rungarun Ausawalarp,Vivi,6802058,M.D.,Y2,,0631604775,rungarun.aus@student.mahidol.edu,,
-CC,Secretary ,นางสาว,ปุณิกา สุวิมลพันธุ์,ปัณ,,Pun,6802051,,Y2,,0898911075,punika.suv@student.mahidol.edu,,
-CC,Secretary ,นาย,ทักษิณ แก้ววงษา,ไอซ์ซึ,,Icetsu ,6702023,M.D. - M.Eng.,Y3,,0930471625,taksin.kae@student.mahidol.edu,,
-CC,Organizational Media Lead,นางสาว,ญาณิศา สว่างสินธุ์,เอิน,Yanisa Sawangsin,Earn,6702015,M.D. - M.Eng.,Y3,,0648213431,yanisa.sag@student.mahidol.edu,,
-CC,Head of IT,นางสาว,อภิปรียา ปวบุญสิริวงศ์,ปลื้ม,Abhipiya Pawabunsiriwong,Pleurm,6802016,M.D. - M.Eng.,Y2,,0994321899,abhipiya.paw@student.mahidol.edu,,
-CC,Head of Data Analysis and Feedback,นาย,ณัชพล พานิช,ก๊อด,Nutchapon Panich,Got,6802004,M.D. - M.Eng.,Y2,,0622431478,nutchapon.pan@student.mahidol.edu,,
-CC,Head of Merchandise,นางสาว,พิมพ์มาดา จารุอาภรณ์ประทีป,นานะ,Pimmada Jaruapornprateep,Nana,6702129,M.D.,Y3,,0922848322,,,
-CC,Advisor to VPCC,นางสาว,จุฑามาศ รัตนพงษ์วณิช,เหมยอิง,Chuthamas Rattanapongvanich,Maeying,6602014,M.D. - M.Eng.,Gap (M.Eng / M.M),,0878000013,chuthamas.rat@student.mahidol.edu,,
-CC,Advisor to VPCC,นางสาว,ชนิดาภา เหลืองเลิศไพบูลย์,เนเน่,Chanidapa Luanglertpaiboon,Nanae,6602016,M.D. - M.M.,Gap (M.Eng / M.M),,0990549890,chanidapa.lua@stident.mahidol.edu,,
-CC,IT Member,นาย,วิชญ์ อภิรักษ์คุณวงศ์,วิชญ์,,Wish,6802012,M.D. - M.Eng.,Y2,,0987457540,wish.api@student.mahidol.edu,,
-CC,IT Member,นาย,ปุญญพัฒน์ บุตรโคตร,ปาล์ม,,Palm,6922034,M.D.,Y1,,0994868399,punyapat.boo@student.mahidol.edu,,
-CC,Feedback and Development,นาย,ปัณณวิชญ์ เฉลิมเลิศปัญญา,อู๋,,Au,6702118,M.D.,Y3,,0922357788,pannawit.cha@student.mahidol.edu,,
-CC,Feedback and Development,นางสาว,ณิชนาถ พรฉัยยา,บลิ๊งค์,,Blink,6702101,,Y3,,0904456959,nijanath.bho@student.mahidol.edu,,
-CC,Deputy Head of Media (Partner Media and Support),นาย,สีหบดินทร์ ยธิกุล,มาร์ค,,Mark,6802015,M.D. - M.Eng.,Y2,mark12verygood,0813537331,seehabordin.yat@student.mahidol.edu,,
-CC,Non-motion Content Creator,นางสาว,ปุญญ์ จันทรังสิกุล,ปุญญ์,,,6902052,,Y1,pppotterhogwart579,0840597579,punn.chn@student.mahidol.ac.th,,
-CC,Non-motion Content Creator,นาย,กฤษณพงษ์ กอบกิจ,จัมโบ้,,,6902041,,Y1,0966368965,0966368965,kritsanapong.kob@student.mahidol.ac.th,,
-CC,Non-motion Content Creator,นาย,ชยพล ว่องชาญอุดม,เซิ่น,,,6902002,,Y1,lune696969,0932759699,w.chayapon69@gmail.com,,
-CC,Motion Content Creator,นาย,พันธุ์ระพี เตียวสกุล,พีค,,,6902052,,Y1,panrape.tiey.tiey,0922722241,panrape.tea@student.mahidol.ac.th,,
-CC,Tiktoker,นาย,พีรวัส จำจด,พรีเมียร์,,,6802054,,Y2,premier2607,0625155919,perawat.cha@student.mahidol.edu,,
-CC,Tiktoker,นางสาว,ศรัญภรณ์ เตชะภิญญาวัฒน์,ต้นรัก,,,6902015,,Y1,tonrak2008,0629654011,sarunporn.teh@student.mahidol.ac.th,,
-CC,Tiktoker,นาย,กฤษณพงษ์ กอบกิจ,จัมโบ้,,,6902041,,Y1,0966368965,0966368965,kritsanapong.kob@student.mahidol.ac.th,,
-CC,Tiktoker,นาย,เจ้าใจ เหล่าลุมพุก,เจ้าใจ,,,6702007,,Y3,tew812,0636453874,chaochai.lao@student.mahidol.edu,,
-CC,Tiktoker,นางสาว,อทิชา จินตวัฒนกุล,หลิว,,,6902018,,Y1,Liw_ja,0992496688,athicha.jin@student.mahidol.ac.th,,
-CC,Coordinator of merchandise team,นางสาว,รมิดา ลิมป์ไพบูลย์,หลิงหลิง,,,6902036,,Y1,ramida.lim,0891766814,ramida.lim@student.mahidol.ac.th,,
+ฝ่าย,ตำแหน่ง,คำนำหน้า,ชื่อ - นามสกุล (ไทย),ชื่อเล่น (ไทย),Name - Surname (English),Nickname (English),รหัสนักศึกษา,Track,ชั้นปี,Line ID,เบอร์โทรศัพท์,Email (@student.mahidol.edu),รูปภาพ (แนบลิงก์รูป),To picture
+EC,President,นางสาว,ปาลิตา ประสพโชค,เป้ย,Palita Prasopchoke,Pei,6502059,M.D.,Y5,peians,0929942404,palita.prs@student.mahidol.edu,https://drive.google.com/file/d/1EUA6Vd17HL5KmhqpWLeQxJwuSiPJotud/view?usp=drivesdk ,PeiEC.jpg
+EC,Vice President,นาย,วัชรพงศ์ ทิมคล้ายพชร,ไดม่อน,,Diamond,6502017,M.D. - M.Eng.,Y4,,0881926541,watcharapong.tim@student.mahidol.edu,,DiamondEC.jpg
+EC,Vice President,นาย,พิวัฒน์ ศุภวิทยา,ปู๊น,Piwat Suppawittaya,Poon,6502038,M.D. - M.M.,Y4,แอดทางเบอร์ได้เลยครับผม,0858130024,piwat.sup@student.mahidol.edu,,PoonEC.jpg
+EC,Deputy Vice President,นางสาว,มนรดา ชิวหวรรณ,พราว,Monrada Chiewhawan ,Proud,6502012,M.D. - M.Eng.,Y4,proud2103,0855322888,monrada.chi@student.mahidol.edu,https://drive.google.com/file/d/1Tv8HnJdW-VUYQDfB877tPdqFMTbRc9cl/view?usp=drivesdk,ProudEC.jpg
+EC,Deputy Vice President,นาย,ปุญญพัฒน์ พันธ์นาค,ปลื้ม,Punyapat Phannak,Pluem,6502034,M.D. - M.M.,Y4,punyapatp2546,0881549151,Punyapat.pha@student.mahidol.edu,,PluemEC.jpg
+EC,General Secretary,นาย,สรวิชญ์ สงวนงาม,คิม,Sorawit Sanguanngam ,Kim,6502171,M.D.,Y5,,0632124747,sorawit.san@student.mahidol.edu,https://photos.app.goo.gl/tmDXhd7EPhYTTjpJ9,KimEC.jpg
+EC,General Secretary,นางสาว,ชัชชญา พราหมเล็ก,มุก,Chatchaya Pramlek,Mook,6802082,M.D.,Y2,chatchaya.mook,0972494261,chatchaya.pra@student.mahidol.edu,https://drive.google.com/file/d/1w2rErTXipvSueD2b6dfNjtvJf1FOe10U/view?usp=drivesdk,MookEC.jpg
+EC,General Secretary,นาย,ยศวร บุตรประดิษฐ์,บูม,Yotsaworn Bootpradit,Boom,6802032,M.D. - M.M.,Y2,yotsawornboom,0910287525,yotsaworn.boo@student.mahidol.edu,,BoomEC.jpg
+IA,Vice President of Internal Affairs,นางสาว,กัญจรีย์ ศุภวิทยา,ปิ่นปี๊น,Kanjaree Suppawittaya,Pinpin,6602004,M.D. - M.M.,Gap (M.Eng / M.M),pinpin32495,0930980020,kanjaree.sup@student.mahidol.edu,Profile_Kanjaree Suppawittaya.JPEG,PinpinIA.jpg
+IA,Deputy VPIA for Internal Activities and IA Identity,นางสาว,สิรภัทร เชาวริทธิ์,พิม,Sirapatr Chaovaritt,Pim,6702056,M.D. - M.Eng.,Y3,928852432,0928852432,sirapatr.cha@student.mahidol.edu,,PimIA.jpg
+IA,Deputy VPIA for Strategic Coaching,นางสาว,ปวริศา ปราบนอก,มะปราง,Pawarisa Prabnog,Maprang,6602037,M.D. - M.M.,Gap (M.Eng / M.M),138191849,0863215411,pawarisa.pra@student.mahidol.edu,https://drive.google.com/file/d/1vhLEHGLwx7ii9y2goBzgxiv9uC7R7an0/view?usp=drivesdk,MaprangIA.jpg
+IA,Coaching Manager,นาย,ไกรวิษย์ ไกยวงศ์,โอม,Kraiwish Kaiyawong,Ohm,6602007,M.D. - M.Eng.,Y3,turkeychicken,0971467609,kraiwish.kai@student.mahidol.edu,,OhmIA.jpg
+IA,Coaching Manager,นางสาว￼,ณรฎา จะชาลี,ออย,Narada Jachalee,Oil,6702019,M.D. - M.Eng.,Y3,848348733,0910169143,narada.jac@student.mahidol.edu,,OilIA.jpg
+IA,Lead of Events Creatives,นางสาว,กีรติกา ทองชัยประสิทธิ์,ฟ้า,Keeratika Thongchaiprasit,Fah,6702004,M.D. - M.Eng.,Y3,keeratika_fah,0628538415,keeratika.tho@student.mahidol.edu,https://drive.google.com/file/d/1P3swul7OAC5nxXglvQE-iwKh8YOr23fn/view?usp=drivesdk,FahIA.jpg
+IA,Head of Internal Activities Coordination,นางสาว,ชัชชญา พราหมเล็ก,มุก,Chatchaya Pramlek,Mook,6802082,M.D.,Y2,chatchaya.mook,0972494261,chatchaya.pra@student.mahidol.edu,https://drive.google.com/file/d/1w2rErTXipvSueD2b6dfNjtvJf1FOe10U/view?usp=drivesdk,MookIA.jpg
+IA,Deputy Head of Internal Activities Coordination,นาย,พอเพียง จันทิมา,ไอติม,Phophiang Chanthima,Itim,6822026,RAK,Y2,timmmmmmi,0979593439,phophiang.cha@student.mahidol.edu,https://drive.google.com/file/d/1yS-e-80K9bPESnq38q3nIVzZG4govJJf/view?usp=drivesdk,ItimIA.jpg
+IA,Engagement Director,นางสาว,นภสร โตสุโขวงศ์,นันนัน,Napasorn Tosukhowong ,Nannan,6802098,M.D.,Y2,nanikoari,0881929992,napasorn.tos@student.mahidol.edu,,NannanIA.jpg
+IA,Engagement Director,นางสาว,มนสิชา โลพันธ์ศรี,มิ้นท์,Monsisha Lopansri,Mint,6802131,M.D.,Y2,iwannbegdfriend,0838197240,monsisha.lop@student.mahidol.edu,Profile_Monsisha Lopansri,MintIA.jpg
+IA,Visual Media Lead,นางสาว,พิมพาสุข อัศวราชันย์,แพตตี้,Pimpasook Assawarachan,Patty,6702042,M.D.,Y3,patty6096,0840726096,pimpasook.ass@student.mahidol.edu,https://drive.google.com/file/d/1XfGrFTHrgSwDE8OrDy7NVi62HIZuIq99/view,PattyIA.jpg
+IA,Visual Media Lead,นาย,ปูรณ์ ตระกูลตั้งมั่น,ปูน,Poon Trakultangmun,Poon,6702037,M.D. - M.M.,Y3,Poon260148,0992627744,poon.tra@student.mahidol.edu,https://drive.google.com/file/d/1LnJeM6NKBJhIJj5VN4OaZVEhhdfPy-7J/view?usp=drivesdk,PoonIA.jpg
+WB,Vice President of Wellbeing Affairs,นางสาว,จิณณ์ รัชโน,จิณณ์,Jin Rushchano,Jin,6502021,M.D. - M.M.,Y4,jin78438,0871242202,jin.rus@student.mahidol.edu,,JinWB.jpg
+WB,Deputy VPWB (Clinic),นาย,ณัฐภัทร อภิธรรมใบบุญ,ณวิน,Natthaphat Apithambaiboon,Navin,6502104,M.D.,Y5,,0615575825,natthaphat.api@student.mahidol.edu,,NavinWB.jpg
+WB,Wellbeing Secretary,นางสาว,พิชชานภา นุ่นโต,พิ้ง,Pithchanapa Noonto,Pink,6502037,M.D.,Y4,xutopia304,0952526901,pithchanapa.noo@student.mahidol.edu,,PinkWB.jpg
+WB,Wellbeing Media Lead,นางสาว,พนิตพิชา สถิตอมรธรรม,แพนเค้ก,Panitpicha Sathitamorntham ,Pancake,6602042,M.D.,Y4,panccasm, 0944475595 ,panitpicha.sah@student.mahidol.edu ,,PancakeWB.jpg
+WB,Content Creator,นาย,ธนัตถ์กรณ์ เชาวนสมิทธิ์,กรณ์,Thanatkorn Chauvanasmith,Korn,6902029,M.D. - M.M.,Y1,skornsky2,0869441924,thanatkorn.cha@student.mahidol.ac.th,,KornWB.jpg
+WB,Content creator,นางสาว,ศรัญปรียา ศรีสินรุ่งเรือง,ผิงผิง,Saranpreeya Srisinroongruang ,PingPing,6902065,M.D.,Y1,sranping,0995544762,saranpreeya.sri@student.mahidol.ac.th,,PingPingWB.jpg
+WB,Graphic Designer,นางสาว,ธวัลพร บุญสม,เพชร,Thawanporn Boonsom,Petch,6902108,M.D.,Y1,petch.2006,0623577571,thawanporn.boo@student.mahidol.ac.th,,PetchWB.jpg
+WB,Graphic Designer,นางสาว,ปริญ ทรัพย์ยิ่ง,ข้าวตังค์,Prin Subying,Khaotang,6902050,M.D.,Y1,prin12000,0915159424,prin.sub@student.mahidol.ac.th,,KhaotangWB.jpg
+WB,Graphic Designer,นางสาว,สรชา จ้อยโหมด,ใบบัว,Soracha Joymode,Bibua,6902152,M.D.,Y1,bibua01,0946464605,Soracha.joy@student.mahidol.ac.th,,BibuaWB.jpg
+WB,Video Editor,นาย,วรภพ เฟื่องฟู,โอห์ม,Woraphob Fuangfoo,Ohm,6902145,M.D.,Y1,dumwa,0962459894,woraphob.fua@student.mahidol.ac.th,,OhmWB.jpg
+WB,Project Manager of Mental Resilience,นาย,พิวัฒน์ ศุภวิทยา,ปู๊น,Piwat Suppawittaya,Poon,6502038,M.D. - M.M.,Y4,,0858130024,piwat.sup@student.mahidol.edu,,PoonWB.jpg
+WB,Project Manager of Creative Therapy,นาย,สิรภพ บูรพาสกุล,อาช์ว,Siraphop Burapasakul,Ar,6902038,M.D. - M.M.,Y1,963519962,0963519962,siraphop.bur@student.mahidol.ac.th,,ArWB.jpg
+WB,Project Manager of Creative Therapy,นางสาว,รมิดา ลิมป์ไพบูลย์,หลิงหลิง,Ramida Limphaiboon ,LingLing,6902036,M.D. - M.M.,Y1,ramida.lim,0891766814,ramida.lim@student.mahidol.ac.th,,LingLingWB.jpg
+WB,Project Manager of Creative Therapy,นาย,ภัทรพล จำปาหอม,ภูมิ,Pattarapon Jampahom,Poom,6902059,M.D.,Y1,pommyzzxd,0987026167,pattarapon.jap@student.mahidol.ac.th,,PoomWB.jpg
+WB,Core Team,นาย,ศิวนาท ทนงจิตร,ฟีนิกซ์,Siwanat Thanongchit,Pheonix,6902151,M.D.,Y1,siwanatnix,0630469832,siwanat.tha@student.mahidol.ac.th,,PheonixWB.jpg
+WB,Core Team,นางสาว,วริศรา ถาวรพันธ์,โฟกัส,Warissara Thavornphan,Focus,6902146,M.D.,Y1,focuschan999,0948100148,warissara.tha@student.mahidol.ac.th,,FocusWB.jpg
+WB,Core Team,นาย,ภีร์กวิน เจริญธรรมรักษา,ต้นข้าว,Peekawin Charoenthamraksa,Tonkao,6902137,M.D.,Y1,tonkao1712,0928400483,peekawin.cha@student.mahidol.ac.th,,TonkaoWB.jpg
+WB,Core Team,นาย,พสิษฐ์ พนมยงค์,ไอเดีย,Pasit Banomyong,Idea,6902129,M.D.,Y1,idea62442,0820767044,pasit.ban@student.mahidol.ac.th,,IdeaWB.jpg
+WB,Core Team,นางสาว,ณัฏฐ์ธนัน ปานมาก,ข้าวปั้น,Natthanun Panmak,Khaopun,6902097,M.D.,Y1,khaopun3225,0843132162,natthanun.pan@student.mahidol.ac.th,,KhaopunWB.jpg
+WB,Project Manager of Planetary Health,นาย,เมชฌ์ จันทรทรัพย์,เม่น,Mej Chandrasup,Menn,6602056,M.D. - M.M.,Gap (M.Eng / M.M),menmejj,0909707370,mej.cha@student.mahidol.edu ,,MennWB.jpg
+WB,Core Team,นางสาว,กรวรรณ พิพัฒน์อนุสรณ์,มิกิ,Korrawan Pipatanusone ,Miki,6902040,M.D.,Y1,korrawan_miki,0918395614,korrawan.pip@student.mahidol.ac.th,,MikiWB.jpg
+WB,Core Team,นาย,ณัฐพล ทีปจิรังกูล,อิง,Nattapol Teepjirangkul ,Ing,6902100,M.D.,Y1,ing16256,0922483533,nattapol.tee@student.mahidol.ac.th,,IngWB.jpg
+WB, Core Team,นางสาว,วริศรา ถาวรพันธ์,โฟกัส,Warissara Thavornphan,Focus,6902146,M.D.,Y1,focuschan999,0948100148,warissara.tha@student.mahidol.ac.th,,FocusWB.jpg
+WB,Core Team,นาย,ศนิสรรค์ เรืองรัตน์,ปั้นเมฆ,Snisun Ruangrat,Punmek,6902014,M.D. - M.Eng.,Y1,punmek11551,0954844907,snisun.rua@student.mahidol.ac.th,,PunmekWB.jpg
+WB,Project Manager of Ultra-processed Food,นางสาว,ขวัญจิรา ศรีอุบล,ปาล์ม,Kwanjira Srioubol,Palm,6602008,M.D. - M.M.,Gap (M.Eng / M.M),love27102514,0829180927,kwanjira.sra@student.mahidol.edu,,PalmWB.jpg
+WB,Core Team,นางสาว,อาริษา ทองทักษ์,อั้ม,Arisa Thongtak,Am,6802065,M.D.,Y2,arisa477,0635243900,arisa.tho@student.mahidol.edu,,AmWB.jpg
+WB,Core Team,นางสาว,นภสร ประสงค์,ดรีม,Noppasorn Prasong,Dream,6802097,M.D.,Y2,Dreamnoppasorn,0626744395,noppasorn.pra@student.mahidol.edu,,DreamWB.jpg
+WB,WB Steering Committee Y2,นางสาว,ธัญดา อุปนัน,ไข่มุก,Thunyada Uppanan,Kaimook,6802025,M.D. - M.M.,Y2,Kmmmmmmmmmmmmm,0956764275,tunyada.upp@student.mahidol.edu,,KaimookWB.jpg
+WB,WB Steering Committee Y3,นางสาว,ชยพล เอี่ยมสนธิ,มิน,Chayapon Iemsonthi,min,6702009,M.D.,Y3,wongrattanapitux,0885959141,chayapon.iem@student.mahidol.edu,,minWB.jpg
+WB,WB Steering Committee Y4,นางสาว,ชิษณุชา จิโรจน์กุล,อัญอัญ,Chitsanucha Jirotkul ,An-an,6602020,M.D.,Y4,967649598,0967649598 ,chitsanucha.jir@student.mahidol.edu ,,An-anWB.jpg
+WB,WB Steering Committee Y5,นางสาว,ปัญชิกา หล่อธราประเสริฐ,ปุยฝ้าย,,,,,,,,,,
+WB,WB Steering Committee Y6,นาย,ณัฐวุฒิ แซ่ตั้ง,ไอซ์,Nattgawut Saetung,Ice,6402097,M.D.,Y6,970137697,0645647759,natthawut.sat@student.mahidol.edu,,IceWB.jpg
+AA,Vice President of Academic Affairs,นาย,สุธีภัทท์ ลิมวิภูวัฒน์,นิว,Sutheephat Limvipuwat,New,6502176,M.D.,Y5,sutheephat,0951593369,sutheephat.lim@student.mahidol.edu,,NewAA.jpg
+AA,Deputy of VPAA,นาย,พณิชพล เปลี่ยนขำ,ออสการ์,Panitchapol Pliankham,Oscar,6602041,M.D. - M.M.,Gap (M.Eng / M.M),https://line.me/ti/p/ynzNErp0K5,0638815882,panitchapol.pli@student.mahidol.edu,,OscarAA.jpg
+AA,Secretary,นาย,พรพิพัฒน์ แหขุนทด,ฟิวส์,Pondpipat Haekhunthod,Fuse / Hae,6502132,M.D.,Y5,1212312121629,0854947162,pondpipat.hae@student.mahidol.edu,,Fuse/HaeAA.jpg
+AA,Secretary,นาย,ภาวัต อุ่นเอม,ซิกตี้,Pawat Unaim,Sixty,6702135,M.D.,Y3,Sixty9944,0945639944,pawat.una@student.mahidol.edu,,SixtyAA.jpg
+AA,Secretary,นาย,ณัฐภัทร ทองน้อย,ท็อป,Nattapat Tongnoi,Top,6602026,M.D. - M.M.,Gap (M.Eng / M.M),nattapat500104,0989152548,nattapat.ton@student.mahidol.edu,,TopAA.jpg
+AA,Head of SC Academic Year 1,นาย,กันดิศ กรมาทิตย์สุข,กัน,Kandit Kornmatitsuk,Kan,6902001,M.D. - M.Eng.,Y1,0636641825,0636641825,kandit.kor@student.mahidol.ac.th,,KanAA.jpg
+AA,Head of SC Academic Year 2,นางสาว,นภสร โตสุโขวงศ์,นันนัน,Napasorn Tosukhowong ,Nannan,6802098,M.D.,Y2,nanikoari,0881929992,napasorn.tos@student.mahidol.edu,,NannanAA.jpg
+AA,Head of SC Academic Year 3,นาย,วรวลัญช์ พละการ,กล้อง,Worawarun Phalakarn,Krong,6702143,M.D.,Y3,worawarun11028,0926532945,worawarun.pha@student.mahidol.edu,,KrongAA.jpg
+AA,Head of SC Academic Year 4,นาย,อรรถพร สายแสง,ไตเติ้ล,Attaphorn Saisang,Title,6602157,M.D.,Y4,kaknonaw,0882945416,attaphorn.sai@student.mahidol.edu,,TitleAA.jpg
+AA,Head of SC Academic Year 4 NL,นางสาว,ปาณิศา สังข์แก้ว,ปาล์มมี่,Panisa Sungkaew,Palmmy,6602112,M.D.,Y4,0909903507,0800939075,panisa.sun@student.mahidol.edu,,PalmmyAA.jpg
+AA,Head of SC Academic Year 4 RAK,นางสาว,เมธาวี มั่นธรรมมงคล,เมมโมรี่,Metawe Mantummongkol,Memory,6622041,RAK,Y4,may_memory2548,0991716992,metawe.man@student.mahidol.edu,,MemoryAA.jpg
+AA,Head of SC Academic Year 5,นาย,อิสยาห์ บรรพลิตานนท์,หมิง,Isaya Banpalitanon,Ming,6502180,M.D.,Y5,ming34212,0987478465,isaya.ban@student.mahidol.edu,,MingAA.jpg
+AA,Head of SC Academic Year 6,นางสาว,วิลาสินี ชุ่มเสนา,แพน,Wilasinee Chumsena,Pan,6402157,M.D.,Y6,0934154939,0934154939,wilasinee.chu@student.mahidol.edu,,PanAA.jpg
+AA,Head of SC Academic Year 6,นาย,ชยณัฎฒ์ กมลเดชเดชา,แวน,Chayanat Kamondetdecha,Val,6302003,M.D. - M.Eng.,Y6,11991val,0954924145,chayanat.kam@student.mahidol.edu,,ValAA.jpg
+AA,Head of AA Resources,นางสาว,อันนา นววิธรัตนา,เอิง,Anna Nawawitrattana,Un,6702165,M.D. - M.Eng.,Y3,0924386636,0924386636,anna.naw@student.mahidol.edu,,UnAA.jpg
+AA,Monitoring team member,นาย,เก้าอาภา ปารมีรักษ์,เน็ท,Kaoabha Paramiraksa ,Net,6902071,M.D.,Y1,Parkin.........,0997464999,kaoabha.par@student.mahidol.ac.th,,NetAA.jpg
+AA,Monitoring team member,นางสาว,ชัญญาพัชร์ พัฒนาพิศาลศักดิ์,นะโม,Chanyapat Pattanapisalsak,Namo,6902023,M.D. - M.M.,Y1,chanyapatp008,0984154626,chanyapat.pat@student.mahidol.ac.th,,NamoAA.jpg
+AA,Monitoring team member,นางสาว,นันท์นภัส บุญพรหมธีรกุล,นาน่า,Nannaphat Boonpromthirakul,Nana,6902119,M.D.,Y1,nana22151417,0941457598,nannaphat.bon@student.mahidol.ac.th,,NanaAA.jpg
+AA,Academic Media Lead,นาย,พชรพล พรหมสิรินิมิต,โปรเจค,Patcharapon Promsirinimit,Project,6502131,M.D.,Y5,progress193,0808080347,patcharapon.pro@student.mahidol.edu,,ProjectAA.jpg
+AA,Admin,นางสาว,พรวลัญช์ หงษ์ทอง,เค้ก,Pornwalan Hongthong,Cake,6502135,M.D.,Y5,cake01092546,0966916683,pornwalan.hon@student.mahidol.edu,,CakeAA.jpg
+AA,Graphic designer,นางสาว,ชลิตา ศิริโสภา,ซีซี,Chalita Sirisopha,CC,6702010,M.D.,Y3,chalitasirisopha,0858071087,chalita.sir@student.mahidol.edu,,CCAA.jpg
+AA,Graphic designer,นาย,ปารินทร์ สระวัง,ฟีโน่,Parin Sawang,Fino,6902051,M.D.,Y1,fino_parin,0616738621,parin.saw@student.mahidol.ac.th,,FinoAA.jpg
+AA,Graphic designer,นางสาว,ขุนนาง สากลวารี,ว่าน,Khunnang Sakolvaree,Waan,6902073,M.D.,Y1,waankhunnang,0621488875,khunnang.sak@student.mahidol.ac.th,,WaanAA.jpg
+AA,Graphic designer,นาย,ชัขพล ปินตา,เบสท์,Chatpol Pinta,Best,6502092,M.D.,Y5,chatpolzaza,082-612-8776,chatpol.pin@student.mahidol.edu,,BestAA.jpg
+AA,Head of Academic Competition,นางสาว,ณัฐวศา ยิ่งเจริญอนันต์,แพร,Natvasa Yingjaroenanun ,Pare,6502046,M.D.,Y5,Pare8147,0860377950,natvasa.yin@student.mahidol.edu,,PareAA.jpg
+AA,Member of Competition team,นางสาว,อรมน ตัณฑุลเวศม์,เหม่ย,Oramon Tuntoolavest,Mei,6502071,M.D.,Y5,oramon_mei ,0944267887,oramon.tun@student.mahidol.edu,,MeiAA.jpg
+AA,Member of Competition team,นาย,ภูรินท์ องค์วรรณดี,เกียร์,Purin Ongwandee,Gear,6902060,M.D.,Y1,gearruyoute,0957519645,purin.ong@student.mahidol.edu,,GearAA.jpg
+AA,Member of Competition team,นาย,ภูริณัฐ สมชัย,ภูริ,Phurinut Somchai,Poohri,6502156,M.D.,Y5,poohrich24280,0879961001,phurinut.som@student.mahidol.edu,,PoohriAA.jpg
+AA,Member of Competition team,นาย,ศิริศักดิ์ นักพรรษา,เจ้ากัส,Sirisak Nakpansa,Jaokus,6902150,M.D.,Y1,Karukayamaha,0984873478,Sirisak.nak@student.mahidol.edu,,JaokusAA.jpg
+AA,Member of Competition team,นางสาว,ฤทัยกานต์ จันทร์สุข,ปิ่น,Ruethaikan Junsuk,Pin,6902063,M.D.,Y1,0917535969,0917535969,Ruethaikan.jun@student.mahidol.edu,,PinAA.jpg
+AA,Member of Competition team,นางสาว,ซีรีน ตนคลัง,ซีรีน,C-reen tonklang,C-reen,6902004,M.D. - M.Eng.,Y1,0611814160,0611814160,creen.ton@student.mahidol.edu,,C-reenAA.jpg
+AA,Member of competition team,นางสาว,สุฐิตา สิงห์สัตย์,ออมสิน,Suthita Singsat,Omsin,6902157,M.D.,Y1,0633431246,0633431246,suthita.sin@student.mahidol.edu,,OmsinAA.jpg
+AA,Member of competition team,นาย,อินทัช อวยพร,ภีม,Intatch Auyporn,Peam,6502179,M.D.,Y5,kimsjaa,0972371324,intatch.auy@student.mahidol.edu,,PeamAA.jpg
+AA,Head of Research,นาย,พิวัฒน์ ศุภวิทยา,ปู๊น,Piwat Suppawittaya,Poon,6502038,M.D. - M.M.,Y4,,0858130024,piwat.sup@student.mahidol.edu,,PoonAA.jpg
+AA,Research team,นาย,ธัชฐพงษ์ บุญธรรมติระวุฒิ,ภณ,Tatchtapong Boonthamtirawuti,Paul,6902047,M.D.,Y1,tpb1234,0863839981,tatchtapong.boo@student.mahidol.edu,,PaulAA.jpg
+AA,Research team,นางสาว,ณัฐรดา มณีศรี,หนูดี,Nadrada Maneesri,Noodee,6802043,M.D.,Y2,ndeeravee,0905522290,nadrada.man@student.mahidol.edu,,NoodeeAA.jpg
+AA,Research team,นางสาว,ณัฏฐณิชา ตรีศิริรัตน์,ฟ้าใส,Natthanicha Trisirirat,Fahsai,6902005,M.D. - M.Eng.,Y1,Fahsainatthanicha279 ,0951901907,natthanicha.tri@student.mahidol.edu,,FahsaiAA.jpg
+AA,Research team,นาย,เก้าอาภา ปารมีรักษ์,เน็ท,Kaoabha Paramiraksa ,Net,6902071,M.D.,Y1,Parkin.........,0997464999,kaoabha.par@student.mahidol.ac.th,,NetAA.jpg
+AA,Project manager of Academic event ,นางสาว,ศุภรดา โศจิศิริกุล,โฟท,Suparada Sojisirikul,Foath,6502167,M.D.,Y5,suparada-foath,0928722421,suparada.soj@student.mahidol.edu,,FoathAA.jpg
+AA,Member of academic event,นาย,นิติธร มั่งพล,ธันวา,Nitithorn Mongphol,Tanwa,6902121,M.D.,Y1,nitithorn.tanwa,0805355454,nitithorn.mon@student.mahidol.ac.th,,TanwaAA.jpg
+AA,Member of academic event,นางสาว,พาพร พลอยมนตรี,จั้ง,Paporn Phloi-montri,Jung,6602046,M.D. - M.M.,Gap (M.Eng / M.M),jung1507,0922537207,paporn.phl@student.mahidol.edu,,JungAA.jpg
+AA,Member of academic event,นาย,ธนาทิตย์ ประดับไทย,ทิตย์,Thanathit Pradabthai,Thit,6502047,M.D. - M.M.,Y4,Thanathit15648,0955389712,thanathit.pra@student.mahidol.edu,,ThitAA.jpg
+AA,Member of academic event,นางสาว,ฌาณทิศา จิตตะนุศาสตร์,พีค,Yantisa Chittanusart,Peak,6902026,M.D. - M.M.,Y1,Yantisa123456 ,0806845634,Yantisa.chi@student.mahidol.edu,,PeakAA.jpg
+AA,Member of academic event,นางสาว,ปุณณภา พบสิริเกษม,หมิง,Punnapa Pobsirikasem,Ming,6902054,M.D.,Y1,Mhingmoomee ,0806532604,punnapa.pob@student.mahidol.edu,,MingAA.jpg
+AA,Member of academic event,นางสาว,ปูติน หนูแดง,ติน,Putin Nudaeng,Tin,6502127,M.D.,Y5,Iamtheflashz12,0619899665,putin.nud@student.mahidol.edu,,TinAA.jpg
+AA,Member of academic event,นางสาว,พริมา พนมยงค์,แอนจี้,Parima Banomyong,Angie,6502136,M.D.,Y5,lucky_angie,0952495054,parima.ban@student.mahidol.edu,,AngieAA.jpg
+AA,Member of academic event,นาย,ธัญญ์ ภัทรดิลก,ธัญญ์,Than Pataradilok,Than,6502116,M.D.,Y5,than-2547kus,0917394290,than.pat@student.mahidol.edu,,ThanAA.jpg
+CC,Vice President of Corporate Communications,นาย,สิริดนย์ รังษีหิรัญรัตน์,แทน,Siridon Rangsihiranrat,Tan,6702058,M.D.,Y3,"0816198114, add by phone",0816198114,siridon.ran@student.mahidol.edu,,TanCC.jpg
+CC,Deputy VPCC,นางสาว,รุ่งอรุณ อัศวลาภ,วีวี่,Rungarun Ausawalarp,Vivi,6802058,M.D.,Y2,vivirung,0631604775,rungarun.aus@student.mahidol.edu,,ViviCC.jpg
+CC,Secretary ,นางสาว,ปุณิกา สุวิมลพันธุ์,ปัณ,Punika Suvimolpan,Pun,6802051,M.D.,Y2,panpunika,0898911075,punika.suv@student.mahidol.edu,,PunikaCC.jpg
+CC,Secretary ,นาย,ทักษิณ แก้ววงษา,ไอซ์ซึ,Taksin Kaewwongsa,Icetsu ,6702023,M.D. - M.Eng.,Y3,cerice2547,0930471625,taksin.kae@student.mahidol.edu,,IcetsuCC.jpg
+CC,Organizational Media Lead,นางสาว,ญาณิศา สว่างสินธุ์,เอิน,Yanisa Sawangsin,Earn,6702015,M.D. - M.Eng.,Y3,earn-yanisa0710,0648213431,yanisa.sag@student.mahidol.edu,,EarnCC.jpg
+CC,Head of IT,นางสาว,อภิปรียา ปวบุญสิริวงศ์,ปลื้ม,Abhipiya Pawabunsiriwong,Pleurm,6802016,M.D. - M.Eng.,Y2,,0994321899,abhipiya.paw@student.mahidol.edu,,PleurmCC.jpg
+CC,Head of Data Analysis and Feedback,นาย,ณัชพล พานิช,ก๊อด,Nutchapon Panich,Got,6802004,M.D. - M.Eng.,Y2,got_np,0622431478,nutchapon.pan@student.mahidol.edu,,GotCC.jpg
+CC,Head of Merchandise,นางสาว,พิมพ์มาดา จารุอาภรณ์ประทีป,นานะ,Pimmada Jaruapornprateep,Nana,6702129,M.D.,Y3,,0922848322,,,NanaCC.jpg
+CC,Head of Administration,นาย,จิรกิตติ์ จิระเจริญรัตน์,แกรม,Jirakit Jirajaroenrat,Gram,6702081,M.D.,Y3,,0999463625,jirakit.jir@student.mahidol.edu,,GramCC.jpg
+CC,Advisor to VPCC,นางสาว,จุฑามาศ รัตนพงษ์วณิช,เหมยอิง,Chuthamas Rattanapongvanich,Maeying,6602014,M.D. - M.Eng.,Gap (M.Eng / M.M),,0878000013,chuthamas.rat@student.mahidol.edu,,MaeyingCC.jpg
+CC,Advisor to VPCC,นางสาว,ชนิดาภา เหลืองเลิศไพบูลย์,เนเน่,Chanidapa Luanglertpaiboon,Nanae,6602016,M.D. - M.M.,Gap (M.Eng / M.M),,0990549890,chanidapa.lua@stident.mahidol.edu,,NanaeCC.jpg
+CC,IT Member,นาย,วิชญ์ อภิรักษ์คุณวงศ์,วิชญ์,Wish Apiruxkoonwong,Wish,6802012,M.D. - M.Eng.,Y2,wish38632,0987457540,wish.api@student.mahidol.edu,,WishCC.jpg
+CC,IT Member,นาย,ปุญญพัฒน์ บุตรโคตร,ปาล์ม,Punyapat Boottrakoat,Palm,6922034,RAK,Y1,palm35626,0994868399,punyapatboottrakoat@gmail.com,,PalmCC.jpg
+CC,Feedback and Development,นาย,ปัณณวิชญ์ เฉลิมเลิศปัญญา,อู๋,Pannawit Chalermlertpanya ,Au,6702118,M.D.,Y3,0922357788,0922357788,pannawit.cha@student.mahidol.edu,,AuCC.jpg
+CC,Feedback and Development,นางสาว,ณิชนาถ พรฉัยยา,บลิ๊งค์,Nijanath Bhonjaiya ,Blink,6702101,M.D.,Y3,blinkcess,0904456959,nijanath.bho@student.mahidol.edu,,BlinkCC.jpg
+CC,Feedback and Development,นาย,ภาคิน ชุนหจินดา,วินจัง,Pakin Chunhachinda ,Winjung,6802122,M.D.,Y2,pakinpawath,0972363145,pakin.chn@student.mahidol.edu,,WinjungCC.jpg
+CC,Feedback and Development,นางสาว,กัญญ์ฐญาณ์ เพ็ชรวงศ์,ข้าวฟ่าง,Kanthaya Pethwong,Khaofang,6902070,M.D.,Y1,khaofanglovefangkhao,0935493699,kanthaya.pet@student.mahidol.ac.th,,KhaofangCC.jpg
+CC,Deputy Head of Media (Partner Media and Support),นาย,สีหบดินทร์ ยธิกุล,มาร์ค,Seehabordin Yathikul,Mark,6802015,M.D. - M.Eng.,Y2,mark12verygood,0813537331,seehabordin.yat@student.mahidol.edu,,MarkCC.jpg
+CC,Non-motion Content Creator,นางสาว,ปุญญ์ จันทรังสิกุล,ปุญญ์,Punn Chantharangsikun,Punn,6902052,M.D.,Y1,pppotterhogwart579,0840597579,punn.chn@student.mahidol.ac.th,,PunnCC.jpg
+CC,Non-motion Content Creator,นาย,กฤษณพงษ์ กอบกิจ,จัมโบ้,Kritsanapong Kobkij,Jumbo,6902041,M.D.,Y1,0966368965,0966368965,kritsanapong.kob@student.mahidol.ac.th,,JumboCC.jpg
+CC,Non-motion Content Creator,นาย,ชยพล ว่องชาญอุดม,เซิ่น,Chayapon Wongchanaudom,Zern,6902002,M.D. - M.Eng.,Y1,lune696969,0932759699,chayapon.won@student.mahidol.ac.th,,ZernCC.jpg
+CC,Graphic Designer ,นางสาว,เกศร อุณวงศ์,แพร,Kesorn Unawong,Prae,6922003,RAK,Y1,pr_prae123,0980958939,smartcat2550@gmail.com,,PraeCC.jpg
+CC,Graphic Designer ,นาย,ธัญพิสิษฐ์ บวรธรรมทัศน์,สกาย,Thanpisit Bowornthommatadsana,Skye,6902048,M.D.,Y1,skythanpisit,0971844868,thanpisit.bow@student.mahidol.ac.th,,SkyeCC.jpg
+CC,Motion Content Creator,นาย,พันธุ์ระพี เตียวสกุล,พีค,Panrape Teawsakul,Peak,6902055,M.D.,Y1,panrape.tiey.tiey,0922722241,panrape.tea@student.mahidol.ac.th,,PeakCC.jpg
+CC,Motion Content Creator,นาย,อธิป ไกรวัฒนพงศ์,จูเนียร์,Athip Kraiwattanapong,Junior,6902066,M.D.,Y1,squidyjunior,0989076777,supecactus@gmail.com,,JuniorCC.jpg
+CC,Motion Content Creator,นาย,ภัทรกร ลันโทมรัตนะ,กัปตัน,Pattarakorn Lantomrattana,Captain,6902058,M.D.,Y1,Captaintvk4,0619563925,Pattarakorn.lan@student.mahidol.ac.th,,CaptainCC.jpg
+CC,Motion Content Creator,นางสาว,จิดาภา ยุทธเนตร,ใบบัว,Jidapa Yuthanet,Baibua,6902022,M.D. - M.M.,Y1,baibuajuneng_doc,0647407229,Baibuadoc07@gmail.com,,BaibuaCC.jpg
+CC,Tiktoker,นาย,พีรวัส จำจด,พรีเมียร์,Perawat Chamchod,Premier,6802054,M.D.,Y2,premier2607,0625155919,perawat.cha@student.mahidol.edu,,PremierCC.jpg
+CC,Tiktoker,นางสาว,ศรัญภรณ์ เตชะภิญญาวัฒน์,ต้นรัก,Sarunporn Techapinyawat,Tonrak,6902015,M.D. - M.Eng.,Y1,tonrak2008,0629654011,sarunporn.teh@student.mahidol.ac.th,,TonrakCC.jpg
+CC,Tiktoker,นาย,กฤษณพงษ์ กอบกิจ,จัมโบ้,Kritsanapong Kobkij,Jumbo,6902041,M.D.,Y1,0966368965,0966368965,kritsanapong.kob@student.mahidol.ac.th,,JumboCC.jpg
+CC,Tiktoker,นาย,เจ้าใจ เหล่าลุมพุก,เจ้าใจ,Chaochai Laolumpuk,Chaochai,6702007,M.D. - M.Eng.,Y3,tew812,0636453874,chaochai.lao@student.mahidol.edu,,ChaochaiCC.jpg
+CC,Tiktoker,นางสาว,อทิชา จินตวัฒนกุล,หลิว,Athicha Jintawattanagul,Liu,6902018,M.D. - M.Eng.,Y1,Liw_ja,0992496688,athicha.jin@student.mahidol.ac.th,,LiuCC.jpg
+CC,Video editor ,นางสาว,รักตะวัน ทวีลาภ,รักตะวัน,Ruktawan,Tawan,6902143,M.D.,Y1,0618589912,0618589912,ruktawan.taw@student.mahidol.ac.th,,TawanCC.jpg
+CC,Video editor ,นาย,เอื้อวงศ์ อนันตพฤทธิ์,วิน,Uawong Anantaphruti,Win,6802161,M.D.,Y2,uawong.iwin,0965054002,uawong.ana@student.mahidol.edu,,WinCC.jpg
+CC,Photographer,นางสาว,เภตรา อุณฑพันธุ์,แพท,Patra Ountaphan,Pat,6702049,M.D. - M.Eng.,Y3,patra2005,0959350074,prata.oun@student.mahidol.edu,,PatCC.jpg
+CC,Photographer,นาย,กันดิศ กรมาทิตย์สุข,กัน,Kandit Kornmatitsuk,Kan,6902001,M.D. - M.Eng.,Y1,0636641825,0636641825,kandit.kor@student.mahidol.ac.th,,KanCC.jpg
+CC,Coordinator of merchandise team,นางสาว,รมิดา ลิมป์ไพบูลย์,หลิงหลิง,Ramida Limphaiboon ,LingLing,6902036,M.D. - M.M.,Y1,ramida.lim,0891766814,ramida.lim@student.mahidol.ac.th,,LingLingCC.jpg
 CC,Designer of merchandise team,นางสาว,สุพิชญาณ์ เหมรัญช์โรจน์,พริม,,,6702061,,Y3,prim6429,0942614592,supitchaya.hem@student.mahidol.edu,,
 CC,Designer of merchandise team,นางสาว,จ้าวไหม ตั้งศิริพัฒน์,จ้าวไหม,,,6602013,,Gap (M.Eng / M.M),jaomai684,0994199626,jaomai.tun@student.mahidol.edu,,
-CC,Marketing of merchandise team,นางสาว,คัณธรัตน์ พินพิสิทธิ์,แปม,,,6802019,,Y2,khantharat.pam,0979954165,khantharat.pin@student.mahidol.edu,,
-CC,Marketing of merchandise team,นางสาว,วริศนันท์ ใจวีระวัฒนา,แพรวา,,,6702147,,Y3,0814900022,0814900022,varissanan.wa@gmail.com,,
-CC,Marketing of merchandise team,นางสาว,สุวพิชญ์ จงสุวรรณวัฒนา,พิชา,,,6802152,,Y2,pichy4231,0968021694,,,
-CC,Social Media Admin,วาราดา,จงจิระวงศา,พรีม,,,6802059,,Y2,p_warada,0639474532,,,
-CC,Social Media Admin,นิชาภา,จัมปากะนันท์,สายรุ้ง,,,6802048,,Y2,sairung300650,0951652119,,,
-CC,Social Media Admin,ชัญญา,ศิริพิพัฒนมงคล,แอม,,,6802022,,Y2,am.chanyar,0617170364,,,
-CC,Social Media Admin,รพิรัตน์,สู่ไพบูลย์,แอลจี้,,,6902062,,Y1,ellgielich,0997137836,,,
-OD,Vice President of Organizational Development,นาย,สุทธิธาร สุวรรณนพคุณ,บลิ้งกี้,,,6602065,M.D. - M.Eng.,Gap (M.Eng / M.M),,0811735659,suttithan.suw@student.mahidol.edu,,
-OD,Deputy VPOD of Learning Organization,นางสาว,สิริยา เมฆทวีพงศ์,เซญ่า,Siriya Mektavepong,Seiya,6602064,M.D. - M.Eng.,Gap (M.Eng / M.M),siriya911,0906591546,siriya.mek@student.mahidol.edu,Siriya Mektavepong_profile picture.jpeg,
-OD,,,พิรวิชญ์ อิ่มฤทธา,,,,6802029,,,,,,,
+CC,Marketing of merchandise team,นางสาว,คัณธรัตน์ พินพิสิทธิ์,แปม,Khantharat Pinpisit,Pam,6802019,M.D. - M.M.,Y2,khantharat.pam,0979954165,khantharat.pin@student.mahidol.edu,,PamCC.jpg
+CC,Marketing of merchandise team,นางสาว,วริศนันท์ ใจวีระวัฒนา,แพรวา,วริศนันท์ ใจวีระวัฒนา,,6702147,,Y3,0814900022,0814900022,varissanan.wa@gmail.com,,PreawaCC.jpg
+CC,Marketing of merchandise team,นางสาว,สุวพิชญ์ จงสุวรรณวัฒนา,พิชา,สุวพิชญ์ จงสุวรรณวัฒนา,,6802152,,Y2,pichy4231,0968021694,,,PichaCC.jpg
+CC,Social Media Admin,วาราดา,จงจิระวงศา,พรีม,Warada Jongjeerawongsa,Preme,6802059,M.D.,Y2,p_warada,0639474532,warada.jon@student.mahidol.edu,,PremeCC.jpg
+CC,Social Media Admin,นิชาภา,จัมปากะนันท์,สายรุ้ง,นิชาภา จัมปากะนันท์,,6802048,,Y2,sairung300650,0951652119,,,SairungCC.jpg
+CC,Social Media Admin,ชัญญา,ศิริพิพัฒนมงคล,แอม,Chanyar Siripipattanamonkon,Am,6802022,M.D. - M.M.,Y2,am.chanyar,0617170364,chanyar.sir@student.mahidol.edu,,AmCC.jpg
+CC,Social Media Admin,รพิรัตน์,สู่ไพบูลย์,แอลจี้,Rapirat Supaiboon,Ellgie,6902062,M.D.,Y1,ellgielich,0997137836,rapirat.sup@student.mahidol.ac.th,,EllgieCC.jpg
+OD,Vice President of Organizational Development,นาย,สุทธิธาร สุวรรณนพคุณ,บลิ้งกี้,Suttithan Suwannoppakun,Blinky,6602065,M.D. - M.Eng.,Gap (M.Eng / M.M),blinky58901975,0811735659,suttithan.suw@student.mahidol.edu,IMG_9899 5.jpg,BlinkyOD.jpg
+OD,Deputy VPOD of Learning Organization,นางสาว,สิริยา เมฆทวีพงศ์,เซญ่า,Siriya Mektavepong,Seiya,6602064,M.D. - M.Eng.,Gap (M.Eng / M.M),siriya911,0906591546,siriya.mek@student.mahidol.edu,Siriya Mektavepong_profile picture.jpeg,SeiyaOD.jpg
+OD,Deputy VPOD of Student Engagement,นาย,พิรวิชญ์ อิ่มฤทธา,ปาล์ม,Pirawit Imrittha,Palm,6802029,M.D. - M.M.,Y2,palmjb7,0834297924,pirawit.imr@student.mahidol.edu,https://drive.google.com/file/d/1iopLdcIMKUU9LmiX-MUie3VnKQKhKflU/view?usp=drivesdk,PalmOD.jpg
+OD,Head of Secretary Team,นาย,ชิษณุพงศ์ วิริยะศิริพงศ์กูล,ไทเกอร์,Chitsanuphong Wiriyasiriphongkool,Tiger,6902025,M.D. - M.M.,Y1,tiger210907,0971455941,chitsanuphong.wir@student.mahidol.ac.th,https://drive.google.com/file/d/1lrEDNgebZU1KNTQ-Sjx-d7xZaWSpSXPR/view?usp=drivesdk,TigerOD.jpg
+OD,Secretary,นาย,ภัทรพล ชัยวงษ์,ม่อน,Phattharaphon Chaiwong,Mon,6922039,RAK,Y1,mrbmc39,0807332234,phattharaphon.chi@student.mahidol.ac.th,https://drive.google.com/file/d/1LGmnQJjcuSzqiIgXRaYNVFP1hFtbY7EU/view?usp=drivesdk,MonOD.jpg
+OD,Secretary,นาย,นิธิศ  สะเทิงรัมย์,คอปเตอร์,Nitis Satheongram ,Copter,6922027,RAK,Y1,copter.nitis,0956058813,nitis.sat@student.mahidol.ac.th,https://drive.google.com/file/d/1Zr10NUOuMBFp6I9XLo0vgQ4A0cZgRTWB/view?usp=drivesdk,CopterOD.jpg
+OD,Assistance of Deputy VPOD of Learning Organization,นางสาว,วิรัลพัชร ศรีโอฬาร์,ปิ่น,Wirulphat Sri-o-la,Bhin,6802013,M.D. - M.Eng.,Y2,bhin-_-14-08-50,0617760959,wirulphat.sri@student.mahidol.edu,,BhinOD.jpg
+OD,Analyzing team member,นางสาว,อิสริยา เส็งหะพันธุ์,สาม,Isariya Senghaphan,Sam,6902162,M.D.,Y1,652154137,0652154137,isariya.sen@student.mahidol.ac.th,https://drive.google.com/file/d/1D1IIbNliHuWihBhyPXXFzZuO5sSCpljl/view?usp=drivesdk,SamOD.jpg
+OD,Analyzing team member,นาย,พิชญุตม์ ศรีมาก,ธาม,Pitchayut Srimak,Tham,6902033,M.D. - M.M.,Y1,pitchayut12sm,0937346696,pitchayut.sri@student.mahidol.ac.th,https://drive.google.com/file/d/1kzXe60S5PHFFXhfPYiVt6PjqhiBxI53N/view?usp=drivesdk,ThamOD.jpg
+OD,Monitoring team member,นาย,ศิรภัส วงศ์สัจจะกตัญญู,ทีมชาติ,Siraphat Wongsatchakatanyu,Teamchat,6922044,RAK,Y1,teamchat2550.,0650625151,siraphat.won@student.mahidol.edu, Picture,TeamchatOD.jpg
+OD,Monitoring team member,นางสาว,โยษิตา ธีรภาพสกุลวงศ์,หมิว,Yosita Teerapapsakunwong,Mhiu,6902140,M.D.,Y1,mewyosita,0822201676,yosita.tee@student.mahidol.ac.th,https://drive.google.com/file/d/12EzSf7Mc4z3iD9rKrck7JhXqAEvE1HrW/view?usp=drivesdk,MhiuOD.jpg
+OD,Head of Capacity Building Team,นาย,รณกร อุตสาหะ,อาร์มี่,Rhonnakron Utsaha,Army,6902061,M.D.,Y1,เบอร์ 0809494092,0809494092,rhonnakron.uts@student.mahidol.ac.th,https://drive.google.com/file/d/1lVHIwLziU_XGQZ3IUusFNXqrSw7d-PMe/view?usp=drivesdk,ArmyOD.jpg
+OD,Head of Content Creation Team,นาย,พันธุ์ระพี เตียวสกุล,พีค,Panrape Teawsakul,Peak,6902055,M.D.,Y1,panrape.tiey.tiey,0922722241,panrape.tea@student.mahidol.ac.th,https://drive.google.com/file/d/1KYYKd4IqZ7BG8G39mKPdrWSXJvkdnied/view?usp=drivesdk,PeakOD.jpg
+OD,Content Creation Team member,นาย,ภีร์กวิน เจริญธรรมรักษา,ต้นข้าว,Peekawin Charoenthamraksa ,Tonkao,6902137,M.D.,Y1,tonkao1712,0928400483,peekawin.cha@student.mahidol.ac.th,https://drive.google.com/file/d/1zIrZwBMuRM2rKj6V8_jbexTUmC_a7Xbj/view?usp=drivesdk,TonkaoOD.jpg
+OD,Capacity Building Team member,นาย,วีรวุฒิ สีอ่อน,ปุณ,Veeravuthi Srion,Punn,6902148,M.D.,Y1,punnzaaz,0863939193,Veeravuthi.sri@student.mahidol.ac.th,https://drive.google.com/file/d/1I2uFCp9kvzVDbUBWXaEc7QbLnlo4Faf4/view?usp=drivesdk,PunnOD.jpg
+EA,Vice President of External Affairs,นางสาว,ภัสสร เจียรจรูญวงศ์,เอิร์น,Pussorn Jianjaroonwong,Earn,6702134,M.D.,Y3,pplussorn,0971232424,pussorn.jia@student.mahidol.edu,EA_Earn VPEA,EarnEA.jpg
+EA,Head of Strategic Team,นาย,ณัฐพัชร์ พรหมมานันท์,อลีฟ,Nuttapat Prommanun,Alif,6702021,M.D. - M.M.,Y3,alif_alif_alof,0638208886,nuttapat.pro@student.mahidol.edu,EA_Alif_Head of strategic team.JPG,AlifEA.jpg
+EA,EA Media Lead,นางสาว,ภชมน ธารสุวรรณวงศ์,พั้นช์,Phachamon Thansuwanwong,Punch,6702133,M.D.,Y3,punch_89,0815577242,phachamon.tha@student.mahidol.edu,EA_Punch Media Lead,PunchEA.jpg
+EA,Deputy VPEA for External Relations,นางสาว,ศรียุพา พหลโยธิน,เอย,Sriyupa  Bahalayodhin ,Oei,6802060,M.D.,Y2,0814201244,0814201244,sriyupa.bah@student.mahidol.edu,EA_Oei DepVPEA ER,OeiEA.jpg
+EA,Deputy VPEA for Project Development,นาย,ประวีร์ สินวีรุทัย,สมาร์ท,Prawee Sinweeruthai,Smart,6402009,M.D. - M.Eng.,Y5,smprv,0639156441 ,prawee.sin@student.mahidol.edu ,EA_Smart_Dep VPEA for project dev.jpg,SmartEA.jpg
+EA,Deputy VPEA for Project Development,นางสาว,พรชนก วังรัตนากร,โอลิเวีย,Pornchanok Wangratanakorn,Olivia,6802027,M.D. - M.M.,Y2,lovelyoandm,0994188492,pornchanok.wag@student.mahidol.edu,EA_Olivia_dep VPEA project dev.,OliviaEA.jpg
+EA,Head of  EA Secretary,นางสาว,นลินภัสร์ จิรโรจน์กุลภูดิท,เชลซี,Nalinphas Jirarodkulpudit,Chelsea,6802008,M.D. - M.Eng.,Y2,sea210349,0805629265,Nalinphas.jir@student.mahidol.edu,EA_Chelsea_Head of Secretary,ChelseaEA.jpg
+EA,Operational Strategy Officer,นาย,จิรัฐวริทธิ์ อินทรธนู,ต้นน้ำ,Chiratwarit Intaratanoo,Tonnam,6802021,M.D. - M.M.,Y2,axtn1234,0952652614,chiratwarit.int@student.mahidol.edu,,TonnamEA.jpg
+EA,AAR & Knowledge Management Officer,นาย,พชรพล ละมูล,มิก,Pacharapol Lamool,Mix,6702122,M.D.,Y3,mix-pacharapol,0642963888,pacharapol.lam@student.mahidol.edu,EA_ Mix AAR&Knowledge management affair,Mixea3.jpg
+EA,Secretary,นาย,พสิษฐ์ ชิงสกล,โชกุน,Pasit Chingskol,Shokoon,6602043,M.D. - M.Eng.,Gap (M.Eng / M.M),shokoonipad,084922898,pasit.chn@student.mahidol.edu,EA_Shokoon_Secretary.jpg,ShokoonEA.jpg
+EA,Secretary,นาย,จิรพัชร์ โชคสิริสรณ์,มิก,Jirapatch Choksirison,Mix,6802076,M.D.,Y2,jrp.m1x,0839935145,jirapatch.cho@student.mahidol.edu,EA_Mix_Secretary.jpg,MixEA.jpg
+EA,Project Manager,นางสาว,สิริยา เมฆทวีพงศ์,เซญ่า,Siriya Mektavepong,Seiya,6602064,M.D. - M.Eng.,Gap (M.Eng / M.M),siriya911,0906591546,siriya.mek@student.mahidol.edu,EA_Siriya_Project Maneger,SeiyaEA.jpg
+EA,Rep MU,นางสาว,ชาลิสา ลิน,อันอัน,Chalisa Lin,AnAn,6902024,M.D. - M.M.,Y1,Chalisalin0216,0988264141,chalisa.lin@student.mahidol.edu,EA_AnAn_RepMU,AnAnEA.jpg
+EA,Syringe Team,นางสาว,ชาลิสา แวววีระกุล,วีเจย์,Chalisa Waewveerakun ,VJ,6902046,M.D.,Y1,vjchalisa,0980505969,chalisa.wae@student.mahidol.ac.th,EA_VJ Syringe Team,VJEA.jpg
+EA,Operational Strategy Officer,นางสาว,ชุติมา หงษ์เจริญไทย,พลอย,Chutima Hongcharoenthai,Ploy,6802041,M.D.,Y2,0947605936ploy,0947605936,chutima.hon@student.mahidol.edu,EA_Ploy_operational strategy officer,PloyEA.jpg
+EA,Syringe Coordinator ,นางสาว,ชนกธีรา ฤชุเศรษฐ์,บริ๊งค์,Chanokteera Ruechuseth,Blink,6902045,M.D.,Y1,chanokteerablink,0915541498,chanokteera.rue@student.mahidol.ac.th,EA_blink_syringe coordinator,BlinkEA.jpg
+EA,Deputy of Medlunteers Project Manager,นางสาว,พีรญา เวชสิทธิ์,อิงอิง,Peeraya Wetchasit,IngIng,6902057,M.D.,Y1,ipeerayag,0649792491,peeraya.wet@student.mahidol.edu,EA_IngIng_Dep Medlunteers,IngIngEA.jpg
+EA,Operational Strategy Officer,นาย,ธรรมธัช ฉิมพาลี,ปุณณ์,Dhammadhat Chimpalee,Poon,6902030,M.D. - M.M.,Y1,0999412667,0961599263,dhammadhat.chi@student.mahidol.ac.th,EA_Poon_Operational Strategy Officer,PoonEA.jpg
+EA,Medlunteers Project Manager,นางสาว,พรรณพัชร รอบรู้,น้ำพั้นช์,Phannapat Robru,Nampunch,6502133,M.D.,Y5,nampunch_16679,0982679456,phannapat.rob@student.mahidol.edu,EA_Nampunch_Medlunteers project manager,NampunchEA.jpg
+EA,Deputy of Medlunteers Project Manager,นาย,ณัฐภัทร อาชีวกุลมาศ,ผา,Natthaphat Acheewakullamas ,Pha,6802024,M.D. - M.M.,Y2,ipipeagle11059,0902933435,natthaphat.ach@student.mahidol.edu,,PhaEA.jpg
+EA,Secretary of Medlunteers,นางสาว,กัญญ์ฤทัย รักแต่งาม,ณัฏฐ์,Kanruthay Ruktaengam,Nutt,6902042,M.D.,Y1,0955541445,0955541445,kanruthay.ruk@student.mahidol.ac.th,EA_Nutt_Secretary Medlunteers.jpg,NuttEA.jpg
+EA,Syringe Team,นาย,ชยพล ว่องชาญอุดม,เซิ่น,Chayapon Wongchanaudom,Zern,6902002,M.D. - M.Eng.,Y1,lune696969,0932759699,chayapon.won@student.mahidol.ac.th,,ZernCC.jpg
+EA,International Collaboration Representative,นางสาว,ณใจ​ วงศ์​ไพบูลย์,หวานเย็น,Najai Wongpaibool,Waanyen,6902027,M.D. - M.M.,Y1,waanyen26,0993238750,najai.won@student.mahidol.ac.th,https://drive.google.com/open?id=14nkdAFozYaLYYzVxaEVw1Vuly4a-NRWj,WaanyenEA.jpg
+EA,Rep MU,นางสาว,จิดาภา ยุทธเนตร,ใบบัว,Jidapa Yuthaney,Baibua,6902022,M.D. - M.M.,Y1,baibuajuneng_doc,0647407229,Baibuadoc07@gmail.com,https://drive.google.com/open?id=1WKhZneuBkdfkgBuw8l6Xom9YVkoHvNGL,BaibuaCC.jpg
+EA,Syringe Team,นางสาว,ซีรีน ตนคลัง,ซีรีน,C-reen Tonklang,C-Reen,6902004,M.D. - M.Eng.,Y1,0611814160,0611814160,creen.ton@student.mahidol.ac.th,https://drive.google.com/open?id=1TWgVCPTxf6QUf-NKPyU9lSHoktRQOI7d,C-ReenAA.jpg
+EA,Syringe Team,นาย,สุนิธิ จิตตชโลธร,เต๋า,Sunithi Jittachalothorn,Tao,6902039,M.D.,Y1,t_tao0,0614127200,sunithi.jit@student.mahidol.ac.th,https://drive.google.com/open?id=19uH7sPL0f6dZmhrBO8Y-cxylb1xP-c92,TaoEA.jpg
+EA,MedCommunity Project Manager,นางสาว,พัชรพร แดงดา,เซญ่า,Patcharaporn dangda,Seiya,6902130,M.D.,Y1,paopaopaopaopaopao,0928700840,patcharaporn.dan@student.mahidol.ac.th,https://drive.google.com/open?id=1LdBiJFBxtIvHBpnUODLvVBxSr6GlJ23h,SeiyaEA.jpg
+EA,MedCommunity Project Team,นาย,ถิรพุทธิ์ นาคงาม,จิงจัง,Dhiraputh Narkngam ,Jingjung,6802006,M.D. - M.Eng.,Y2,,,,,JingjungEA.jpg
+EA,EA Media Team,นาย,แทนคุณ จันมะโฮง,ต้นกล้า,Thaenkhun Chanmahong ,Tonkla,6922018,RAK,Y1,tonkla0311,0988603902,thaenkhun.cha@student.mahidol.ac.th,https://drive.google.com/open?id=1qPlKRuU79kjoBm-AL_h9r0lMjF0JBxaB,TonklaEA.jpg
+EA,EA Media Team,นางสาว,ชลิตา กิตติคุณ,อิ๊ง,Chalita Kittikoon,Ink,6902090,M.D.,Y1,lovelyink,0955694683,chalita.kii@student.mahidol.ac.th,https://drive.google.com/open?id=1--iwcY_P90qDCby8E7UdqwCN-OO84wFP,InkEA.jpg
+EA,Secretary,นางสาว,นันท์นภัส นวลวัฒนา,แพง,Nunnapat Nuanwatthana ,Pang,6902118,M.D.,Y1,nunnapatnuanwatthana,0891429144,nunnapat.nua@student.mahidol.ac.th,https://drive.google.com/open?id=1jPkubs-CwuNDZdmZQi3NPBYyYF69lE8h,PangEA.jpg
+EA,EA Media Team,นางสาว,ธนภร พลศักดิ์,ฟา,Tanaporn Palasak,Far,6902105,M.D.,Y1,tantadadan,0612291540,tanaporn.pal@student.mahidol.ac.th,https://drive.google.com/file/d/1C7si-YHtaUhfWa0ZxpLeRe8T-91Uj0dB/view?usp=drivesdk,FarEA.jpg
+EA,EA Media Team,นางสาว,ณฐพร ทองอิ่ม,โบนัส,Nathaporn Thongim,Bonus,6902093,M.D.,Y1,2550bonus,0805146355,nathaporn.tho@student.mahidol.ac.th,https://drive.google.com/file/d/1HNz4s5Lev59-pk0hJywyt4qCvZ2JxRmo/view?usp=drivesdk,BonusEA.jpg
+EA,EA Media Team,นางสาว,ธัญจิรา อภิลักษณ์พาณิชย์,พินอิน,Tanjira Apiluckpanich ,Pin-in,6902109,M.D.,Y1,tanjira_pin,0870161626 ,tanjira.api@student.mahidol.ac.th,https://drive.google.com/file/d/1zcfc2DNlwq6neixZm-Qyk0a-AiHYzgUd/view?usp=drivesdk,Pin-inEA.jpg
+EA,MedCommunity Project Team,นาย,ฉัตรพัทธ์ ส่องแสงเจริญ,ปีเก้,Chatrpat Songsaengcharoen,Pk,6902084,M.D.,Y1,kakamama596959,0988408272,chatrpat.son@student.mahidol.ac.th,https://drive.google.com/file/d/1x1bXSGnbTLEEgZhWwtaF-pjp4TSAuBKY/view?usp=drivesdk,PkEA.jpg

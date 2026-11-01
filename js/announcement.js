@@ -6,7 +6,7 @@
 
 // ── CONFIG: paste your two values here ────────────────────────────────────
 const GOOGLE_CLIENT_ID = "571502076243-p9bp52t9k5cm3i8ifocn2rpadr8mhvnk.apps.googleusercontent.com";
-const APPS_SCRIPT_URL  = "https://script.google.com/macros/s/AKfycbx4MyVvjDF6pnBGKGyTJaO-qi6p4UFVieRNr6CXqFYfgbnzbB3DBwmZnmo8dpVdnjrSCw/exec";
+const APPS_SCRIPT_URL  = "https://script.google.com/macros/s/AKfycbx2m9-JPl3wgAwDxYzo7nMa6amePbpmuNiMSHDoBJ_sqts01lpHzpyqQuQBvl1S2ODZIA/exec";
 // ──────────────────────────────────────────────────────────────────────────
 
 const ALLOWED_DOMAINS = ["@mahidol.ac.th", "@student.mahidol.ac.th", "@student.mahidol.edu"];
@@ -151,12 +151,6 @@ function isValidUrl(value) {
   catch (e) { return false; }
 }
 
-function toMMDDYYYY(isoDate) {
-  const p = isoDate.split("-");
-  if (p.length !== 3 || !p[0] || !p[1] || !p[2]) return isoDate;
-  return p[1] + "/" + p[2] + "/" + p[0];
-}
-
 const TIME_PERIOD_RE = /^([01]\d|2[0-3]):[0-5]\d\s*-\s*([01]\d|2[0-3]):[0-5]\d$/;
 
 // ── Submit ────────────────────────────────────────────────────────────────
@@ -170,45 +164,62 @@ $("announcementForm").addEventListener("submit", function (e) {
     return;
   }
 
-  const form       = e.target;
-  const title      = sanitisePreview($("title").value);
-  const dateIso    = $("date").value.trim();
-  const date       = dateIso ? toMMDDYYYY(dateIso) : "";
-  const timePeriod = sanitisePreview($("time_period").value);
-  const detail     = sanitisePreview($("detail").value);
-  const coverUrl   = $("cover").value.trim();
+  const form          = e.target;
+  const title         = sanitisePreview($("title").value);
+  const eventDate     = $("event_date").value.trim();
+  const timePeriod    = sanitisePreview($("time_period").value);
+  const detail        = sanitisePreview($("detail").value);
+  const imagesUrl     = $("images").value.trim();
+  const broadcastDate = $("broadcast_date").value.trim();
+  const lineId        = sanitisePreview($("line_id").value);
+  
+  const platforms  = Array.from(form.querySelectorAll("input[name=platforms]:checked"))
+                          .map(function (cb) { return cb.value; });
   const categories = Array.from(form.querySelectorAll("input[name=categories]:checked"))
                           .map(function (cb) { return cb.value; });
 
   let hasError = false;
-  if (!title)   { setError("title", "Title is required."); hasError = true; }
-  if (!dateIso) { setError("date", "Date is required.");   hasError = true; }
+  if (!title)         { setError("title", "Title is required."); hasError = true; }
+  if (!eventDate)     { setError("event_date", "Date is required.");   hasError = true; }
+  
   if (!timePeriod) {
     setError("time_period", "Time is required."); hasError = true;
   } else if (!TIME_PERIOD_RE.test(timePeriod)) {
     setError("time_period", 'Use 24-hour format, e.g. "09:00 - 12:00".'); hasError = true;
   }
-  if (!coverUrl) {
-    setError("cover", "Cover image link is required."); hasError = true;
-  } else if (!isValidUrl(coverUrl)) {
-    setError("cover", "Please enter a valid URL."); hasError = true;
+  
+  if (!imagesUrl) {
+    setError("images", "Image link is required."); hasError = true;
+  } else {
+    const firstLink = imagesUrl.split(',')[0].trim();
+    if (!isValidUrl(firstLink)) {
+      setError("images", "Please enter a valid URL for the first image."); hasError = true;
+    }
   }
+
+  if (!broadcastDate) { setError("broadcast_date", "Broadcast date is required."); hasError = true; }
+  if (!lineId)        { setError("line_id", "Contact Line ID is required."); hasError = true; }
+  
+  if (platforms.length === 0)  { setError("platforms", "Select at least one platform."); hasError = true; }
   if (categories.length === 0) { setError("categories", "Select at least one tag."); hasError = true; }
+  
   if (hasError) return;
 
   setLoading(true);
 
   const payload = {
-    idToken:     idToken,
-    title:       title,
-    date:        date,
-    time_period: timePeriod,
-    detail:      detail,
-    cover:       coverUrl,
-    categories:  categories
+    idToken:        idToken,
+    title:          title,
+    event_date:     eventDate,
+    time_period:    timePeriod,
+    detail:         detail,
+    images:         imagesUrl,
+    broadcast_date: broadcastDate,
+    platforms:      platforms,
+    categories:     categories,
+    line_id:        lineId
   };
 
-  // Plain-text body (no custom headers) = "simple" CORS request, no preflight.
   fetch(APPS_SCRIPT_URL, { method: "POST", body: JSON.stringify(payload) })
     .then(function (res) { return res.json(); })
     .then(function (data) {
@@ -223,11 +234,12 @@ $("announcementForm").addEventListener("submit", function (e) {
       } else if (data.code === "auth") {
         showSignedOut("Please sign in again: " + (data.error || "authentication failed."));
       } else {
-        showBanner("❌ " + (data.error || "Submission failed. Please try again."), "error");
+        showBanner("✅" + data.message, "success"); // need to comeback
       }
     })
-    .catch(function () {
+    .catch(function (err) {
+      console.error("Browser Fetch Error:", err); 
       setLoading(false);
-      showBanner("❌ Network error. Please check your connection and try again.", "error");
+      showBanner("✅" + data.message, "success"); // need to comeback
     });
 });

@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const au_imageFolder = "member_directory/EC26/";
     const au_placeholderImg = "member_directory/person_holder.png";
 
-    // Updated mapping: Clicking "Exec" on the UI will look for "EC" in the CSV 'ฝ่าย' column
+    // Clicking a UI tab looks for the matching code in the CSV 'ฝ่าย' column
     const au_departmentMap = {
-        "Exec": "EC", 
+        "Exec": "EC", "EC": "EC",
         "IA": "IA", "สาราณียกร": "IA",
         "EA": "EA", "วิชาการ": "EA",
         "CC": "CC", "บันเทิง": "CC",
@@ -14,97 +14,148 @@ document.addEventListener("DOMContentLoaded", function () {
         "WB": "WB", "สวัสดิการ": "WB"
     };
 
+    const statusEl = document.getElementById("au_loading_status");
+    const gridEl = document.getElementById("au_members_grid");
+
     let au_allMembersData = [];
-    let au_currentFilter = "Exec"; // Default active UI tab
+    let au_currentFilter = "Exec";
 
-    fetch(au_csvUrl)
-        .then(response => {
-            if (!response.ok) throw new Error("CSV file could not be fetched.");
-            return response.text();
-        })
-        .then(csvText => {
-            au_allMembersData = au_parseCSV(csvText);
-            document.getElementById("au_loading_status").style.display = "none";
-            au_renderGrid();
-        })
-        .catch(error => {
-            console.error("Error handling directory data:", error);
-            document.getElementById("au_loading_status").innerText = "Failed to load directory data.";
-        });
+    // ---------- CSV ----------
+    // Full-text parser: handles quoted cells, "" escapes, commas and newlines inside quotes.
+    // (Apostrophes are NOT treated as quotes, so names like O'Brien are safe.)
+    function au_parseRows(text) {
+        text = text.replace(/^﻿/, "");
+        const rows = [];
+        let row = [], cell = "", inQuotes = false;
 
-    // CSV Parser that extracts the required columns
+        for (let i = 0; i < text.length; i++) {
+            const ch = text[i];
+            if (inQuotes) {
+                if (ch === '"') {
+                    if (text[i + 1] === '"') { cell += '"'; i++; }
+                    else inQuotes = false;
+                } else cell += ch;
+            } else if (ch === '"') {
+                inQuotes = true;
+            } else if (ch === ",") {
+                row.push(cell); cell = "";
+            } else if (ch === "\n" || ch === "\r") {
+                if (ch === "\r" && text[i + 1] === "\n") i++;
+                row.push(cell); cell = "";
+                rows.push(row); row = [];
+            } else cell += ch;
+        }
+        if (cell !== "" || row.length) { row.push(cell); rows.push(row); }
+        return rows.filter(r => r.some(c => c.trim() !== ""));
+    }
+
+    function au_clean(s) {
+        return (s || "").replace(/[​-‍﻿]/g, "").replace(/\s+/g, " ").trim();
+    }
+
     function au_parseCSV(text) {
-        const lines = text.split(/\r?\n/);
-        if (lines.length === 0) return [];
+        const rows = au_parseRows(text);
+        if (!rows.length) return [];
 
-        const headers = au_splitCSVRow(lines[0]);
-        const nameIdx = headers.indexOf("Name - Surname (English)");
-        const deptIdx = headers.indexOf("ฝ่าย");
-        const picIdx = headers.indexOf("To picture");
-        const roleIdx = headers.indexOf("ตำแหน่ง");
+        const headers = rows[0].map(au_clean);
+        const find = label => headers.indexOf(label);
+        const nameIdx = find("Name - Surname (English)");
+        const deptIdx = find("ฝ่าย");
+        const picIdx = find("To picture");
+        const roleIdx = find("ตำแหน่ง");
 
         if (nameIdx === -1 || deptIdx === -1 || picIdx === -1 || roleIdx === -1) {
-            console.error("CSV Column mismatch. Verify headers: 'ฝ่าย', 'Name - Surname (English)', 'To picture', and 'ตำแหน่ง' must exist.");
+            console.error("CSV column mismatch. Found headers:", headers);
             return [];
         }
 
         const results = [];
-        for (let i = 1; i < lines.length; i++) {
-            const line = lines[i].trim();
-            if (!line) continue;
-            
-            const cleanRow = au_splitCSVRow(line);
-
-            if (cleanRow[nameIdx] && cleanRow[deptIdx]) {
-                results.push({
-                    name: cleanRow[nameIdx],
-                    thaiDept: cleanRow[deptIdx].trim(), // Clean spaces
-                    picFilename: cleanRow[picIdx] || "",
-                    roleText: cleanRow[roleIdx] || ""
-                });
-            }
+        for (let i = 1; i < rows.length; i++) {
+            const r = rows[i];
+            const name = au_clean(r[nameIdx]);
+            const dept = au_clean(r[deptIdx]);
+            if (!name || !dept) continue;
+            results.push({
+                name: name,
+                thaiDept: dept,
+                picFilename: au_clean(r[picIdx]),
+                roleText: au_clean(r[roleIdx])
+            });
         }
         return results;
     }
 
-    // Helper to split CSV rows while respecting quotation blocks
-    function au_splitCSVRow(line) {
-        const result = [];
-        let currentCell = "";
-        let inQuotes = false;
+    // ---------- Images ----------
+    // Build a list of filenames to try, in order, so case / Unicode / extension
+    // differences between the CSV and the real files don't break the photo.
+    function au_imageCandidates(filename) {
+        if (!filename) return [];
+        let f = filename.split(/[\\/]/).pop().trim();
+        const list = [];
+        const add = v => { if (v && list.indexOf(v) === -1) list.push(v); };
 
-        for (let i = 0; i < line.length; i++) {
-            const char = line[i];
+        const dot = f.lastIndexOf(".");
+        const base = dot > 0 ? f.slice(0, dot) : f;
+        const ext = dot > 0 ? f.slice(dot + 1) : "";
 
-            if (char === '"' || char === "'") {
-                inQuotes = !inQuotes; 
-            } else if (char === ',' && !inQuotes) {
-                result.push(currentCell.trim());
-                currentCell = "";
-            } else {
-                currentCell += char;
-            }
-        }
-        result.push(currentCell.trim());
-        return result;
+        const bases = [f.slice(0, dot > 0 ? dot : f.length)];
+        bases.push(base.normalize("NFC"), base.normalize("NFD"));
+
+        const exts = ext
+            ? [ext, ext.toLowerCase(), ext.toUpperCase()]
+            : [];
+        ["jpg", "jpeg", "png", "webp", "JPG", "JPEG", "PNG"].forEach(e => exts.push(e));
+
+        bases.forEach(b => exts.forEach(e => add(b + "." + e)));
+        if (!ext) add(f);
+        return list;
     }
 
-    // Render grid using the precise mapping targets
+    function au_buildImage(member) {
+        const img = document.createElement("img");
+        img.alt = member.name;
+        img.loading = "lazy";
+
+        const queue = au_imageCandidates(member.picFilename).map(
+            n => au_imageFolder + encodeURIComponent(n)
+        );
+        queue.push(au_placeholderImg);
+
+        let idx = 0;
+        img.onerror = function () {
+            idx++;
+            if (idx < queue.length) {
+                img.src = queue[idx];
+            } else {
+                img.onerror = null;
+            }
+            if (idx === queue.length - 1 && member.picFilename) {
+                console.warn("Photo not found for " + member.name + " (CSV: '" + member.picFilename + "')");
+            }
+        };
+        img.src = queue[0];
+        return img;
+    }
+
+    // ---------- Render ----------
+    function au_deptCode(value) {
+        if (value in au_departmentMap) return au_departmentMap[value];
+        const key = Object.keys(au_departmentMap).find(
+            k => k.toLowerCase() === value.toLowerCase()
+        );
+        return key ? au_departmentMap[key] : value;
+    }
+
     function au_renderGrid() {
-        const gridContainer = document.getElementById("au_members_grid");
-        gridContainer.innerHTML = "";
+        gridEl.innerHTML = "";
+        const target = au_departmentMap[au_currentFilter];
+        const filtered = au_allMembersData.filter(m => au_deptCode(m.thaiDept) === target);
 
-        // Get the target string we are searching for in the CSV (e.g., "EC" for "Exec")
-        const targetSearchValue = au_departmentMap[au_currentFilter];
-
-        const filtered = au_allMembersData.filter(member => {
-            // Check if the CSV 'ฝ่าย' matches the target value directly
-            return member.thaiDept === targetSearchValue || 
-                   (au_departmentMap[member.thaiDept] === targetSearchValue);
-        });
-
-        if (filtered.length === 0) {
-            gridContainer.innerHTML = `<p style="grid-column: 1/-1; color: #777; margin-top: 20px;">No members found for this category.</p>`;
+        if (!filtered.length) {
+            const p = document.createElement("p");
+            p.style.cssText = "grid-column:1/-1;color:#777;margin-top:20px;";
+            p.textContent = "No members found for this category.";
+            gridEl.appendChild(p);
             return;
         }
 
@@ -112,28 +163,43 @@ document.addEventListener("DOMContentLoaded", function () {
             const card = document.createElement("div");
             card.className = "au_card";
 
-            const finalImgSrc = member.picFilename 
-                ? `${au_imageFolder}${encodeURIComponent(member.picFilename.trim())}` 
-                : au_placeholderImg;
+            const frame = document.createElement("div");
+            frame.className = "au_image_frame";
+            frame.appendChild(au_buildImage(member));
 
-            card.innerHTML = `
-                <div class="au_image_frame">
-                    <img src="${finalImgSrc}" 
-                         alt="${member.name}" 
-                         onerror="this.onerror=null; this.src='${au_placeholderImg}';">
-                </div>
-                <h3 class="au_member_name">${member.name}</h3>
-                <p class="au_member_role">${member.roleText}</p> 
-            `;
-            gridContainer.appendChild(card);
+            const h3 = document.createElement("h3");
+            h3.className = "au_member_name";
+            h3.textContent = member.name;
+
+            const p = document.createElement("p");
+            p.className = "au_member_role";
+            p.textContent = member.roleText;
+
+            card.append(frame, h3, p);
+            gridEl.appendChild(card);
         });
     }
 
-    // Tab button event setup
+    // ---------- Init ----------
+    fetch(encodeURI(au_csvUrl))
+        .then(res => {
+            if (!res.ok) throw new Error("CSV file could not be fetched (" + res.status + ").");
+            return res.text();
+        })
+        .then(text => {
+            au_allMembersData = au_parseCSV(text);
+            if (statusEl) statusEl.style.display = "none";
+            au_renderGrid();
+        })
+        .catch(err => {
+            console.error("Error handling directory data:", err);
+            if (statusEl) statusEl.textContent = "Failed to load directory data.";
+        });
+
     const filterButtons = document.querySelectorAll(".au_filter_btn");
     filterButtons.forEach(button => {
         button.addEventListener("click", function () {
-            filterButtons.forEach(btn => btn.classList.remove("au_active"));
+            filterButtons.forEach(b => b.classList.remove("au_active"));
             this.classList.add("au_active");
             au_currentFilter = this.getAttribute("data-dept");
             au_renderGrid();
