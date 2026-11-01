@@ -3162,3 +3162,43 @@ main.full-article-container .back-link {
     text-align: center;
   }
 }
+
+/* About Us: identical photo frames, columns that never stretch */
+.au_grid_container {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+.au_card {
+  min-width: 0;
+}
+.au_image_frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #eaeaea;
+}
+.au_image_frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+.au_member_name,
+.au_member_role {
+  overflow-wrap: anywhere;
+}
+.au_member_role {
+  line-height: 1.4;
+}
+@media (max-width: 650px) {
+  .au_grid_container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 14px;
+    row-gap: 28px;
+  }
+  .au_card { max-width: none; }
+}
